@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lumière Estética · Tu belleza, nuestra pasión</title>
+<meta name="description" content="Lumière Estética — Centro de estética premium. Faciales, depilación láser, masajes, manicura y bonos exclusivos." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --rosa:#f4a7b9;
+  --rosa2:#e8799a;
+  --dorado:#d4af72;
+  --negro:#0a0808;
+  --negro2:#120f0f;
+  --card:#150f0f;
+  --texto:#fdf8f8;
+  --texto2:#e8c8cc;
+  --muted:#8a6a6e;
+  --border:rgba(244,167,185,.15);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',sans-serif;
+  font-weight:300;
+  background:var(--negro);
+  color:var(--texto);
+  line-height:1.6;
+  overflow-x:hidden;
+}
+h1,h2,h3,h4{font-family:'Cormorant Garamond',serif;font-weight:400;letter-spacing:.5px}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+
+/* NAV */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:18px 40px;
+  background:rgba(10,8,8,.85);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  transition:padding .3s;
+}
+.nav.scrolled{padding:12px 40px}
+.logo{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--rosa);letter-spacing:1px}
+.logo span{color:var(--dorado)}
+.nav-links{display:flex;gap:36px;align-items:center}
+.nav-links a{font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:var(--texto2);transition:color .25s}
+.nav-links a:hover{color:var(--rosa)}
+.btn{
+  display:inline-block;padding:12px 28px;
+  font-family:'Inter',sans-serif;font-size:12px;
+  letter-spacing:2px;text-transform:uppercase;
+  border:none;cursor:pointer;transition:all .3s;
+  border-radius:2px;
+}
+.btn-rosa{background:var(--rosa);color:var(--negro);font-weight:500}
+.btn-rosa:hover{background:var(--rosa2);transform:translateY(-2px);box-shadow:0 10px 30px rgba(244,167,185,.3)}
+.btn-out{background:transparent;color:var(--texto);border:1px solid var(--rosa)}
+.btn-out:hover{background:var(--rosa);color:var(--negro)}
+.menu-tog{display:none;background:none;border:none;color:var(--rosa);font-size:26px;cursor:pointer}
+
+/* HERO */
+.hero{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  position:relative;text-align:center;padding:120px 20px 60px;
+  background:linear-gradient(rgba(10,8,8,.7),rgba(10,8,8,.7)),
+    url('https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1400&q=80') center/cover fixed;
+}
+.hero-c{max-width:900px;animation:fadeUp 1.2s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.badge{
+  display:inline-block;padding:8px 22px;
+  border:1px solid var(--rosa);border-radius:50px;
+  font-size:11px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--rosa);margin-bottom:30px;
+}
+.hero h1{
+  font-size:clamp(48px,9vw,100px);
+  font-weight:300;line-height:1;margin-bottom:24px;
+  background:linear-gradient(135deg,var(--texto) 0%,var(--rosa) 50%,var(--dorado) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.hero p{font-size:clamp(16px,2vw,21px);color:var(--texto2);margin-bottom:44px;font-style:italic;font-family:'Cormorant Garamond',serif;font-weight:300}
+.hero-btns{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-bottom:60px}
+.stats{display:flex;gap:48px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+.stat{text-align:center}
+.stat b{display:block;font-family:'Cormorant Garamond',serif;font-size:36px;color:var(--rosa);font-weight:600}
+.stat span{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+
+/* SECTION */
+section{padding:100px 40px}
+.sec-head{text-align:center;max-width:800px;margin:0 auto 60px}
+.sec-head .kicker{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--rosa);margin-bottom:16px}
+.sec-head h2{font-size:clamp(36px,5vw,60px);margin-bottom:18px;color:var(--texto)}
+.sec-head p{color:var(--texto2);font-size:16px;font-style:italic;font-family:'Cormorant Garamond',serif}
+
+/* TABS */
+.tabs{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:50px}
+.tab{
+  padding:12px 24px;border:1px solid var(--border);
+  background:transparent;color:var(--texto2);
+  font-size:11px;letter-spacing:2px;text-transform:uppercase;
+  cursor:pointer;transition:all .3s;border-radius:50px;font-family:'Inter',sans-serif;
+}
+.tab:hover{border-color:var(--rosa);color:var(--rosa)}
+.tab.active{background:var(--rosa);color:var(--negro);border-color:var(--rosa);font-weight:500}
+.tab-panel{display:none}
+.tab-panel.active{display:block;animation:fadeIn .4s}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+/* CARDS */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px;max-width:1300px;margin:0 auto}
+.card{
+  background:var(--card);border:1px solid var(--border);border-radius:6px;
+  overflow:hidden;transition:all .35s;display:flex;flex-direction:column;
+}
+.card:hover{transform:translateY(-6px);border-color:var(--rosa);box-shadow:0 20px 40px rgba(0,0,0,.5)}
+.card-img{height:180px;background-size:cover;background-position:center;position:relative}
+.card-img.bono::after{
+  content:attr(data-save);
+  position:absolute;top:14px;right:14px;
+  background:var(--dorado);color:var(--negro);
+  padding:6px 14px;border-radius:50px;
+  font-size:11px;font-weight:500;letter-spacing:1px;
+}
+.card-body{padding:24px;display:flex;flex-direction:column;flex:1}
+.card h3{font-size:22px;color:var(--texto);margin-bottom:8px;line-height:1.2}
+.card .desc{font-size:13px;color:var(--muted);margin-bottom:18px;flex:1}
+.card .precio{font-family:'Cormorant Garamond',serif;font-size:30px;color:var(--rosa);font-weight:600;margin-bottom:16px}
+.card .precio .old{font-size:16px;color:var(--muted);text-decoration:line-through;margin-right:10px}
+.card-btn{
+  background:transparent;color:var(--rosa);
+  border:1px solid var(--rosa);padding:10px 18px;
+  font-size:11px;letter-spacing:1.5px;text-transform:uppercase;
+  cursor:pointer;transition:all .3s;border-radius:2px;font-family:'Inter',sans-serif;
+}
+.card-btn:hover{background:var(--rosa);color:var(--negro)}
+
+/* NOSOTRAS */
+.nosotras{background:var(--negro2)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;max-width:1300px;margin:0 auto}
+.about-img{border-radius:8px;overflow:hidden;height:520px;background:url('https://images.unsplash.com/photo-1560750588-73207b1ef5b8?w=800&q=80') center/cover}
+.about-text h2{font-size:clamp(36px,4vw,52px);margin-bottom:22px;color:var(--texto)}
+.about-text > p{color:var(--texto2);margin-bottom:28px;font-size:15px}
+.valores{display:grid;gap:18px;margin-top:30px}
+.valor{display:flex;gap:16px;align-items:flex-start;padding:18px;background:var(--card);border:1px solid var(--border);border-radius:6px}
+.valor-ico{font-size:28px;color:var(--rosa)}
+.valor h4{font-size:18px;color:var(--rosa);margin-bottom:4px}
+.valor p{font-size:13px;color:var(--muted)}
+
+/* TESTIMONIOS */
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;max-width:1200px;margin:0 auto}
+.testi{background:var(--card);border:1px solid var(--border);padding:32px;border-radius:6px}
+.testi .stars{color:var(--dorado);font-size:16px;letter-spacing:3px;margin-bottom:14px}
+.testi .quote{font-family:'Cormorant Garamond',serif;font-size:19px;font-style:italic;color:var(--texto);margin-bottom:18px;line-height:1.5}
+.testi .author{color:var(--rosa);font-size:13px;letter-spacing:1.5px;text-transform:uppercase}
+
+/* GALERIA */
+.galeria{background:var(--negro2)}
+.gal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:1300px;margin:0 auto}
+.gal-grid div{height:280px;background-size:cover;background-position:center;border-radius:4px;transition:transform .4s;cursor:pointer}
+.gal-grid div:hover{transform:scale(1.03)}
+
+/* RESERVAS */
+.reservas{background:linear-gradient(135deg,var(--negro) 0%,var(--negro2) 100%);text-align:center}
+.pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;max-width:1000px;margin:50px auto}
+.paso{padding:30px;background:var(--card);border:1px solid var(--border);border-radius:6px;position:relative}
+.paso-num{font-family:'Cormorant Garamond',serif;font-size:60px;color:var(--rosa);font-weight:600;line-height:1;margin-bottom:14px}
+.paso h3{font-size:22px;color:var(--texto);margin-bottom:8px}
+.paso p{font-size:14px;color:var(--muted)}
+.wa-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--rosa);color:var(--negro);
+  padding:18px 40px;font-size:13px;letter-spacing:2px;text-transform:uppercase;
+  font-weight:500;border-radius:50px;margin-top:30px;transition:all .3s;
+}
+.wa-btn:hover{background:var(--rosa2);transform:translateY(-3px);box-shadow:0 15px 35px rgba(244,167,185,.3)}
+
+/* FOOTER */
+footer{background:#080606;padding:60px 40px 30px;text-align:center;border-top:1px solid var(--border)}
+footer .logo-foot{font-family:'Cormorant Garamond',serif;font-size:32px;color:var(--rosa);margin-bottom:16px}
+footer p{color:var(--muted);font-size:13px;margin-bottom:8px}
+footer a{color:var(--rosa)}
+.foot-info{display:flex;gap:30px;justify-content:center;flex-wrap:wrap;margin:24px 0;color:var(--texto2);font-size:13px}
+.copyright{margin-top:30px;padding-top:20px;border-top:1px solid var(--border);font-size:12px;color:var(--muted)}
+
+/* ============= CHATBOT ============= */
+.chat-fab{
+  position:fixed;bottom:28px;right:28px;z-index:9999;
+  width:64px;height:64px;border-radius:50%;
+  background:var(--rosa);border:none;cursor:pointer;
+  box-shadow:0 10px 40px rgba(244,167,185,.5);
+  display:flex;align-items:center;justify-content:center;
+  font-size:28px;transition:all .3s;
+  animation:pulse 2.4s infinite;
+}
+.chat-fab:hover{transform:scale(1.1)}
+.chat-fab.hidden{display:none}
+@keyframes pulse{
+  0%{box-shadow:0 0 0 0 rgba(244,167,185,.6)}
+  70%{box-shadow:0 0 0 22px rgba(244,167,185,0)}
+  100%{box-shadow:0 0 0 0 rgba(244,167,185,0)}
+}
+.chat-tip{
+  position:fixed;bottom:42px;right:104px;z-index:9998;
+  background:var(--card);color:var(--rosa);
+  padding:10px 18px;border-radius:50px;font-size:13px;
+  border:1px solid var(--rosa);
+  animation:bob 2.5s ease-in-out infinite;
+  white-space:nowrap;pointer-events:none;
+}
+.chat-tip.hidden{display:none}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+
+.chat-mod{
+  position:fixed;bottom:28px;right:28px;z-index:10000;
+  width:380px;max-width:calc(100vw - 30px);
+  height:600px;max-height:calc(100vh - 56px);
+  background:var(--card);border-radius:14px;
+  border:1px solid var(--border);
+  box-shadow:0 30px 80px rgba(0,0,0,.7);
+  display:none;flex-direction:column;overflow:hidden;
+}
+.chat-mod.open{display:flex;animation:slideUp .4s}
+@keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.chat-head{
+  background:var(--negro);padding:16px 20px;
+  border-bottom:2px solid var(--rosa);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.chat-head-info{display:flex;align-items:center;gap:12px}
+.chat-avatar{
+  width:42px;height:42px;border-radius:50%;
+  background:linear-gradient(135deg,var(--rosa),var(--dorado));
+  display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--negro);
+}
+.chat-head h4{color:var(--rosa);font-size:16px;margin:0}
+.chat-head .status{font-size:11px;color:var(--muted);display:flex;align-items:center;gap:6px}
+.dot-on{width:8px;height:8px;background:var(--rosa);border-radius:50%;animation:blink 1.6s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
+.chat-x{background:none;border:none;color:var(--texto2);font-size:22px;cursor:pointer;padding:0 4px}
+.chat-x.hidden{display:none}
+
+.chat-body{flex:1;overflow-y:auto;padding:20px;background:var(--negro2)}
+.chat-body::-webkit-scrollbar{width:5px}
+.chat-body::-webkit-scrollbar-thumb{background:var(--rosa);border-radius:3px}
+
+.msg{margin-bottom:14px;display:flex;animation:fadeIn .3s}
+.msg.bot{justify-content:flex-start}
+.msg.user{justify-content:flex-end}
+.msg-bub{
+  max-width:82%;padding:12px 16px;border-radius:14px;
+  font-size:14px;line-height:1.5;white-space:pre-line;
+}
+.msg.bot .msg-bub{background:var(--card);color:var(--texto);border:1px solid var(--border);border-bottom-left-radius:4px}
+.msg.user .msg-bub{background:var(--rosa);color:var(--negro);border-bottom-right-radius:4px;font-weight:500}
+
+.typing{display:flex;gap:4px;padding:12px 16px;background:var(--card);border-radius:14px;width:fit-content;margin-bottom:14px;border:1px solid var(--border)}
+.typing span{width:7px;height:7px;background:var(--rosa);border-radius:50%;animation:tdot 1.3s infinite}
+.typing span:nth-child(2){animation-delay:.2s}
+.typing span:nth-child(3){animation-delay:.4s}
+@keyframes tdot{0%,80%,100%{transform:scale(.6);opacity:.4}40%{transform:scale(1);opacity:1}}
+
+.quick{display:flex;flex-direction:column;gap:8px;margin:10px 0 16px;padding:0 4px}
+.quick button{
+  background:var(--negro);border:1px solid var(--rosa);
+  color:var(--rosa);padding:10px 14px;border-radius:20px;
+  cursor:pointer;font-size:13px;text-align:left;
+  transition:all .25s;font-family:'Inter',sans-serif;
+}
+.quick button:hover{background:var(--rosa);color:var(--negro)}
+.quick.cat-title{
+  font-size:11px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--dorado);padding:8px 4px 4px;font-weight:500;
+}
+.quick .item{
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:13px;padding:9px 14px;
+}
+.quick .item .price{color:var(--dorado);font-weight:500;font-size:12px}
+.quick .confirm{
+  background:var(--rosa);color:var(--negro);
+  border-color:var(--rosa);font-weight:500;
+  text-align:center;margin-top:8px;
+}
+.quick .confirm:hover{background:var(--rosa2);color:var(--negro)}
+
+.chat-foot{
+  padding:10px 16px;background:var(--negro);
+  border-top:1px solid var(--border);text-align:center;
+  font-size:10px;color:var(--muted);letter-spacing:1px;
+}
+
+@media(max-width:900px){
+  .nav{padding:14px 20px}
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:var(--negro);padding:24px;gap:18px;border-bottom:1px solid var(--border)}
+  .nav-links.open{display:flex}
+  .menu-tog{display:block}
+  section{padding:70px 20px}
+  .about-grid{grid-template-columns:1fr;gap:40px}
+  .about-img{height:340px}
+  .gal-grid{grid-template-columns:repeat(2,1fr)}
+  .gal-grid div{height:200px}
+  .pasos{grid-template-columns:1fr;gap:18px}
+  .stats{gap:24px}
+  .stat b{font-size:28px}
+}
+@media(max-width:600px){
+  .hero{padding:100px 16px 50px}
+  .gal-grid{grid-template-columns:1fr}
+  .chat-mod{
+    bottom:0;right:0;left:0;width:100%;
+    height:90vh;max-height:90vh;border-radius:14px 14px 0 0;
+  }
+  .chat-fab{bottom:18px;right:18px}
+  .chat-tip{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="logo">✦ Lumière<span>·</span></div>
+  <div class="nav-links" id="navlinks">
+    <a href="#tratamientos">Tratamientos</a>
+    <a href="#reservas">Reservas</a>
+    <a href="#nosotras">Nosotras</a>
+    <a href="#contacto">Contacto</a>
+    <button class="btn btn-rosa" onclick="openChat()">Reservar cita</button>
+  </div>
+  <button class="menu-tog" onclick="document.getElementById('navlinks').classList.toggle('open')">☰</button>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-c">
+    <div class="badge">✦ Centro de Estética Premium</div>
+    <h1>Lumière Estética</h1>
+    <p>Donde la ciencia y el lujo se unen para realzar tu belleza natural</p>
+    <div class="hero-btns">
+      <button class="btn btn-rosa" onclick="openChat()">Reservar cita</button>
+      <a href="#tratamientos" class="btn btn-out">Ver tratamientos</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>+2.000</b><span>Clientas</span></div>
+      <div class="stat"><b>15</b><span>Tratamientos</span></div>
+      <div class="stat"><b>4.9★</b><span>Google</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- TRATAMIENTOS -->
+<section id="tratamientos">
+  <div class="sec-head">
+    <div class="kicker">Nuestra carta</div>
+    <h2>Tratamientos & Precios</h2>
+    <p>Una experiencia única para cada necesidad. Productos certificados, tecnología de última generación.</p>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" data-t="faciales">Faciales</button>
+    <button class="tab" data-t="laser">Depilación Láser</button>
+    <button class="tab" data-t="corp">Corporales</button>
+    <button class="tab" data-t="manos">Manos & Pies</button>
+    <button class="tab" data-t="pestanas">Pestañas & Cejas</button>
+    <button class="tab" data-t="bonos">Bonos</button>
+  </div>
+
+  <!-- FACIALES -->
+  <div class="tab-panel active" data-p="faciales">
+    <div class="grid">
+      <div class="card">
+        <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=500&q=80')"></div>
+        <div class="card-body">
+          <h3>Limpieza facial profunda</h3>
+          <p class="desc">Higiene profunda, exfoliación y extracción de impurezas para una piel renovada.</p>
+          <div class="precio">45€</div>
+          <button class="card-btn" onclick="addAndOpen('Limpieza facial profunda',45)">➕ Reservar esta sesión</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=500&q=80')"></div>
+        <div class="card-body">
+          <h3>Hidratación con ácido hialurónico</h3>
+          <p class="desc">Recupera la elasticidad y luminosidad con activos de alta penetración.</p>
+          <div class="precio">65€</div>
+          <button class="card-btn" onclick="addAndOpen('Hidratación con ácido hialurónico',65)">➕ Reservar esta sesión</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=500&q=80')"></div>
+        <div class="card-body">
+          <h3>Tratamiento antiedad radiofrecuencia</h3>
+          <p class="desc">Estimula el colágeno y reafirma la piel. Resultados visibles desde la primera sesión.</p>
+          <div class="precio">85€</div>
+          <button class="card-btn" onclick="addAndOpen('Tratamiento antiedad radiofrecuencia',85)">➕ Reservar esta sesión</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1559757175-5700dde675bc?w=500&q=80')"></div>
+        <div class="card-body">
+          <h3>Peeling químico</h3>
+          <p class="desc">Renovación celular, unifica el tono y atenúa manchas. Resultado profesional.</p>
+          <div class="precio">70€</div>
+          <button class="card-btn" onclick="addAndOpen('Peeling químico',70)">➕ Reservar esta sesión</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=500&q=80')"></div>
+        <div class="card-body">
+          <h3>Microdermoabrasión</h3>
+          <p class="desc">Pulido cutáneo con punta de diamante. Suaviza textura y minimiza poros.</p>
+          <div class="precio">60€</div>
+          <button class="card-btn" onclick="addAndOpen('Microdermoabrasión',60)">➕ Reservar esta sesión</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=500&q=80')"></div>
+        <div class="card-body">
+          <h3>Mesoterapia facial</h3>
+          <p class="desc">Microinyecciones de vitaminas y antioxidantes. Brillo y revitalización profunda.</p>
+          <div class="precio">90€</div>
+          <button class="card-btn" onclick="addAndOpen('Mesoterapia facial',90)">➕ Reservar esta sesión</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LASER -->
+  <div class="tab-panel" data-p="laser">
+    <div class="grid">
+      <div class="card">
+        <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1526045612212-70caf35c14df?w=500&q=80')"></div>
+        <div class="card-body">
+          <h3>Labio superior</h3>
+          <p class="desc">Sesión rápida e indolora con tecnología diodo de última generación.</p>
+          <div class="precio">15€</div>
+          <button class="card-btn" onclick="addAndOpen('Láser labio superior',15)">➕ Reservar esta sesión</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1526045612212-70caf35c14df?w=500&q=80')"></div>
+        <div class="card-body">
+          <h3>Axilas</h3>
+          <p class="desc">Resultado duradero y sin folliculitis. Apta para todo tipo de piel.</p>
+          <div class="precio">25€</div>
+          <button class="card-btn" onclick="addAndOpen('Láser axilas',25)">➕ Reservar esta sesión</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1526045612212-70caf35c14df?w=500&q=80')"></div>
+        <div class="card-body">
+          <h3>Ingles brasileñas</h3>
+          <p class="desc">Depilación íntima completa con mayor comodidad en cada sesión.</p>
+          <div class="precio">45€</div>
+          <button class="card-btn" onclick="addAndOpen('Láser ingles brasileñas',45)">➕ Reservar esta sesión</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1526045612212-70caf35c14df?w=500&q=80')"></div>
+        <div class="card-body">
+          <h3>Piernas completas</h3>
+          <p class="desc">Adiós a la depilación tradicional. Pieles suaves todo el año.</p>
+          <div class="precio">85€</div>
+          <button class="card-btn" onclick="addAndOpen('Láser piernas completas',85)">➕ Reservar esta sesión</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1526045612212-70caf35c14df?w=500&q=80')"></div>
+        <div class="card-body">
+          <h3>Espalda</h3>
+          <p class="desc">Especial para hombres y mujeres con vello extenso. Sesión cómoda.</p>
+          <div class="precio">70€</div>
+          <button class="card-btn" onclick="addAndOpen('Láser espalda',70)">➕ Reservar esta sesión</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img bono" data-save="AHORRA 80€" style="background-image:url('https://images.unsplash.com/photo-1526045612212-70caf35c14df?w=500&q=80')"></div>
+        <div class="card-body">
+          <h3>Pack cuerpo completo</h3>
+          <p class="desc">Piernas + ingles + axilas + brazos. La opción más completa al mejor precio.</p>
+          <div class="precio"><span class="old">260€</span>180€</div>
+          <button class="card-btn" onclick="addAndOpen('Láser pack cuerpo completo',180)">➕ Reservar esta sesión</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CORPORALES -->
+  <div class="tab-panel" data-p="corp">
+    <div class="grid">
+      <div class="card">
+        <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=500&q=80')"></div>
+        <div class="card-body">
+          <h3>Masaje relajante 60min</h3>
+          <p class="desc">Aceites esenciales y técnica sueca para liberar tensiones acumuladas.</p>
+          <div class="precio">55€</div>
+          <button class="card-btn" onclick="addAndOpen('Masaje relajante 60min',55)">➕ Reservar esta sesión</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=500&q=80')"></div>
+        <div class="card-body">
+          <h3>Masaje con piedras calientes</h3>
+          <p class="desc">Terapia de calor profunda que relaja músculos y favorece la circulación.</p>
+          <div class="precio">70€</div>
+          <button class="card-btn" onclick="addAndOpen('Masaje con piedras calientes',70)">➕ Reservar esta sesión</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1552693673-1bf958298935?w=500&q=80')"></div>
+        <div class="card-body">
+          <h3>Tratamiento reafirmante</h3>
+          <p class="desc">Combina activos lipolíticos y radiofrecuencia para tonificar la piel.</p>
+          <div class="precio">75€</div>
+          <button class="card-btn" onclick="addAndOpen('Tratamiento reafirmante',75)">➕ Reservar esta sesión</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1552693673-1bf958298935?w=500&q=80')"></div>
+        <div class="card-body">
+          <h3>Drenaje linfático</h3>
+          <p class="desc">Manual, suave y efectivo. Reduce retención de líquidos e inflamación.</p>
+          <div class="precio">65€</div>
+          <button class="card-btn" onclick="addAndOpen('Drenaje linfático',65)">➕ Reservar esta sesión</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=500&q=80')"></div>
+        <div class="card-body">
+          <h3>Envolvimiento corporal</h3>
+          <p class="desc">Algas marinas y arcilla. Detox profundo, piel renovada y nutrida.</p>
+          <div class="precio">80€</div>
+          <button class="card-btn" onclick="addAndOpen('Envolvimiento corporal',80)">➕ Reservar esta sesión</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MANOS & PIES -->
+  <div class="tab-panel" data-p="manos">
+    <div class="grid">
+      <div class="card">
+        <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1604654894610-df63bc536371?w=500&q=80')"></div>
+        <div class="card-body">
+          <h3>Manicura básica</h3>
+          <p class="desc">Limado, cutícula e hidratación. Esmaltado tradicional.</p>
+          <div class="precio">18€</div>
+          <button class="card-btn" onclick="addAndOpen('Manicura básica',18)">➕ Reservar esta sesión</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1604654894610-df63bc536371?w=500&q=80')"></div>
+        <div class="card-body">
+          <h3>Manicura semipermanente</h3>
+          <p class="desc">Color hasta 3 semanas. Brillo intenso, sin descamado.</p>
+          <div class="precio">28€</div>
+          <button class="card-btn" onclick="addAndOpen('Manicura semipermanente',28)">➕ Reservar esta sesión</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1604654894610-df63bc536371?w=500&q=80')"></div>
+        <div class="card-body">
+          <h3>Pedicura básica</h3>
+          <p class="desc">Cuidado integral del pie con exfoliación e hidratación.</p>
+          <div class="precio">22€</div>
+          <button class="card-btn" onclick="addAndOpen('Pedicura básica',22)">➕ Reservar esta sesión</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1604654894610-df63bc536371?w=500&q=80')"></div>
+        <div class="card-body">
+          <h3>Pedicura semipermanente</h3>
+          <p class="desc">Color y resistencia con acabado profesional duradero.</p>
+          <div class="precio">32€</div>
+          <button class="card-btn" onclick="addAndOpen('Pedicura semipermanente',32)">➕ Reservar esta sesión</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1604654894610-df63bc536371?w=500&q=80')"></div>
+        <div class="card-body">
+          <h3>Uñas de gel manos</h3>
+          <p class="desc">Estructura, fortaleza y diseños personalizados.</p>
+          <div class="precio">35€</div>
+          <button class="card-btn" onclick="addAndOpen('Uñas de gel manos',35)">➕ Reservar esta sesión</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1604654894610-df63bc536371?w=500&q=80')"></div>
+        <div class="card-body">
+          <h3>Uñas de gel pies</h3>
+          <p class="desc">Refuerzo y belleza para tus pies durante semanas.</p>
+          <div class="precio">40€</div>
+          <button class="card-btn" onclick="addAndOpen('Uñas de gel pies',40)">➕ Reservar esta sesión</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PESTAÑAS -->
+  <div class="tab-panel" data-p="pestanas">
+    <div class="grid">
+      <div class="card">
+        <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1519415943484-9fa1873496d4?w=500&q=80')"></div>
+        <div class="card-body">
+          <h3>Lifting de pestañas</h3>
+          <p class="desc">Eleva, curva y fija tus pestañas naturales hasta 8 semanas.</p>
+          <div class="precio">45€</div>
+          <button class="card-btn" onclick="addAndOpen('Lifting de pestañas',45)">➕ Reservar esta sesión</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1519415943484-9fa1873496d4?w=500&q=80')"></div>
+        <div class="card-body">
+          <h3>Extensión pelo a pelo</h3>
+          <p class="desc">Mirada espectacular con efecto natural y máxima durabilidad.</p>
+          <div class="precio">65€</div>
+          <button class="card-btn" onclick="addAndOpen('Extensión de pestañas pelo a pelo',65)">➕ Reservar esta sesión</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1519415943484-9fa1873496d4?w=500&q=80')"></div>
+        <div class="card-body">
+          <h3>Laminado de cejas</h3>
+          <p class="desc">Cejas peinadas y definidas con efecto disciplinado durante semanas.</p>
+          <div class="precio">35€</div>
+          <button class="card-btn" onclick="addAndOpen('Laminado de cejas',35)">➕ Reservar esta sesión</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1519415943484-9fa1873496d4?w=500&q=80')"></div>
+        <div class="card-body">
+          <h3>Depilación cejas con hilo</h3>
+          <p class="desc">Técnica milenaria de máxima precisión sin irritación.</p>
+          <div class="precio">12€</div>
+          <button class="card-btn" onclick="addAndOpen('Depilación cejas con hilo',12)">➕ Reservar esta sesión</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1519415943484-9fa1873496d4?w=500&q=80')"></div>
+        <div class="card-body">
+          <h3>Diseño y tinte de cejas</h3>
+          <p class="desc">Estudio de visagismo personalizado y color a medida.</p>
+          <div class="precio">20€</div>
+          <button class="card-btn" onclick="addAndOpen('Diseño y tinte de cejas',20)">➕ Reservar esta sesión</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BONOS -->
+  <div class="tab-panel" data-p="bonos">
+    <div class="grid">
+      <div class="card">
+        <div class="card-img bono" data-save="AHORRA 15€" style="background-image:url('https://images.unsplash.com/photo-1526045612212-70caf35c14df?w=500&q=80')"></div>
+        <div class="card-body">
+          <h3>Bono 5 sesiones — láser zona pequeña</h3>
+          <p class="desc">Labio o axilas. 5 sesiones a precio reducido. Resultados visibles.</p>
+          <div class="precio"><span class="old">75€</span>60€</div>
+          <button class="card-btn" onclick="addAndOpen('Bono 5 sesiones láser zona pequeña',60)">➕ Reservar este bono</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img bono" data-save="AHORRA 75€" style="background-image:url('https://images.unsplash.com/photo-1526045612212-70caf35c14df?w=500&q=80')"></div>
+        <div class="card-body">
+          <h3>Bono 5 sesiones — láser zona grande</h3>
+          <p class="desc">Piernas, espalda o ingles brasileñas. Resultados duraderos.</p>
+          <div class="precio"><span class="old">425€</span>350€</div>
+          <button class="card-btn" onclick="addAndOpen('Bono 5 sesiones láser zona grande',350)">➕ Reservar este bono</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img bono" data-save="AHORRA 45€" style="background-image:url('https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=500&q=80')"></div>
+        <div class="card-body">
+          <h3>Bono 5 faciales hidratación</h3>
+          <p class="desc">Rutina mensual completa de hidratación profunda con ácido hialurónico.</p>
+          <div class="precio"><span class="old">325€</span>280€</div>
+          <button class="card-btn" onclick="addAndOpen('Bono 5 faciales hidratación',280)">➕ Reservar este bono</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img bono" data-save="AHORRA 100€" style="background-image:url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=500&q=80')"></div>
+        <div class="card-body">
+          <h3>Bono 10 masajes relajantes</h3>
+          <p class="desc">Tu rutina de bienestar mensual. Relax garantizado.</p>
+          <div class="precio"><span class="old">550€</span>450€</div>
+          <button class="card-btn" onclick="addAndOpen('Bono 10 masajes relajantes',450)">➕ Reservar este bono</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOSOTRAS -->
+<section id="nosotras" class="nosotras">
+  <div class="about-grid">
+    <div class="about-img"></div>
+    <div class="about-text">
+      <div class="kicker" style="font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--rosa);margin-bottom:12px">Nosotras</div>
+      <h2>Profesionales que cuidan de ti</h2>
+      <p>En Lumière creemos que la verdadera belleza nace del autocuidado. Nuestro equipo, formado por esteticistas titulados con más de 15 años de experiencia, combina tecnología de vanguardia con un trato cercano para que cada visita sea una experiencia memorable.</p>
+      <div class="valores">
+        <div class="valor"><div class="valor-ico">✦</div><div><h4>Productos certificados</h4><p>Marcas profesionales con dermocosmética avalada y origen sostenible.</p></div></div>
+        <div class="valor"><div class="valor-ico">⚙</div><div><h4>Tecnología de vanguardia</h4><p>Equipos de última generación para resultados eficaces y seguros.</p></div></div>
+        <div class="valor"><div class="valor-ico">★</div><div><h4>Resultados reales</h4><p>Cada tratamiento se personaliza según tu piel y tus objetivos.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section>
+  <div class="sec-head">
+    <div class="kicker">Opiniones</div>
+    <h2>Lo que dicen nuestras clientas</h2>
+  </div>
+  <div class="testi-grid">
+    <div class="testi">
+      <div class="stars">★ ★ ★ ★ ★</div>
+      <p class="quote">"El tratamiento antiedad es espectacular. Después de 3 sesiones mi piel está visiblemente más firme y luminosa."</p>
+      <div class="author">— María G.</div>
+    </div>
+    <div class="testi">
+      <div class="stars">★ ★ ★ ★ ★</div>
+      <p class="quote">"La depilación láser cambió mi vida. Trato exquisito y un equipo súper profesional. ¡Volveré seguro!"</p>
+      <div class="author">— Laura M.</div>
+    </div>
+    <div class="testi">
+      <div class="stars">★ ★ ★ ★ ★</div>
+      <p class="quote">"El mejor centro de estética de la ciudad. Detalle, cuidado y resultados a la altura del precio."</p>
+      <div class="author">— Ana R.</div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIA -->
+<section class="galeria">
+  <div class="sec-head">
+    <div class="kicker">Galería</div>
+    <h2>Nuestro espacio</h2>
+  </div>
+  <div class="gal-grid">
+    <div style="background-image:url('https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=500&q=80')"></div>
+    <div style="background-image:url('https://images.unsplash.com/photo-1519415943484-9fa1873496d4?w=500&q=80')"></div>
+    <div style="background-image:url('https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=500&q=80')"></div>
+    <div style="background-image:url('https://images.unsplash.com/photo-1552693673-1bf958298935?w=500&q=80')"></div>
+    <div style="background-image:url('https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=500&q=80')"></div>
+    <div style="background-image:url('https://images.unsplash.com/photo-1560750588-73207b1ef5b8?w=500&q=80')"></div>
+  </div>
+</section>
+
+<!-- RESERVAS -->
+<section id="reservas" class="reservas">
+  <div class="sec-head">
+    <div class="kicker">Reserva tu cita</div>
+    <h2>Reservar es muy fácil</h2>
+    <p>En menos de 2 minutos tendrás tu sesión confirmada</p>
+  </div>
+  <div class="pasos">
+    <div class="paso">
+      <div class="paso-num">01</div>
+      <h3>Elige tratamiento</h3>
+      <p>Selecciona los servicios que deseas reservar.</p>
+    </div>
+    <div class="paso">
+      <div class="paso-num">02</div>
+      <h3>Día y hora</h3>
+      <p>Escoge cuándo quieres venir según nuestra disponibilidad.</p>
+    </div>
+    <div class="paso">
+      <div class="paso-num">03</div>
+      <h3>Confírmalo</h3>
+      <p>Recibe la confirmación al instante por WhatsApp.</p>
+    </div>
+  </div>
+  <button class="wa-btn" onclick="openChat()">✦ Reservar por WhatsApp</button>
+</section>
+
+<!-- FOOTER -->
+<footer id="contacto">
+  <div class="logo-foot">✦ Lumière Estética</div>
+  <div class="foot-info">
+    <div>📍 Calle Mayor 12, Madrid</div>
+    <div>📞 +34 643 199 580</div>
+    <div>✉ hola@lumiere.es</div>
+  </div>
+  <p><b style="color:var(--rosa)">Horario</b></p>
+  <p>Lun-Vie 9:00 - 20:00 · Sáb 9:00 - 14:00 · Dom cerrado</p>
+  <div class="copyright">
+    Web creada por <b>WhiteMoon</b> · <a href="http://whitemoon.es" target="_blank">whitemoon.es</a>
+  </div>
+</footer>
+
+<!-- CHATBOT -->
+<div class="chat-tip" id="chatTip">✦ ¿Reservas o consultas?</div>
+<button class="chat-fab" id="chatFab" onclick="openChat()" aria-label="Chat">💬</button>
+
+<div class="chat-mod" id="chatMod">
+  <div class="chat-head">
+    <div class="chat-head-info">
+      <div class="chat-avatar">✦</div>
+      <div>
+        <h4>Lumière · Asistente</h4>
+        <div class="status"><span class="dot-on"></span> En línea</div>
+      </div>
+    </div>
+    <button class="chat-x" id="chatX" onclick="closeChat()">✕</button>
+  </div>
+  <div class="chat-body" id="chatBody"></div>
+  <div class="chat-foot">✦ POWERED BY WHITEMOON ·  WHITEMOON.ES</div>
+</div>
+
+<script>
+/* ============= NAV / TABS ============= */
+const navEl=document.getElementById('nav');
+window.addEventListener('scroll',()=>navEl.classList.toggle('scrolled',scrollY>40));
+document.querySelectorAll('.tab').forEach(t=>{
+  t.addEventListener('click',()=>{
+    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(x=>x.classList.remove('active'));
+    t.classList.add('active');
+    document.querySelector(`.tab-panel[data-p="${t.dataset.t}"]`).classList.add('active');
+  });
+});
+
+/* ============= CHATBOT ============= */
+const WA_NUM='34643199580';
+const body=document.getElementById('chatBody');
+const mod=document.getElementById('chatMod');
+const fab=document.getElementById('chatFab');
+const tip=document.getElementById('chatTip');
+const xBtn=document.getElementById('chatX');
+
+let chatStep=0;
+let opened=false;
+let booking={items:[],date:'',time:'',name:'',phone:''};
+
+const norm=s=>s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+
+const SERVICES={
+  '💆 FACIALES':[
+    ['Limpieza facial profunda',45],
+    ['Hidratación ácido hialurónico',65],
+    ['Antiedad radiofrecuencia',85],
+    ['Peeling químico',70],
+    ['Microdermoabrasión',60],
+    ['Mesoterapia facial',90],
+  ],
+  '✨ DEPILACIÓN LÁSER':[
+    ['Láser labio superior',15],
+    ['Láser axilas',25],
+    ['Láser ingles brasileñas',45],
+    ['Láser piernas completas',85],
+    ['Láser espalda',70],
+    ['Láser pack cuerpo completo',180],
+  ],
+  '💆 CORPORALES':[
+    ['Masaje relajante 60min',55],
+    ['Masaje piedras calientes',70],
+    ['Tratamiento reafirmante',75],
+    ['Drenaje linfático',65],
+  ],
+  '💅 MANOS & PIES':[
+    ['Manicura básica',18],
+    ['Manicura semipermanente',28],
+    ['Pedicura básica',22],
+    ['Pedicura semipermanente',32],
+    ['Uñas de gel manos',35],
+  ],
+  '👁️ PESTAÑAS & CEJAS':[
+    ['Lifting de pestañas',45],
+    ['Extensión pestañas',65],
+    ['Laminado de cejas',35],
+    ['Diseño y tinte cejas',20],
+  ],
+  '🎁 BONOS':[
+    ['Bono 5 láser zona pequeña',60],
+    ['Bono 5 faciales hidratación',280],
+    ['Bono 10 masajes',450],
+  ],
+};
+
+function openChat(){
+  mod.classList.add('open');
+  fab.classList.add('hidden');
+  tip.classList.add('hidden');
+  if(!opened){
+    opened=true;
+    setTimeout(welcome,400);
+  }
+}
+function closeChat(){
+  if(chatStep>=1 && chatStep<99) return;
+  mod.classList.remove('open');
+  fab.classList.remove('hidden');
+}
+function lockUI(){
+  xBtn.classList.add('hidden');
+  fab.classList.add('hidden');
+  tip.classList.add('hidden');
+}
+function unlockUI(){
+  xBtn.classList.remove('hidden');
+}
+
+function botMsg(html,cb){
+  const t=document.createElement('div');
+  t.className='typing';
+  t.innerHTML='<span></span><span></span><span></span>';
+  body.appendChild(t);body.scrollTop=body.scrollHeight;
+  setTimeout(()=>{
+    t.remove();
+    const m=document.createElement('div');
+    m.className='msg bot';
+    m.innerHTML=`<div class="msg-bub">${html}</div>`;
+    body.appendChild(m);body.scrollTop=body.scrollHeight;
+    if(cb)cb();
+  },900);
+}
+function userMsg(txt){
+  const m=document.createElement('div');
+  m.className='msg user';
+  m.innerHTML=`<div class="msg-bub">${txt}</div>`;
+  body.appendChild(m);body.scrollTop=body.scrollHeight;
+}
+function quickWrap(){
+  const w=document.createElement('div');
+  w.className='quick';
+  body.appendChild(w);body.scrollTop=body.scrollHeight;
+  return w;
+}
+
+function welcome(){
+  botMsg('¡Hola! ✨ Bienvenida a <b>Lumière Estética</b>.<br>¿En qué puedo ayudarte hoy?',()=>{
+    const q=quickWrap();
+    [['📅 Reservar cita',()=>flowReserva()],
+     ['💆 Ver tratamientos',()=>scrollAndClose('tratamientos')],
+     ['🎁 Ver bonos',()=>{ document.querySelector('.tab[data-t="bonos"]').click(); scrollAndClose('tratamientos'); }],
+     ['⏰ Horarios',()=>showHorario()],
+    ].forEach(([txt,fn])=>{
+      const b=document.createElement('button');
+      b.textContent=txt;b.onclick=()=>{userMsg(txt);q.remove();fn();};
+      q.appendChild(b);
+    });
+  });
+}
+function scrollAndClose(id){
+  closeChat();
+  setTimeout(()=>document.getElementById(id).scrollIntoView({behavior:'smooth'}),200);
+}
+function showHorario(){
+  botMsg('🗓️ <b>Lunes a Viernes:</b> 9:00 - 20:00<br>💆 <b>Sábados:</b> 9:00 - 14:00<br>🚫 <b>Domingos cerrado</b><br><br>¿Reservamos?',()=>{
+    const q=quickWrap();
+    const b=document.createElement('button');b.textContent='📅 Reservar cita';b.onclick=()=>{userMsg('Reservar cita');q.remove();flowReserva();};
+    q.appendChild(b);
+  });
+}
+
+/* === FLOW RESERVA === */
+function flowReserva(){
+  chatStep=1;lockUI();
+  booking={items:[],date:'',time:'',name:'',phone:''};
+  botMsg('¡Con mucho gusto! 💕<br>Selecciona el tratamiento o tratamientos:',()=>renderMenu());
+}
+function renderMenu(){
+  const q=quickWrap();
+  q.dataset.menu='1';
+  Object.entries(SERVICES).forEach(([cat,arr])=>{
+    const t=document.createElement('div');
+    t.className='cat-title';t.textContent=cat;
+    t.style.cssText='font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--dorado);padding:10px 4px 4px;font-weight:500';
+    q.appendChild(t);
+    arr.forEach(([nm,pr])=>{
+      const b=document.createElement('button');
+      b.className='item';
+      b.innerHTML=`<span>➕ ${nm}</span><span class="price">${pr}€</span>`;
+      b.onclick=()=>{
+        booking.items.push({name:nm,price:pr});
+        b.style.background='var(--rosa)';b.style.color='var(--negro)';
+        b.querySelector('.price').style.color='var(--negro)';
+        b.disabled=true;
+      };
+      q.appendChild(b);
+    });
+  });
+  const conf=document.createElement('button');
+  conf.className='confirm';
+  conf.textContent='✅ Ver mi reserva y confirmar';
+  conf.onclick=()=>{
+    if(!booking.items.length){
+      const w=quickWrap();
+      const m=document.createElement('button');m.textContent='⚠️ Selecciona al menos uno';m.disabled=true;
+      w.appendChild(m);setTimeout(()=>w.remove(),1800);
+      return;
+    }
+    q.remove();
+    showSummaryAndDate();
+  };
+  q.appendChild(conf);
+}
+function fmtItems(){
+  return booking.items.map(i=>`• ${i.name} — ${i.price}€`).join('<br>');
+}
+function totalPrice(){return booking.items.reduce((a,b)=>a+b.price,0)}
+
+function showSummaryAndDate(){
+  userMsg(`Selección: ${booking.items.length} tratamiento(s)`);
+  botMsg(`Tu selección ✨:<br>${fmtItems()}<br>────────────────<br><b>Total estimado: ${totalPrice()}€</b><br><br>¿Qué día prefieres? 📅`,()=>{
+    const q=quickWrap();
+    const days=['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
+    const months=['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+    const today=new Date();
+    for(let i=1;i<=7;i++){
+      const d=new Date(today);d.setDate(today.getDate()+i);
+      const txt=`${days[d.getDay()]} ${d.getDate()} ${months[d.getMonth()]}`;
+      const b=document.createElement('button');b.textContent='📅 '+txt;
+      b.onclick=()=>{booking.date=txt;userMsg(txt);q.remove();askTime();};
+      q.appendChild(b);
+    }
+  });
+}
+function askTime(){
+  botMsg('¿A qué hora? ⏰',()=>{
+    const q=quickWrap();
+    ['9:00','10:00','11:00','12:00','16:00','17:00','18:00','19:00'].forEach(h=>{
+      const b=document.createElement('button');b.textContent='🕐 '+h;
+      b.onclick=()=>{booking.time=h;userMsg(h);q.remove();askName();};
+      q.appendChild(b);
+    });
+  });
+}
+function askName(){
+  chatStep=2;
+  botMsg('¿Me dices tu nombre? 💕',()=>showInput('Tu nombre',v=>{
+    if(v.length<2){return false}
+    booking.name=v;userMsg(v);askPhone();return true;
+  }));
+}
+function askPhone(){
+  botMsg(`Perfecto ${booking.name} 😊 ¿Tu teléfono? (9 dígitos)`,()=>showInput('Ej. 612345678',v=>{
+    const num=v.replace(/\D/g,'');
+    if(num.length!==9){
+      botMsg('⚠️ Necesito un número de 9 dígitos. Inténtalo de nuevo:',()=>showInput('Ej. 612345678',v2=>{
+        const n2=v2.replace(/\D/g,'');
+        if(n2.length!==9)return false;
+        booking.phone=n2;userMsg(v2);finalSummary();return true;
+      }));
+      return true;
+    }
+    booking.phone=num;userMsg(v);finalSummary();return true;
+  }));
+}
+function showInput(placeholder,onSubmit){
+  const q=quickWrap();
+  const wrap=document.createElement('div');
+  wrap.style.cssText='display:flex;gap:6px';
+  const inp=document.createElement('input');
+  inp.type='text';inp.placeholder=placeholder;
+  inp.style.cssText='flex:1;padding:10px 14px;border:1px solid var(--rosa);background:var(--negro);color:var(--texto);border-radius:20px;font-family:Inter,sans-serif;font-size:13px;outline:none';
+  const send=document.createElement('button');
+  send.textContent='➤';
+  send.style.cssText='padding:10px 16px;border:none;background:var(--rosa);color:var(--negro);border-radius:20px;cursor:pointer;font-weight:bold';
+  const submit=()=>{
+    const v=inp.value.trim();if(!v)return;
+    if(onSubmit(v))q.remove();
+  };
+  send.onclick=submit;
+  inp.addEventListener('keydown',e=>{if(e.key==='Enter')submit();});
+  wrap.appendChild(inp);wrap.appendChild(send);
+  q.appendChild(wrap);
+  setTimeout(()=>inp.focus(),100);
+}
+
+function finalSummary(){
+  chatStep=99;unlockUI();fab.classList.remove('hidden');
+  const itemsTxt=booking.items.map(i=>`• ${i.name} — ${i.price}€`).join('\n');
+  const totalE=totalPrice();
+  botMsg(
+    `✅ <b>RESUMEN DE TU RESERVA</b><br><br>`+
+    `👤 <b>${booking.name}</b><br>`+
+    `📞 +34 ${booking.phone}<br><br>`+
+    `💆 <b>Tratamientos:</b><br>${fmtItems()}<br><br>`+
+    `💰 <b>Total estimado:</b> ${totalE}€<br>`+
+    `📅 <b>Día:</b> ${booking.date}<br>`+
+    `🕐 <b>Hora:</b> ${booking.time}<br><br>`+
+    `Confirma enviando el mensaje por WhatsApp 👇`,
+    ()=>{
+      const q=quickWrap();
+      const wa=document.createElement('button');
+      wa.className='confirm';wa.textContent='✦ Enviar por WhatsApp';
+      wa.onclick=()=>{
+        const txt=
+`✨ *RESERVA — Lumière Estética*
+
+👤 *Nombre:* ${booking.name}
+📞 *Tel:* +34${booking.phone}
+💆 *Tratamientos:*
+${itemsTxt}
+💰 *Total estimado:* ${totalE}€
+📅 *Día:* ${booking.date}
+🕐 *Hora:* ${booking.time}
+
+_Vía chatbot WhiteMoon · whitemoon.es_`;
+        window.open(`https://wa.me/${WA_NUM}?text=${encodeURIComponent(txt)}`,'_blank');
+      };
+      q.appendChild(wa);
+      const again=document.createElement('button');
+      again.textContent='💬 Hacer otra consulta';
+      again.onclick=()=>{q.remove();chatStep=0;welcome();};
+      q.appendChild(again);
+    }
+  );
+}
+
+/* === Direct add from card === */
+function addAndOpen(name,price){
+  if(chatStep===0){
+    booking={items:[{name,price}],date:'',time:'',name:'',phone:''};
+    openChat();
+    chatStep=1;lockUI();
+    setTimeout(()=>{
+      botMsg(`Has añadido <b>${name}</b> (${price}€) ✨<br><br>¿Quieres añadir más tratamientos o continuar?`,()=>{
+        const q=quickWrap();
+        const more=document.createElement('button');more.textContent='➕ Añadir más';
+        more.onclick=()=>{q.remove();renderMenu();};
+        const cont=document.createElement('button');cont.className='confirm';cont.textContent='✅ Continuar con la reserva';
+        cont.onclick=()=>{q.remove();showSummaryAndDate();};
+        q.appendChild(more);q.appendChild(cont);
+      });
+    },500);
+  }else{
+    booking.items.push({name,price});
+    openChat();
+  }
+}
+
+/* === Tooltip auto === */
+setTimeout(()=>{if(!opened)tip.style.display='block';},2500);
+</script>
+</body>
+</html>
