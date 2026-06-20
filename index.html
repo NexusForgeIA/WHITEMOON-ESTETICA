@@ -56,7 +56,8 @@ img{max-width:100%;display:block}
   transition:padding .3s;
 }
 .nav.scrolled{padding:12px 48px}
-.logo{font-size:20px;font-weight:500;color:var(--text);letter-spacing:.5px}
+.nav-logo-link{text-decoration:none;display:flex;align-items:center}
+.nav-logo-img{height:36px;width:auto;object-fit:contain}
 .nav-links{display:flex;gap:32px;align-items:center}
 .nav-links a{font-size:14px;color:var(--text);opacity:.85;transition:color .2s,opacity .2s}
 .nav-links a:hover{color:var(--accent);opacity:1}
@@ -338,7 +339,14 @@ footer{background:var(--bg2);padding:60px 48px 32px;border-top:1px solid rgba(19
 
 <!-- ============ NAV ============ -->
 <nav class="nav" id="nav">
-  <div class="logo">✦ Estética Premium</div>
+  <a href="/" class="nav-logo-link" aria-label="WhiteMoon — inicio">
+    <img src="https://whitemoon.es/logo.webp"
+         alt="WhiteMoon"
+         class="nav-logo-img"
+         width="140" height="36"
+         onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+    <span class="nav-logo-fallback" style="display:none;color:#f0f0f5;font-family:Sora,sans-serif;font-weight:600;font-size:1.1rem;">✦ WhiteMoon</span>
+  </a>
   <div class="nav-links" id="navlinks">
     <a href="#tratamientos">Tratamientos</a>
     <a href="#reservas">Reservas</a>
