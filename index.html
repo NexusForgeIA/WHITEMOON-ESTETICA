@@ -3,1094 +3,729 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Whitemoon Estetic · Tu belleza, nuestra pasión</title>
-<meta name="description" content="Whitemoon Estetic — Centro de estética premium en Madrid. Faciales, depilación láser, masajes, manicura, pestañas y bonos exclusivos." />
+<title>Lumière Estética · Centro de estética premium en Madrid</title>
+<meta name="description" content="Lumière Estética — centro de estética premium en Madrid. Faciales, depilación láser, masajes, uñas y pestañas. Reserva tu cita en segundos con nuestra asistente." />
+<link rel="canonical" href="https://nexusforgeia.github.io/WHITEMOON-ESTETICA/" />
+<meta name="theme-color" content="#08080d" />
+<link rel="icon" href="LOGO%20LUNA.jpeg" />
+<!-- OG -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Lumière Estética · Centro de estética premium en Madrid" />
+<meta property="og:description" content="Faciales, depilación láser, masajes, uñas y pestañas. Reserva tu cita en segundos." />
+<meta property="og:locale" content="es_ES" />
+<meta property="og:image" content="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1200&h=630&fit=crop&fm=jpg&q=80" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1200&h=630&fit=crop&fm=jpg&q=80" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BeautySalon",
+  "name":"Lumière Estética",
+  "description":"Centro de estética premium en Madrid: faciales, depilación láser, masajes, manicura, pestañas y bonos.",
+  "image":"https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1200&h=630&fit=crop&fm=jpg&q=80",
+  "telephone":"+34643199580",
+  "email":"hola@lumiere.es",
+  "priceRange":"€€",
+  "address":{"@type":"PostalAddress","streetAddress":"Calle Mayor 12","addressLocality":"Madrid","addressCountry":"ES"},
+  "areaServed":"Madrid",
+  "openingHoursSpecification":[
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"09:00","closes":"20:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"09:00","closes":"14:00"}
+  ],
+  "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"2000"}
+}
+</script>
 <style>
 :root{
-  /* paleta estética premium */
   --bg:#08080d;
   --bg2:#0e0e16;
   --card:#111118;
   --p:#7c4dff;
   --p2:#9d70ff;
-  --accent:#C2185B;
-  --accent2:#E91E8C;
+  --gold:#f5c842;
   --g:#00d4aa;
   --text:#f0f0f5;
   --muted:#8888a0;
-  --border:rgba(194,24,91,0.2);
-  /* alias legacy: el chatbot inyecta estilos inline con estas variables */
-  --verde:#C2185B;
-  --verde2:#E91E8C;
-  --negro:#08080d;
-  --negro2:#0e0e16;
-  --texto:#f0f0f5;
-  --texto2:rgba(240,240,245,.75);
-  --dorado:#9d70ff;
+  --border:rgba(124,77,255,.18);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
-  font-family:'Sora',sans-serif;
-  font-weight:300;
-  background:var(--bg);
-  color:var(--text);
-  line-height:1.6;
+  font-family:'Inter',sans-serif;font-weight:300;
+  background:var(--bg);color:var(--text);line-height:1.6;
   overflow-x:hidden;
 }
-h1,h2,h3,h4{font-family:'Sora',sans-serif;font-weight:600;letter-spacing:-.5px}
+h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:500;letter-spacing:.2px;line-height:1.05}
 a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
+::selection{background:var(--p);color:#fff}
 
-/* ============ NAV ============ */
-.nav{
-  position:fixed;top:0;left:0;right:0;z-index:1000;
-  padding:16px 48px;
-  background:rgba(8,8,13,.92);
-  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-  border-bottom:1px solid var(--border);
-  display:flex;align-items:center;justify-content:space-between;
-  transition:padding .3s;
-}
-.nav.scrolled{padding:12px 48px}
-.nav-logo-link{text-decoration:none;display:flex;align-items:center}
-.nav-logo-img{height:36px;width:auto;object-fit:contain}
-.nav-links{display:flex;gap:32px;align-items:center}
-.nav-links a{font-size:14px;color:var(--text);opacity:.85;transition:color .2s,opacity .2s}
-.nav-links a:hover{color:var(--accent);opacity:1}
-.btn-nav{
-  background:var(--accent);color:#fff;border:none;cursor:pointer;
-  border-radius:8px;padding:10px 22px;font-family:'Sora',sans-serif;
-  font-size:14px;font-weight:600;transition:all .2s;
-}
-.btn-nav:hover{background:var(--accent2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(194,24,91,.4)}
-.menu-tog{display:none;background:none;border:none;color:var(--accent);font-size:26px;cursor:pointer}
+/* ---------- CUSTOM CURSOR (desktop only) ---------- */
+.cursor,.cursor-dot{position:fixed;top:0;left:0;border-radius:50%;pointer-events:none;z-index:99999;mix-blend-mode:screen;opacity:0;transition:opacity .3s}
+.cursor{width:34px;height:34px;border:1px solid var(--p2);transform:translate(-50%,-50%)}
+.cursor-dot{width:5px;height:5px;background:var(--p2);transform:translate(-50%,-50%)}
+@media (hover:hover) and (pointer:fine){.cursor,.cursor-dot{opacity:1}body{cursor:none}a,button,.tab,.svc{cursor:none}}
 
-/* ============ HERO ============ */
-.hero{position:relative;height:100vh;min-height:600px;overflow:hidden}
-.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
-.hero-overlay{position:absolute;inset:0;z-index:1;
-  background:
-    radial-gradient(120% 100% at 50% 0%, transparent 40%, rgba(8,8,13,.5) 100%),
-    linear-gradient(to bottom,
-      rgba(8,8,13,0.55) 0%,
-      rgba(8,8,13,0.3) 40%,
-      rgba(194,24,91,0.15) 75%,
-      rgba(8,8,13,0.92) 100%);
-}
-.hero-content{position:relative;z-index:2;
-  display:flex;flex-direction:column;align-items:flex-start;justify-content:center;
-  height:100%;max-width:1200px;margin:0 auto;padding:0 48px;padding-top:80px;
-  animation:fadeUp 1s ease;
-}
-@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+/* ---------- NAV ---------- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;
+  padding:20px 44px;transition:padding .35s,background .35s,border-color .35s;border-bottom:1px solid transparent}
+.nav.scrolled{padding:13px 44px;background:rgba(8,8,13,.82);backdrop-filter:blur(16px) saturate(140%);border-bottom-color:var(--border)}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{width:38px;height:38px;border-radius:50%;object-fit:cover;border:1px solid var(--border)}
+.brand .bn{font-family:'Playfair Display',serif;font-size:23px;font-weight:600;letter-spacing:.5px}
+.brand .bn em{font-style:normal;color:var(--p2)}
+.nav-links{display:flex;align-items:center;gap:30px}
+.nav-links a.lk{font-size:12px;letter-spacing:1.6px;text-transform:uppercase;color:var(--muted);transition:color .25s;position:relative}
+.nav-links a.lk:hover{color:var(--text)}
+.nav-links a.lk::after{content:'';position:absolute;left:0;bottom:-6px;width:0;height:1px;background:var(--p2);transition:width .3s}
+.nav-links a.lk:hover::after{width:100%}
+.social{display:flex;gap:14px;align-items:center}
+.social a{color:var(--muted);transition:color .25s,transform .25s}
+.social a:hover{color:var(--p2);transform:translateY(-2px)}
+.social svg{width:18px;height:18px;display:block}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:'Inter',sans-serif;font-size:12px;letter-spacing:1.6px;
+  text-transform:uppercase;font-weight:500;border:none;cursor:pointer;transition:all .3s;border-radius:40px;padding:12px 26px}
+.btn-p{background:var(--p);color:#fff}
+.btn-p:hover{background:var(--p2);transform:translateY(-2px);box-shadow:0 12px 30px rgba(124,77,255,.35)}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border)}
+.btn-ghost:hover{border-color:var(--p2);color:var(--p2)}
+.menu-tog{display:none;background:none;border:none;color:var(--p2);font-size:26px;cursor:pointer}
 
-.hero-badge{display:inline-flex;align-items:center;gap:10px;
-  background:rgba(194,24,91,0.12);border:1px solid rgba(194,24,91,0.35);
-  border-radius:100px;padding:8px 18px;font-size:13px;
-  color:rgba(240,240,245,0.85);margin-bottom:28px;}
-.badge-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);
-  box-shadow:0 0 0 0 rgba(194,24,91,0.6);animation:pulse-dot 2s infinite;}
-@keyframes pulse-dot{
-  0%{box-shadow:0 0 0 0 rgba(194,24,91,0.6)}
-  70%{box-shadow:0 0 0 10px rgba(194,24,91,0)}
-  100%{box-shadow:0 0 0 0 rgba(194,24,91,0)}
-}
-.hero-title{font-size:clamp(2.8rem,6vw,5rem);font-weight:700;line-height:1.1;
-  color:var(--text);margin-bottom:20px;text-shadow:0 2px 20px rgba(0,0,0,0.5);}
-.hero-word-rotate{display:block;color:var(--accent);min-height:1.2em}
-.hero-subtitle{font-size:1.1rem;color:rgba(240,240,245,0.75);line-height:1.6;
-  margin-bottom:36px;max-width:520px;}
-.hero-ctas{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:48px}
-.btn-primary{background:var(--accent);color:#fff;border:none;border-radius:8px;
-  padding:16px 32px;font-size:1rem;font-family:'Sora',sans-serif;font-weight:600;
-  cursor:pointer;transition:all .2s;}
-.btn-primary:hover{background:var(--accent2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(194,24,91,0.4)}
-.btn-ghost{color:var(--text);border:1px solid rgba(240,240,245,0.3);border-radius:8px;
-  padding:16px 32px;font-size:1rem;font-family:'Sora',sans-serif;font-weight:500;
-  text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;}
-.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+/* ---------- HERO ---------- */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;padding:140px 44px 90px}
+.hero-video,.hero-video::after{position:absolute;inset:0}
+.hero-video video{width:100%;height:100%;object-fit:cover}
+.hero-video::after{content:'';background:
+  radial-gradient(120% 90% at 80% 10%,rgba(124,77,255,.18),transparent 55%),
+  linear-gradient(180deg,rgba(8,8,13,.55) 0%,rgba(8,8,13,.78) 55%,var(--bg) 100%),
+  linear-gradient(90deg,rgba(8,8,13,.9) 0%,rgba(8,8,13,.35) 60%,transparent 100%)}
+.ghost{position:absolute;left:-2vw;bottom:-3vh;font-family:'Playfair Display',serif;font-weight:800;
+  font-size:clamp(120px,26vw,420px);line-height:.8;color:#fff;opacity:.04;letter-spacing:-.02em;
+  pointer-events:none;user-select:none;white-space:nowrap}
+.hero-inner{position:relative;z-index:2;max-width:1280px;margin:0 auto;width:100%}
+.hero-c{max-width:780px}
+.badge{display:inline-flex;align-items:center;gap:10px;padding:8px 18px;border:1px solid var(--border);
+  border-radius:40px;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--p2);margin-bottom:34px;
+  background:rgba(124,77,255,.06)}
+.badge .pip{width:8px;height:8px;border-radius:50%;background:var(--p2);box-shadow:0 0 0 0 rgba(124,77,255,.7);animation:glow 2.6s infinite}
+@keyframes glow{0%{box-shadow:0 0 0 0 rgba(124,77,255,.55)}70%{box-shadow:0 0 0 13px rgba(124,77,255,0)}100%{box-shadow:0 0 0 0 rgba(124,77,255,0)}}
+.hero h1{font-size:clamp(54px,10vw,128px);font-weight:600;margin-bottom:10px}
+.hero h1 .thin{font-weight:400;font-style:italic;color:var(--p2)}
+.hero-sub{font-size:clamp(17px,2.2vw,24px);color:var(--muted);font-weight:300;margin:18px 0 40px;max-width:560px}
+.rotor{display:inline-block;position:relative;color:var(--gold);font-family:'Playfair Display',serif;font-style:italic;font-weight:600;min-width:1ch}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:64px}
+.stats{display:flex;gap:18px;flex-wrap:wrap}
+.stat{padding:20px 26px;border-radius:16px;background:rgba(255,255,255,.04);backdrop-filter:blur(12px) saturate(150%);
+  border:1px solid var(--border);min-width:140px}
+.stat b{display:block;font-family:'Playfair Display',serif;font-size:38px;font-weight:600;color:var(--text);line-height:1}
+.stat b .acc{color:var(--gold)}
+.stat span{font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:6px;display:block}
+.scrollcue{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;
+  align-items:center;gap:8px;color:var(--muted);font-size:10px;letter-spacing:3px;text-transform:uppercase}
+.scrollcue .bar{width:1px;height:46px;background:linear-gradient(var(--p2),transparent);position:relative;overflow:hidden}
+.scrollcue .bar::after{content:'';position:absolute;top:-50%;left:0;width:100%;height:50%;background:var(--p2);animation:drop 1.8s infinite}
+@keyframes drop{0%{top:-50%}100%{top:100%}}
 
-.hero-stats{display:flex;align-items:center;background:rgba(8,8,13,0.6);
-  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-  border:1px solid rgba(194,24,91,0.2);border-radius:14px;padding:20px 32px;gap:32px;}
-.stat{display:flex;flex-direction:column;align-items:center;gap:4px}
-.stat-num{font-size:1.5rem;font-weight:700;color:var(--accent)}
-.stat-label{font-size:0.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em}
-.stat-div{width:1px;height:36px;background:rgba(194,24,91,0.25)}
+/* ---------- SECTION SHELL ---------- */
+section{padding:120px 44px;position:relative}
+.wrap{max-width:1280px;margin:0 auto}
+.kicker{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--p2);margin-bottom:18px;display:flex;align-items:center;gap:12px}
+.kicker::before{content:'';width:32px;height:1px;background:var(--p2)}
+.sec-title{font-size:clamp(38px,5.5vw,76px);font-weight:500;margin-bottom:20px}
+.sec-title em{font-style:italic;color:var(--p2)}
+.reveal{opacity:0;transform:translateY(38px)}
 
-.scroll-cue{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:2}
-.scroll-cue span{display:block;width:2px;height:40px;
-  background:linear-gradient(to bottom,var(--accent),transparent);
-  animation:scroll-line 1.5s ease-in-out infinite;}
-@keyframes scroll-line{
-  0%,100%{opacity:1;transform:scaleY(1)}
-  50%{opacity:.3;transform:scaleY(.5)}
-}
+/* ---------- SERVICIOS (editorial asymmetric) ---------- */
+.serv-head{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap;margin-bottom:60px}
+.serv-head p{color:var(--muted);max-width:380px;font-size:15px}
+.svc-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:22px;grid-auto-rows:1fr}
+.svc{position:relative;background:var(--card);border:1px solid var(--border);border-radius:18px;padding:34px 32px;
+  display:flex;flex-direction:column;transition:transform .4s,border-color .4s,background .4s;overflow:hidden}
+.svc::before{content:attr(data-n);position:absolute;top:14px;right:22px;font-family:'Playfair Display',serif;
+  font-size:84px;font-weight:700;color:#fff;opacity:.045;line-height:1}
+.svc:hover{transform:translateY(-8px);border-color:rgba(124,77,255,.45);background:#13131c}
+.svc .cat{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.svc h3{font-size:30px;margin-bottom:8px}
+.svc .lead{color:var(--muted);font-size:14px;margin-bottom:24px;flex:1}
+.svc ul{list-style:none;display:flex;flex-direction:column;gap:11px;margin-bottom:26px}
+.svc li{display:flex;justify-content:space-between;align-items:baseline;gap:16px;font-size:14px;color:var(--text);
+  padding-bottom:11px;border-bottom:1px solid rgba(255,255,255,.05)}
+.svc li .pr{font-family:'Playfair Display',serif;font-size:19px;color:var(--p2);font-weight:600;white-space:nowrap}
+.svc li .pr .old{font-size:12px;color:var(--muted);text-decoration:line-through;margin-right:8px;font-family:'Inter',sans-serif}
+.svc .svc-cta{align-self:flex-start;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--p2);
+  display:inline-flex;align-items:center;gap:8px;transition:gap .3s}
+.svc .svc-cta:hover{gap:14px}
+.svc.big{grid-column:span 4}
+.svc.sm{grid-column:span 2}
+.svc.mid{grid-column:span 3}
+.svc.feat{background:linear-gradient(160deg,#15101f,#0e0c16);border-color:rgba(124,77,255,.4)}
+.svc.feat .ribbon{position:absolute;top:22px;left:0;background:var(--gold);color:#1a1407;font-size:10px;font-weight:600;
+  letter-spacing:1.5px;text-transform:uppercase;padding:5px 16px 5px 14px;border-radius:0 40px 40px 0}
 
-/* ============ TICKER ============ */
-.ticker-wrap{overflow:hidden;background:var(--accent);padding:12px 0;white-space:nowrap}
-.ticker{display:inline-block;animation:ticker 30s linear infinite;
-  font-size:0.85rem;font-weight:600;color:#fff;letter-spacing:0.04em;}
-@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+/* ---------- PROCESO ---------- */
+.proceso{background:var(--bg2)}
+.pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:64px}
+.paso{position:relative;padding:40px 30px 36px;border-top:1px solid var(--border)}
+.paso .num{font-family:'Playfair Display',serif;font-size:clamp(82px,9vw,120px);font-weight:700;line-height:.8;
+  color:transparent;-webkit-text-stroke:1px var(--p2);margin-bottom:24px;display:block}
+.paso h3{font-size:25px;margin-bottom:10px}
+.paso p{color:var(--muted);font-size:14.5px}
+.paso.active-n .num{color:var(--p2);-webkit-text-stroke:0}
 
-/* ============ SECTIONS ============ */
-section{padding:100px 40px}
-.sec-head{text-align:center;max-width:800px;margin:0 auto 56px}
-.sec-head .kicker{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:14px;font-weight:600}
-.sec-head h2{font-size:clamp(2rem,4vw,3.2rem);margin-bottom:16px;color:var(--text);font-weight:700}
-.sec-head p{color:var(--muted);font-size:16px}
+/* ---------- RESEÑAS (ticker) ---------- */
+.resenas{overflow:hidden}
+.resenas .wrap{margin-bottom:54px}
+.ticker{display:flex;gap:24px;width:max-content;animation:scrollx 38s linear infinite}
+.ticker:hover{animation-play-state:paused}
+.ticker-mask{position:relative;-webkit-mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+  mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+@keyframes scrollx{to{transform:translateX(-50%)}}
+.review{flex:0 0 380px;background:var(--card);border:1px solid var(--border);border-radius:18px;padding:32px}
+.review .stars{color:var(--gold);letter-spacing:4px;font-size:14px;margin-bottom:16px}
+.review .q{font-family:'Playfair Display',serif;font-style:italic;font-size:20px;line-height:1.45;color:var(--text);margin-bottom:20px}
+.review .who{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--p2)}
 
-/* ============ TABS ============ */
-.tabs{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:44px}
-.tab{padding:11px 22px;border:1px solid var(--border);background:transparent;color:var(--text);
-  font-size:14px;font-weight:500;cursor:pointer;transition:all .25s;border-radius:100px;
-  font-family:'Sora',sans-serif;}
-.tab:hover{border-color:var(--accent);color:var(--accent)}
-.tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
-.tab-panel{display:none}
-.tab-panel.active{display:block;animation:fadeIn .4s}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+/* ---------- CTA RESERVA ---------- */
+.cta{text-align:center;position:relative;overflow:hidden}
+.cta::before{content:'RESERVA';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  font-family:'Playfair Display',serif;font-weight:800;font-size:clamp(120px,24vw,360px);color:#fff;opacity:.03;
+  pointer-events:none;white-space:nowrap}
+.cta .wrap{position:relative;z-index:2}
+.cta h2{font-size:clamp(40px,6vw,86px);margin-bottom:22px}
+.cta p{color:var(--muted);max-width:520px;margin:0 auto 40px;font-size:16px}
 
-/* ============ TREATMENT CARDS ============ */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;max-width:1200px;margin:0 auto}
-.t-card{position:relative;background:var(--card);border:1px solid rgba(194,24,91,0.15);
-  border-radius:14px;padding:24px;display:flex;flex-direction:column;transition:all .3s;}
-.t-card:hover{transform:translateY(-5px);border-color:var(--accent);box-shadow:0 20px 40px rgba(0,0,0,.5)}
-.t-badge{position:absolute;top:16px;right:16px;background:var(--p2);color:#fff;
-  padding:5px 12px;border-radius:100px;font-size:11px;font-weight:600;letter-spacing:.04em;}
-.t-card h3{font-size:1.1rem;font-weight:600;color:var(--text);margin-bottom:8px;line-height:1.3;padding-right:60px}
-.t-desc{font-size:0.9rem;color:var(--muted);line-height:1.5;margin-bottom:20px;flex:1}
-.t-foot{display:flex;align-items:center;justify-content:space-between;gap:12px}
-.t-price{font-size:1.3rem;font-weight:700;color:var(--accent)}
-.t-price s{font-size:0.85rem;color:var(--muted);font-weight:400;margin-right:8px}
-.t-btn{background:transparent;color:var(--accent);border:1px solid var(--accent);
-  border-radius:8px;padding:9px 18px;font-size:0.85rem;font-weight:600;cursor:pointer;
-  transition:all .2s;font-family:'Sora',sans-serif;white-space:nowrap;}
-.t-btn:hover{background:var(--accent);color:#fff}
-
-/* ============ SOBRE NOSOTRAS ============ */
-.nosotras{background:var(--bg2)}
-.about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:56px;align-items:center;max-width:1150px;margin:0 auto}
-.about-text .kicker{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:14px;font-weight:600}
-.about-text h2{font-size:clamp(2rem,3.5vw,3rem);margin-bottom:20px;color:var(--text);font-weight:700;line-height:1.15}
-.about-text > p{color:var(--muted);margin-bottom:28px;font-size:15px;line-height:1.7}
-.about-bullets{display:grid;gap:14px}
-.about-bullets li{list-style:none;display:flex;gap:12px;align-items:flex-start;color:var(--text);font-size:15px}
-.about-bullets .bi{color:var(--accent);font-size:18px;line-height:1.4;flex-shrink:0}
-.about-bullets b{font-weight:600}
-.about-bullets small{display:block;color:var(--muted);font-size:13px;font-weight:300}
-.about-stats{display:flex;flex-direction:column;gap:24px;background:var(--card);
-  border:1px solid var(--border);border-radius:18px;padding:40px 36px;}
-.about-stat .big{font-size:3.4rem;font-weight:700;color:var(--accent);line-height:1}
-.about-stat .lbl{color:var(--muted);font-size:14px;margin-top:6px}
-.about-stat+.about-stat{border-top:1px solid var(--border);padding-top:24px}
-
-/* ============ CÓMO RESERVAR ============ */
-.reservas{background:linear-gradient(135deg,var(--bg) 0%,var(--bg2) 100%);text-align:center}
-.pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:0;max-width:1000px;margin:50px auto;position:relative}
-.paso{padding:30px 24px;position:relative}
-.paso:not(:last-child)::after{content:'';position:absolute;top:46px;right:-12px;width:calc(100% - 80px);
-  border-top:1px dashed rgba(194,24,91,0.3);}
-.paso-num{font-size:3rem;font-weight:700;color:var(--accent);line-height:1;margin-bottom:14px}
-.paso h3{font-size:1.2rem;color:var(--text);margin-bottom:8px;font-weight:600}
-.paso p{font-size:14px;color:var(--muted)}
-.wa-btn{display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:#fff;
-  border:none;cursor:pointer;padding:16px 36px;font-size:1rem;font-weight:600;
-  border-radius:10px;margin-top:30px;transition:all .2s;font-family:'Sora',sans-serif;}
-.wa-btn:hover{background:var(--accent2);transform:translateY(-3px);box-shadow:0 12px 30px rgba(194,24,91,.4)}
-
-/* ============ TESTIMONIOS ============ */
-.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;max-width:1150px;margin:0 auto}
-.testi{background:var(--card);border:1px solid rgba(194,24,91,0.15);padding:30px;border-radius:14px}
-.testi .stars{color:var(--accent2);font-size:15px;letter-spacing:3px;margin-bottom:14px}
-.testi .quote{font-size:1.05rem;color:var(--text);margin-bottom:18px;line-height:1.6;font-weight:300}
-.testi .author{color:var(--accent);font-size:13px;letter-spacing:1px;text-transform:uppercase;font-weight:600}
-
-/* ============ FOOTER ============ */
-footer{background:var(--bg2);padding:60px 48px 32px;border-top:1px solid rgba(194,24,91,0.2)}
-.foot-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:32px;max-width:1100px;margin:0 auto 32px;text-align:left}
-.foot-col h4{color:var(--accent);font-size:15px;margin-bottom:14px;font-weight:600}
-.foot-col .logo-foot{font-size:20px;color:var(--text);font-weight:500;margin-bottom:12px}
-.foot-col p{color:var(--muted);font-size:14px;margin-bottom:8px}
-.foot-col a{color:var(--p2)}
-.copyright{max-width:1100px;margin:0 auto;padding-top:24px;border-top:1px solid rgba(194,24,91,0.12);
-  font-size:13px;color:var(--muted);text-align:center}
-.copyright b{color:var(--text)}
+/* ---------- FOOTER ---------- */
+footer{background:#06060b;border-top:1px solid var(--border);padding:80px 44px 36px}
+.foot-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:48px}
+.foot-brand .bn{font-family:'Playfair Display',serif;font-size:30px;font-weight:600;margin-bottom:16px}
+.foot-brand .bn em{font-style:normal;color:var(--p2)}
+.foot-brand p{color:var(--muted);font-size:14px;max-width:300px}
+.foot-col h4{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--p2);margin-bottom:20px;font-weight:600}
+.foot-col a,.foot-col p{display:block;color:var(--muted);font-size:14px;margin-bottom:12px;transition:color .25s}
+.foot-col a:hover{color:var(--text)}
+.foot-social{display:flex;gap:14px;margin-top:6px}
+.foot-social a{color:var(--muted)}.foot-social a:hover{color:var(--p2)}
+.foot-social svg{width:20px;height:20px}
+.copyright{max-width:1280px;margin:54px auto 0;padding-top:24px;border-top:1px solid var(--border);
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12px;color:var(--muted)}
 .copyright a{color:var(--p2)}
 
-/* ============ CHATBOT WIDGET (ANA) ============ */
-.chat-fab{position:fixed;bottom:32px;right:32px;z-index:9999;
-  width:60px;height:60px;border-radius:50%;
-  background:linear-gradient(135deg,var(--accent) 0%,#8E24AA 100%);
-  border:none;cursor:pointer;
-  box-shadow:0 4px 20px rgba(194,24,91,0.5),0 0 0 0 rgba(194,24,91,0.3);
-  display:flex;align-items:center;justify-content:center;font-size:24px;
-  animation:fab-pulse 3s infinite;transition:transform .2s;}
-.chat-fab:hover{transform:scale(1.08)}
-.chat-fab.hidden{display:none}
-@keyframes fab-pulse{
-  0%,100%{box-shadow:0 4px 20px rgba(194,24,91,0.5),0 0 0 0 rgba(194,24,91,0.3)}
-  50%{box-shadow:0 4px 20px rgba(194,24,91,0.5),0 0 0 12px rgba(194,24,91,0)}
-}
-.chat-tip{position:fixed;bottom:46px;right:104px;z-index:9998;
-  background:var(--card);color:var(--accent);
-  padding:10px 18px;border-radius:100px;font-size:13px;
-  border:1px solid rgba(194,24,91,0.35);
-  animation:bob 2.5s ease-in-out infinite;white-space:nowrap;pointer-events:none;}
+/* ---------- CHATBOT ---------- */
+.chat-tip{position:fixed;bottom:42px;right:104px;z-index:9998;background:var(--card);color:var(--p2);
+  padding:10px 18px;border-radius:40px;font-size:13px;border:1px solid var(--border);white-space:nowrap;pointer-events:none;
+  animation:bob 2.6s ease-in-out infinite}
 .chat-tip.hidden{display:none}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-
-.chat-mod{position:fixed;bottom:104px;right:32px;z-index:10000;
-  width:360px;max-width:calc(100vw - 32px);
-  height:560px;max-height:calc(100vh - 130px);
-  border-radius:20px;background:var(--bg2);
-  border:1px solid rgba(194,24,91,0.25);
-  box-shadow:0 24px 60px rgba(0,0,0,0.6),0 0 0 1px rgba(194,24,91,0.1);
-  display:none;flex-direction:column;overflow:hidden;}
-.chat-mod.open{display:flex;animation:chat-in .25s cubic-bezier(0.34,1.56,0.64,1)}
-@keyframes chat-in{from{opacity:0;transform:translateY(16px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
-
-.chat-head{background:linear-gradient(135deg,rgba(194,24,91,0.15) 0%,rgba(142,36,170,0.1) 100%);
-  border-bottom:1px solid rgba(194,24,91,0.2);padding:16px 20px;
-  display:flex;align-items:center;justify-content:space-between;}
+.chat-fab{position:fixed;bottom:28px;right:28px;z-index:9999;width:64px;height:64px;border-radius:50%;
+  background:var(--p);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 12px 38px rgba(124,77,255,.5);transition:transform .3s}
+.chat-fab svg{width:28px;height:28px;color:#fff}
+.chat-fab:hover{transform:scale(1.08)}
+.chat-fab.hidden{display:none}
+.chat-mod{position:fixed;bottom:28px;right:28px;z-index:10000;width:384px;max-width:calc(100vw - 30px);
+  height:610px;max-height:calc(100vh - 56px);background:var(--card);border:1px solid var(--border);border-radius:18px;
+  box-shadow:0 30px 80px rgba(0,0,0,.7);display:none;flex-direction:column;overflow:hidden}
+.chat-mod.open{display:flex;animation:slideUp .4s}
+@keyframes slideUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+.chat-head{background:var(--bg2);padding:16px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
 .chat-head-info{display:flex;align-items:center;gap:12px}
-.chat-avatar{width:40px;height:40px;border-radius:50%;
-  background:linear-gradient(135deg,var(--accent),#8E24AA);
-  display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
-.chat-head h4{color:var(--text);font-size:0.95rem;font-weight:600;margin:0;letter-spacing:0}
-.chat-head .role{font-size:0.75rem;color:var(--muted)}
-.chat-head .status{font-size:0.72rem;color:var(--g);display:flex;align-items:center;gap:6px;margin-top:2px}
-.dot-on{width:6px;height:6px;background:var(--g);border-radius:50%;flex-shrink:0;animation:blink 1.6s infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
-.chat-x{background:none;border:none;color:var(--muted);font-size:18px;cursor:pointer;padding:4px;transition:color .2s}
-.chat-x:hover{color:var(--text)}
+.chat-avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--p),var(--p2));
+  display:flex;align-items:center;justify-content:center;color:#fff;font-weight:600;font-family:'Playfair Display',serif;font-size:20px}
+.chat-head h4{color:var(--text);font-size:15px;font-family:'Inter',sans-serif;font-weight:600;margin:0}
+.chat-head .status{font-size:11px;color:var(--muted);display:flex;align-items:center;gap:6px;margin-top:2px}
+.dot-on{width:7px;height:7px;background:var(--g);border-radius:50%;animation:blink 1.6s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
+.chat-x{background:none;border:none;color:var(--muted);font-size:22px;cursor:pointer;padding:0 4px}
 .chat-x.hidden{display:none}
-
-.chat-body{flex:1;overflow-y:auto;padding:20px 16px;background:var(--bg2);
-  scrollbar-width:thin;scrollbar-color:rgba(194,24,91,0.3) transparent;}
+.chat-body{flex:1;overflow-y:auto;padding:20px;background:var(--bg)}
 .chat-body::-webkit-scrollbar{width:5px}
-.chat-body::-webkit-scrollbar-thumb{background:rgba(194,24,91,0.3);border-radius:3px}
-
-.msg{margin-bottom:12px;display:flex;animation:fadeIn .3s}
-.msg.bot{justify-content:flex-start}
-.msg.user{justify-content:flex-end}
-.msg-bub{max-width:82%;padding:10px 14px;border-radius:14px;font-size:0.875rem;line-height:1.5;white-space:pre-line;color:var(--text)}
-.msg.bot .msg-bub{background:rgba(255,255,255,0.05);border:1px solid rgba(194,24,91,0.15);border-radius:4px 14px 14px 14px}
-.msg.user .msg-bub{background:linear-gradient(135deg,var(--accent),#8E24AA);color:#fff;border-radius:14px 14px 4px 14px;font-weight:500}
-
-.typing{display:flex;gap:4px;padding:12px 16px;background:rgba(255,255,255,0.05);border-radius:14px;width:fit-content;margin-bottom:12px;border:1px solid rgba(194,24,91,0.15)}
-.typing span{width:7px;height:7px;background:var(--accent);border-radius:50%;animation:tdot 1.3s infinite}
-.typing span:nth-child(2){animation-delay:.2s}
-.typing span:nth-child(3){animation-delay:.4s}
+.chat-body::-webkit-scrollbar-thumb{background:var(--p);border-radius:3px}
+.msg{margin-bottom:14px;display:flex;animation:fadeIn .3s}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.msg.bot{justify-content:flex-start}.msg.user{justify-content:flex-end}
+.msg-bub{max-width:82%;padding:12px 16px;border-radius:14px;font-size:14px;line-height:1.5;white-space:pre-line}
+.msg.bot .msg-bub{background:var(--card);color:var(--text);border:1px solid var(--border);border-bottom-left-radius:4px}
+.msg.user .msg-bub{background:var(--p);color:#fff;border-bottom-right-radius:4px;font-weight:400}
+.typing{display:flex;gap:4px;padding:12px 16px;background:var(--card);border:1px solid var(--border);border-radius:14px;width:fit-content;margin-bottom:14px}
+.typing span{width:7px;height:7px;background:var(--p2);border-radius:50%;animation:tdot 1.3s infinite}
+.typing span:nth-child(2){animation-delay:.2s}.typing span:nth-child(3){animation-delay:.4s}
 @keyframes tdot{0%,80%,100%{transform:scale(.6);opacity:.4}40%{transform:scale(1);opacity:1}}
+.quick{display:flex;flex-direction:column;gap:8px;margin:10px 0 16px}
+.quick button{background:var(--bg2);border:1px solid var(--border);color:var(--p2);padding:10px 14px;border-radius:20px;
+  cursor:pointer;font-size:13px;text-align:left;transition:all .25s;font-family:'Inter',sans-serif}
+.quick button:hover{background:var(--p);color:#fff;border-color:var(--p)}
+.quick .cat-title{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);padding:8px 4px 2px;font-weight:600}
+.quick .item{display:flex;justify-content:space-between;align-items:center;font-size:13px}
+.quick .item .price{color:var(--gold);font-weight:500;font-size:12px}
+.quick .confirm{background:var(--p);color:#fff;border-color:var(--p);text-align:center;font-weight:500;margin-top:8px}
+.quick .confirm:hover{background:var(--p2)}
+.chat-foot{padding:10px 16px;background:var(--bg2);border-top:1px solid var(--border);text-align:center;font-size:10px;color:var(--muted);letter-spacing:1px}
 
-.quick{display:flex;flex-direction:column;gap:8px;margin:6px 0 14px;padding:0 4px}
-.quick button{background:rgba(255,255,255,0.04);border:1px solid rgba(194,24,91,0.3);
-  color:var(--accent);padding:10px 14px;border-radius:10px;cursor:pointer;
-  font-size:13px;text-align:left;transition:all .2s;font-family:'Sora',sans-serif;}
-.quick button:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
-.quick.cat-title{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--p2);padding:8px 4px 4px;font-weight:600}
-.quick .item{display:flex;justify-content:space-between;align-items:center;font-size:13px;padding:9px 14px}
-.quick .item .price{color:var(--p2);font-weight:600;font-size:12px}
-.quick .confirm{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:600;text-align:center;margin-top:8px}
-.quick .confirm:hover{background:var(--accent2);color:#fff}
-
-.chat-foot{padding:8px;background:rgba(8,8,13,0.5);border-top:1px solid rgba(194,24,91,0.08);
-  text-align:center;font-size:0.65rem;color:rgba(136,136,160,0.6);letter-spacing:.5px;}
-.chat-foot a{color:rgba(124,77,255,0.7)}
-
-/* ============ MOBILE ============ */
-@media(max-width:768px){
-  .hero-video{display:none}
-  .hero{background:linear-gradient(135deg,#08080d 0%,#1a0a14 50%,#08080d 100%)}
-  .hero-content{padding:0 24px;padding-top:80px;align-items:center;text-align:center}
-  .hero-subtitle{margin-left:auto;margin-right:auto}
-  .hero-stats{flex-wrap:wrap;gap:16px;padding:16px 20px;justify-content:center}
-  .stat-div{display:none}
-  .about-grid{grid-template-columns:1fr;gap:40px}
-  .pasos{grid-template-columns:1fr;gap:16px}
-  .paso:not(:last-child)::after{display:none}
-}
+/* ---------- RESPONSIVE ---------- */
 @media(max-width:900px){
   .nav{padding:14px 20px}
-  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:flex-start;
     background:var(--bg);padding:24px;gap:18px;border-bottom:1px solid var(--border)}
   .nav-links.open{display:flex}
   .menu-tog{display:block}
-  section{padding:70px 24px}
+  section{padding:84px 20px}
+  .hero{padding:120px 20px 80px}
+  .svc-grid{grid-template-columns:repeat(2,1fr)}
+  .svc.big,.svc.mid,.svc.sm{grid-column:span 2}
+  .pasos{grid-template-columns:1fr;gap:8px}
+  .foot-grid{grid-template-columns:1fr;gap:36px}
+  .serv-head{flex-direction:column;align-items:flex-start}
 }
-@media(max-width:480px){
-  .chat-mod{width:calc(100vw - 32px);right:16px;bottom:88px;height:80vh;max-height:80vh}
-  .chat-fab{bottom:24px;right:16px}
-  .chat-tip{display:none}
+@media(max-width:600px){
+  .hero h1{font-size:clamp(44px,14vw,70px)}
+  .stat{flex:1;min-width:calc(50% - 9px)}
+  .review{flex-basis:300px}
+  .chat-mod{bottom:0;right:0;left:0;width:100%;height:92vh;max-height:92vh;border-radius:16px 16px 0 0}
+  .chat-fab{bottom:18px;right:18px}.chat-tip{display:none}
 }
-@media(prefers-reduced-motion:reduce){
-  .badge-dot,.scroll-cue span,.chat-fab,.ticker,.dot-on,.typing span,.chat-tip{animation:none!important}
-  .hero-word-rotate{transition:none!important}
-  html{scroll-behavior:auto}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+  .reveal{opacity:1!important;transform:none!important}
+  .ticker{animation:none}
 }
 </style>
 </head>
 <body>
 
-<!-- ============ NAV ============ -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+
+<!-- NAV -->
 <nav class="nav" id="nav">
-  <a href="/" class="nav-logo-link" aria-label="WhiteMoon — inicio">
-    <img src="https://whitemoon.es/logo.webp"
-         alt="WhiteMoon"
-         class="nav-logo-img"
-         width="140" height="36"
-         onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-    <span class="nav-logo-fallback" style="display:none;color:#f0f0f5;font-family:Sora,sans-serif;font-weight:600;font-size:1.1rem;">✦ WhiteMoon</span>
+  <a href="#top" class="brand">
+    <img src="LOGO%20LUNA.jpeg" alt="Lumière Estética" />
+    <span class="bn">Lumière<em>·</em></span>
   </a>
   <div class="nav-links" id="navlinks">
-    <a href="#tratamientos">Tratamientos</a>
-    <a href="#reservas">Reservas</a>
-    <a href="#nosotras">Sobre nosotras</a>
-    <a href="#contacto">Contacto</a>
-    <button class="btn-nav" onclick="openChat()">Reservar cita</button>
+    <a class="lk" href="#tratamientos">Tratamientos</a>
+    <a class="lk" href="#proceso">Proceso</a>
+    <a class="lk" href="#resenas">Reseñas</a>
+    <a class="lk" href="#contacto">Contacto</a>
+    <span class="social">
+      <a href="https://instagram.com/lumiere.estetica" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+      <a href="https://wa.me/34643199580" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21l1.9-5.1A8.5 8.5 0 1 1 12 20.5a8.4 8.4 0 0 1-4.1-1.1L3 21z"/><path d="M9 9c0 4 3 6 6 6"/></svg></a>
+    </span>
+    <button class="btn btn-p" onclick="openChat()">Reservar cita</button>
   </div>
   <button class="menu-tog" onclick="document.getElementById('navlinks').classList.toggle('open')" aria-label="Menú">☰</button>
 </nav>
 
-<!-- ============ HERO ============ -->
-<section class="hero">
-  <video autoplay muted loop playsinline preload="none"
-         poster="assets/video/estetica-poster.jpg" class="hero-video">
-    <source src="assets/video/estetica-spa-facial.mp4" type="video/mp4">
-  </video>
-  <div class="hero-overlay"></div>
-
-  <div class="hero-content">
-    <div class="hero-badge">
-      <span class="badge-dot"></span>
-      Centro de Estética Premium · Madrid
-    </div>
-
-    <h1 class="hero-title">
-      Tu centro de<br>
-      <span class="hero-word-rotate">facial</span>
-    </h1>
-
-    <p class="hero-subtitle">
-      Tecnología de vanguardia. Resultados reales.<br>
-      Más de 2.000 clientas confían en nosotras.
-    </p>
-
-    <div class="hero-ctas">
-      <button class="btn-primary" onclick="openChat()">💬 Reservar cita ahora</button>
-      <a href="#tratamientos" class="btn-ghost">Ver tratamientos ↓</a>
-    </div>
-
-    <div class="hero-stats">
-      <div class="stat"><span class="stat-num">+2.000</span><span class="stat-label">Clientas</span></div>
-      <div class="stat-div"></div>
-      <div class="stat"><span class="stat-num">15</span><span class="stat-label">Tratamientos</span></div>
-      <div class="stat-div"></div>
-      <div class="stat"><span class="stat-num">4.9★</span><span class="stat-label">Google</span></div>
-      <div class="stat-div"></div>
-      <div class="stat"><span class="stat-num">15+</span><span class="stat-label">Años exp.</span></div>
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="hero-video" id="heroVideo">
+    <video autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1600&q=80" id="bgVid">
+      <source src="https://assets.mixkit.co/videos/39572/39572-720.mp4" type="video/mp4">
+      <source src="https://assets.mixkit.co/videos/4111/4111-720.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="ghost" aria-hidden="true">estética</div>
+  <div class="hero-inner">
+    <div class="hero-c">
+      <span class="badge"><span class="pip"></span> Centro de estética premium · Madrid</span>
+      <h1>Lumière<br><span class="thin">Estética</span></h1>
+      <p class="hero-sub">Ciencia y lujo para realzar tu belleza natural. Especialistas en <span class="rotor" id="rotor">faciales</span>.</p>
+      <div class="hero-btns">
+        <button class="btn btn-p" onclick="openChat()">Reservar cita</button>
+        <a href="#tratamientos" class="btn btn-ghost">Ver tratamientos</a>
+      </div>
+      <div class="stats">
+        <div class="stat reveal"><b>+2.000</b><span>Clientas</span></div>
+        <div class="stat reveal"><b>15</b><span>Tratamientos</span></div>
+        <div class="stat reveal"><b>4.9<span class="acc">★</span></b><span>Google</span></div>
+      </div>
     </div>
   </div>
+  <div class="scrollcue"><span>Scroll</span><span class="bar"></span></div>
+</header>
 
-  <div class="scroll-cue"><span></span></div>
-</section>
-
-<!-- ============ TICKER ============ -->
-<div class="ticker-wrap">
-  <div class="ticker">
-    ✦ Depilación Láser &nbsp;·&nbsp; ✦ Tratamientos Faciales &nbsp;·&nbsp; ✦ Masajes &nbsp;·&nbsp; ✦ Manicura &amp; Pedicura &nbsp;·&nbsp; ✦ Lifting de Pestañas &nbsp;·&nbsp; ✦ Laminado de Cejas &nbsp;·&nbsp; ✦ Bonos Exclusivos &nbsp;·&nbsp;
-    ✦ Depilación Láser &nbsp;·&nbsp; ✦ Tratamientos Faciales &nbsp;·&nbsp; ✦ Masajes &nbsp;·&nbsp; ✦ Manicura &amp; Pedicura &nbsp;·&nbsp; ✦ Lifting de Pestañas &nbsp;·&nbsp; ✦ Laminado de Cejas &nbsp;·&nbsp; ✦ Bonos Exclusivos &nbsp;·&nbsp;
-  </div>
-</div>
-
-<!-- ============ TRATAMIENTOS ============ -->
+<!-- TRATAMIENTOS -->
 <section id="tratamientos">
-  <div class="sec-head">
-    <div class="kicker">Nuestra carta</div>
-    <h2>Tratamientos &amp; Precios</h2>
-    <p>Una experiencia única para cada necesidad. Productos certificados, tecnología de última generación.</p>
-  </div>
-
-  <div class="tabs">
-    <button class="tab active" data-t="faciales">Faciales</button>
-    <button class="tab" data-t="laser">Depilación Láser</button>
-    <button class="tab" data-t="corp">Corporales</button>
-    <button class="tab" data-t="manos">Manos &amp; Pies</button>
-    <button class="tab" data-t="pestanas">Pestañas &amp; Cejas</button>
-    <button class="tab" data-t="bonos">Bonos</button>
-  </div>
-
-  <!-- FACIALES -->
-  <div class="tab-panel active" data-p="faciales">
-    <div class="grid">
-      <div class="t-card">
-        <h3>Limpieza facial profunda</h3>
-        <p class="t-desc">Higiene profunda, exfoliación y extracción de impurezas para una piel renovada.</p>
-        <div class="t-foot"><span class="t-price">45€</span><button class="t-btn" onclick="addAndOpen('Limpieza facial profunda',45)">Reservar</button></div>
+  <div class="wrap">
+    <div class="serv-head">
+      <div>
+        <div class="kicker reveal">Nuestra carta</div>
+        <h2 class="sec-title reveal">Tratamientos<br><em>& precios</em></h2>
       </div>
-      <div class="t-card">
-        <h3>Hidratación con ácido hialurónico</h3>
-        <p class="t-desc">Recupera la elasticidad y luminosidad con activos de alta penetración.</p>
-        <div class="t-foot"><span class="t-price">65€</span><button class="t-btn" onclick="addAndOpen('Hidratación con ácido hialurónico',65)">Reservar</button></div>
-      </div>
-      <div class="t-card">
-        <h3>Tratamiento antiedad radiofrecuencia</h3>
-        <p class="t-desc">Estimula el colágeno y reafirma la piel. Resultados visibles desde la primera sesión.</p>
-        <div class="t-foot"><span class="t-price">85€</span><button class="t-btn" onclick="addAndOpen('Tratamiento antiedad radiofrecuencia',85)">Reservar</button></div>
-      </div>
-      <div class="t-card">
-        <h3>Peeling químico</h3>
-        <p class="t-desc">Renovación celular, unifica el tono y atenúa manchas. Resultado profesional.</p>
-        <div class="t-foot"><span class="t-price">70€</span><button class="t-btn" onclick="addAndOpen('Peeling químico',70)">Reservar</button></div>
-      </div>
-      <div class="t-card">
-        <h3>Microdermoabrasión</h3>
-        <p class="t-desc">Pulido cutáneo con punta de diamante. Suaviza textura y minimiza poros.</p>
-        <div class="t-foot"><span class="t-price">60€</span><button class="t-btn" onclick="addAndOpen('Microdermoabrasión',60)">Reservar</button></div>
-      </div>
-      <div class="t-card">
-        <h3>Mesoterapia facial</h3>
-        <p class="t-desc">Microinyecciones de vitaminas y antioxidantes. Brillo y revitalización profunda.</p>
-        <div class="t-foot"><span class="t-price">90€</span><button class="t-btn" onclick="addAndOpen('Mesoterapia facial',90)">Reservar</button></div>
-      </div>
+      <p class="reveal">Tecnología de última generación y dermocosmética certificada. Cada sesión, personalizada para tu piel.</p>
     </div>
-  </div>
+    <div class="svc-grid">
 
-  <!-- LASER -->
-  <div class="tab-panel" data-p="laser">
-    <div class="grid">
-      <div class="t-card">
-        <h3>Labio superior</h3>
-        <p class="t-desc">Sesión rápida e indolora con tecnología diodo de última generación.</p>
-        <div class="t-foot"><span class="t-price">15€</span><button class="t-btn" onclick="addAndOpen('Láser labio superior',15)">Reservar</button></div>
+      <div class="svc feat big reveal" data-n="01">
+        <span class="ribbon">Lo más pedido</span>
+        <div class="cat">Faciales</div>
+        <h3>Rituales faciales</h3>
+        <p class="lead">Limpieza profunda, hidratación con ácido hialurónico y antiedad con radiofrecuencia. Piel luminosa desde la primera sesión.</p>
+        <ul>
+          <li>Limpieza facial profunda <span class="pr">45€</span></li>
+          <li>Hidratación ácido hialurónico <span class="pr">65€</span></li>
+          <li>Antiedad radiofrecuencia <span class="pr">85€</span></li>
+          <li>Mesoterapia facial <span class="pr">90€</span></li>
+        </ul>
+        <a class="svc-cta" onclick="openChatCat('💆 FACIALES')">Reservar facial →</a>
       </div>
-      <div class="t-card">
-        <h3>Axilas</h3>
-        <p class="t-desc">Resultado duradero y sin folliculitis. Apta para todo tipo de piel.</p>
-        <div class="t-foot"><span class="t-price">25€</span><button class="t-btn" onclick="addAndOpen('Láser axilas',25)">Reservar</button></div>
-      </div>
-      <div class="t-card">
-        <h3>Ingles brasileñas</h3>
-        <p class="t-desc">Depilación íntima completa con mayor comodidad en cada sesión.</p>
-        <div class="t-foot"><span class="t-price">45€</span><button class="t-btn" onclick="addAndOpen('Láser ingles brasileñas',45)">Reservar</button></div>
-      </div>
-      <div class="t-card">
-        <h3>Piernas completas</h3>
-        <p class="t-desc">Adiós a la depilación tradicional. Pieles suaves todo el año.</p>
-        <div class="t-foot"><span class="t-price">85€</span><button class="t-btn" onclick="addAndOpen('Láser piernas completas',85)">Reservar</button></div>
-      </div>
-      <div class="t-card">
-        <h3>Espalda</h3>
-        <p class="t-desc">Especial para hombres y mujeres con vello extenso. Sesión cómoda.</p>
-        <div class="t-foot"><span class="t-price">70€</span><button class="t-btn" onclick="addAndOpen('Láser espalda',70)">Reservar</button></div>
-      </div>
-      <div class="t-card">
-        <span class="t-badge">AHORRA 80€</span>
-        <h3>Pack cuerpo completo</h3>
-        <p class="t-desc">Piernas + ingles + axilas + brazos. La opción más completa al mejor precio.</p>
-        <div class="t-foot"><span class="t-price"><s>260€</s>180€</span><button class="t-btn" onclick="addAndOpen('Láser pack cuerpo completo',180)">Reservar</button></div>
-      </div>
-    </div>
-  </div>
 
-  <!-- CORPORALES -->
-  <div class="tab-panel" data-p="corp">
-    <div class="grid">
-      <div class="t-card">
-        <h3>Masaje relajante 60min</h3>
-        <p class="t-desc">Aceites esenciales y técnica sueca para liberar tensiones acumuladas.</p>
-        <div class="t-foot"><span class="t-price">55€</span><button class="t-btn" onclick="addAndOpen('Masaje relajante 60min',55)">Reservar</button></div>
+      <div class="svc sm reveal" data-n="02">
+        <div class="cat">Depilación láser</div>
+        <h3>Láser diodo</h3>
+        <p class="lead">Indoloro y para todo tipo de piel.</p>
+        <ul>
+          <li>Axilas <span class="pr">25€</span></li>
+          <li>Piernas completas <span class="pr">85€</span></li>
+          <li>Cuerpo completo <span class="pr"><span class="old">260€</span>180€</span></li>
+        </ul>
+        <a class="svc-cta" onclick="openChatCat('✨ DEPILACIÓN LÁSER')">Reservar láser →</a>
       </div>
-      <div class="t-card">
-        <h3>Masaje con piedras calientes</h3>
-        <p class="t-desc">Terapia de calor profunda que relaja músculos y favorece la circulación.</p>
-        <div class="t-foot"><span class="t-price">70€</span><button class="t-btn" onclick="addAndOpen('Masaje con piedras calientes',70)">Reservar</button></div>
-      </div>
-      <div class="t-card">
-        <h3>Tratamiento reafirmante</h3>
-        <p class="t-desc">Combina activos lipolíticos y radiofrecuencia para tonificar la piel.</p>
-        <div class="t-foot"><span class="t-price">75€</span><button class="t-btn" onclick="addAndOpen('Tratamiento reafirmante',75)">Reservar</button></div>
-      </div>
-      <div class="t-card">
-        <h3>Drenaje linfático</h3>
-        <p class="t-desc">Manual, suave y efectivo. Reduce retención de líquidos e inflamación.</p>
-        <div class="t-foot"><span class="t-price">65€</span><button class="t-btn" onclick="addAndOpen('Drenaje linfático',65)">Reservar</button></div>
-      </div>
-      <div class="t-card">
-        <h3>Envolvimiento corporal</h3>
-        <p class="t-desc">Algas marinas y arcilla. Detox profundo, piel renovada y nutrida.</p>
-        <div class="t-foot"><span class="t-price">80€</span><button class="t-btn" onclick="addAndOpen('Envolvimiento corporal',80)">Reservar</button></div>
-      </div>
-    </div>
-  </div>
 
-  <!-- MANOS & PIES -->
-  <div class="tab-panel" data-p="manos">
-    <div class="grid">
-      <div class="t-card">
-        <h3>Manicura básica</h3>
-        <p class="t-desc">Limado, cutícula e hidratación. Esmaltado tradicional.</p>
-        <div class="t-foot"><span class="t-price">18€</span><button class="t-btn" onclick="addAndOpen('Manicura básica',18)">Reservar</button></div>
+      <div class="svc sm reveal" data-n="03">
+        <div class="cat">Corporales</div>
+        <h3>Masajes & cuerpo</h3>
+        <p class="lead">Relax profundo y resultados visibles.</p>
+        <ul>
+          <li>Masaje relajante 60min <span class="pr">55€</span></li>
+          <li>Piedras calientes <span class="pr">70€</span></li>
+          <li>Drenaje linfático <span class="pr">65€</span></li>
+        </ul>
+        <a class="svc-cta" onclick="openChatCat('💆 CORPORALES')">Reservar masaje →</a>
       </div>
-      <div class="t-card">
-        <h3>Manicura semipermanente</h3>
-        <p class="t-desc">Color hasta 3 semanas. Brillo intenso, sin descamado.</p>
-        <div class="t-foot"><span class="t-price">28€</span><button class="t-btn" onclick="addAndOpen('Manicura semipermanente',28)">Reservar</button></div>
-      </div>
-      <div class="t-card">
-        <h3>Pedicura básica</h3>
-        <p class="t-desc">Cuidado integral del pie con exfoliación e hidratación.</p>
-        <div class="t-foot"><span class="t-price">22€</span><button class="t-btn" onclick="addAndOpen('Pedicura básica',22)">Reservar</button></div>
-      </div>
-      <div class="t-card">
-        <h3>Pedicura semipermanente</h3>
-        <p class="t-desc">Color y resistencia con acabado profesional duradero.</p>
-        <div class="t-foot"><span class="t-price">32€</span><button class="t-btn" onclick="addAndOpen('Pedicura semipermanente',32)">Reservar</button></div>
-      </div>
-      <div class="t-card">
-        <h3>Uñas de gel manos</h3>
-        <p class="t-desc">Estructura, fortaleza y diseños personalizados.</p>
-        <div class="t-foot"><span class="t-price">35€</span><button class="t-btn" onclick="addAndOpen('Uñas de gel manos',35)">Reservar</button></div>
-      </div>
-      <div class="t-card">
-        <h3>Uñas de gel pies</h3>
-        <p class="t-desc">Refuerzo y belleza para tus pies durante semanas.</p>
-        <div class="t-foot"><span class="t-price">40€</span><button class="t-btn" onclick="addAndOpen('Uñas de gel pies',40)">Reservar</button></div>
-      </div>
-    </div>
-  </div>
 
-  <!-- PESTAÑAS & CEJAS -->
-  <div class="tab-panel" data-p="pestanas">
-    <div class="grid">
-      <div class="t-card">
-        <h3>Lifting de pestañas</h3>
-        <p class="t-desc">Eleva, curva y fija tus pestañas naturales hasta 8 semanas.</p>
-        <div class="t-foot"><span class="t-price">45€</span><button class="t-btn" onclick="addAndOpen('Lifting de pestañas',45)">Reservar</button></div>
+      <div class="svc mid reveal" data-n="04">
+        <div class="cat">Manos & pies</div>
+        <h3>Manicura & pedicura</h3>
+        <p class="lead">Semipermanente, gel y diseños a medida con acabado profesional duradero.</p>
+        <ul>
+          <li>Manicura semipermanente <span class="pr">28€</span></li>
+          <li>Pedicura semipermanente <span class="pr">32€</span></li>
+          <li>Uñas de gel manos <span class="pr">35€</span></li>
+        </ul>
+        <a class="svc-cta" onclick="openChatCat('💅 MANOS & PIES')">Reservar uñas →</a>
       </div>
-      <div class="t-card">
-        <h3>Extensión pelo a pelo</h3>
-        <p class="t-desc">Mirada espectacular con efecto natural y máxima durabilidad.</p>
-        <div class="t-foot"><span class="t-price">65€</span><button class="t-btn" onclick="addAndOpen('Extensión de pestañas pelo a pelo',65)">Reservar</button></div>
-      </div>
-      <div class="t-card">
-        <h3>Laminado de cejas</h3>
-        <p class="t-desc">Cejas peinadas y definidas con efecto disciplinado durante semanas.</p>
-        <div class="t-foot"><span class="t-price">35€</span><button class="t-btn" onclick="addAndOpen('Laminado de cejas',35)">Reservar</button></div>
-      </div>
-      <div class="t-card">
-        <h3>Depilación cejas con hilo</h3>
-        <p class="t-desc">Técnica milenaria de máxima precisión sin irritación.</p>
-        <div class="t-foot"><span class="t-price">12€</span><button class="t-btn" onclick="addAndOpen('Depilación cejas con hilo',12)">Reservar</button></div>
-      </div>
-      <div class="t-card">
-        <h3>Diseño y tinte de cejas</h3>
-        <p class="t-desc">Estudio de visagismo personalizado y color a medida.</p>
-        <div class="t-foot"><span class="t-price">20€</span><button class="t-btn" onclick="addAndOpen('Diseño y tinte de cejas',20)">Reservar</button></div>
-      </div>
-    </div>
-  </div>
 
-  <!-- BONOS -->
-  <div class="tab-panel" data-p="bonos">
-    <div class="grid">
-      <div class="t-card">
-        <span class="t-badge">AHORRA 15€</span>
-        <h3>Bono 5 sesiones — láser zona pequeña</h3>
-        <p class="t-desc">Labio o axilas. 5 sesiones a precio reducido. Resultados visibles.</p>
-        <div class="t-foot"><span class="t-price"><s>75€</s>60€</span><button class="t-btn" onclick="addAndOpen('Bono 5 sesiones láser zona pequeña',60)">Reservar</button></div>
+      <div class="svc mid reveal" data-n="05">
+        <div class="cat">Mirada</div>
+        <h3>Pestañas & cejas</h3>
+        <p class="lead">Lifting, extensiones y laminado para una mirada definida durante semanas.</p>
+        <ul>
+          <li>Lifting de pestañas <span class="pr">45€</span></li>
+          <li>Extensión pelo a pelo <span class="pr">65€</span></li>
+          <li>Laminado de cejas <span class="pr">35€</span></li>
+        </ul>
+        <a class="svc-cta" onclick="openChatCat('👁️ PESTAÑAS & CEJAS')">Reservar mirada →</a>
       </div>
-      <div class="t-card">
-        <span class="t-badge">AHORRA 75€</span>
-        <h3>Bono 5 sesiones — láser zona grande</h3>
-        <p class="t-desc">Piernas, espalda o ingles brasileñas. Resultados duraderos.</p>
-        <div class="t-foot"><span class="t-price"><s>425€</s>350€</span><button class="t-btn" onclick="addAndOpen('Bono 5 sesiones láser zona grande',350)">Reservar</button></div>
+
+      <div class="svc big reveal" data-n="06">
+        <div class="cat">Bonos</div>
+        <h3>Ahorra con tus bonos</h3>
+        <p class="lead">Packs de sesiones a precio reducido para tu rutina mensual de belleza. La mejor relación calidad-precio.</p>
+        <ul>
+          <li>Bono 5 faciales hidratación <span class="pr"><span class="old">325€</span>280€</span></li>
+          <li>Bono 5 láser zona grande <span class="pr"><span class="old">425€</span>350€</span></li>
+          <li>Bono 10 masajes relajantes <span class="pr"><span class="old">550€</span>450€</span></li>
+        </ul>
+        <a class="svc-cta" onclick="openChatCat('🎁 BONOS')">Reservar bono →</a>
       </div>
-      <div class="t-card">
-        <span class="t-badge">AHORRA 45€</span>
-        <h3>Bono 5 faciales hidratación</h3>
-        <p class="t-desc">Rutina mensual completa de hidratación profunda con ácido hialurónico.</p>
-        <div class="t-foot"><span class="t-price"><s>325€</s>280€</span><button class="t-btn" onclick="addAndOpen('Bono 5 faciales hidratación',280)">Reservar</button></div>
-      </div>
-      <div class="t-card">
-        <span class="t-badge">AHORRA 100€</span>
-        <h3>Bono 10 masajes relajantes</h3>
-        <p class="t-desc">Tu rutina de bienestar mensual. Relax garantizado.</p>
-        <div class="t-foot"><span class="t-price"><s>550€</s>450€</span><button class="t-btn" onclick="addAndOpen('Bono 10 masajes relajantes',450)">Reservar</button></div>
-      </div>
+
     </div>
   </div>
 </section>
 
-<!-- ============ SOBRE NOSOTRAS ============ -->
-<section id="nosotras" class="nosotras">
-  <div class="about-grid">
-    <div class="about-text">
-      <div class="kicker">Sobre nosotras</div>
-      <h2>Expertas en tu bienestar</h2>
-      <p>En Whitemoon Estetic creemos que la verdadera belleza nace del autocuidado. Nuestro equipo, formado por esteticistas titulados con más de 15 años de experiencia, combina tecnología de vanguardia con un trato cercano para que cada visita sea una experiencia memorable.</p>
-      <ul class="about-bullets">
-        <li><span class="bi">✦</span><div><b>Productos certificados</b><small>Marcas profesionales con dermocosmética avalada y origen sostenible.</small></div></li>
-        <li><span class="bi">✦</span><div><b>Tecnología de vanguardia</b><small>Equipos de última generación para resultados eficaces y seguros.</small></div></li>
-        <li><span class="bi">✦</span><div><b>Resultados reales</b><small>Cada tratamiento se personaliza según tu piel y tus objetivos.</small></div></li>
-      </ul>
-    </div>
-    <div class="about-stats">
-      <div class="about-stat"><div class="big">15+</div><div class="lbl">años de experiencia</div></div>
-      <div class="about-stat"><div class="big">4.9★</div><div class="lbl">valoración media en Google</div></div>
+<!-- PROCESO -->
+<section id="proceso" class="proceso">
+  <div class="wrap">
+    <div class="kicker reveal">Reservar es muy fácil</div>
+    <h2 class="sec-title reveal">Tu cita en <em>3 pasos</em></h2>
+    <div class="pasos">
+      <div class="paso reveal"><span class="num">01</span><h3>Elige tratamiento</h3><p>Cuéntale a nuestra asistente qué te apetece. Te guía por toda la carta.</p></div>
+      <div class="paso reveal"><span class="num">02</span><h3>Día y hora</h3><p>Escoge cuándo quieres venir según nuestra disponibilidad real.</p></div>
+      <div class="paso reveal"><span class="num">03</span><h3>Confírmalo</h3><p>Recibes la confirmación al instante. Nosotras nos encargamos del resto.</p></div>
     </div>
   </div>
 </section>
 
-<!-- ============ TESTIMONIOS ============ -->
-<section>
-  <div class="sec-head">
-    <div class="kicker">Opiniones</div>
-    <h2>Lo que dicen nuestras clientas</h2>
+<!-- RESEÑAS -->
+<section id="resenas" class="resenas">
+  <div class="wrap">
+    <div class="kicker reveal">4.9★ en Google</div>
+    <h2 class="sec-title reveal">Lo que dicen <em>nuestras clientas</em></h2>
   </div>
-  <div class="testi-grid">
-    <div class="testi">
-      <div class="stars">★ ★ ★ ★ ★</div>
-      <p class="quote">"El tratamiento antiedad es espectacular. Después de 3 sesiones mi piel está visiblemente más firme y luminosa."</p>
-      <div class="author">— María G.</div>
-    </div>
-    <div class="testi">
-      <div class="stars">★ ★ ★ ★ ★</div>
-      <p class="quote">"La depilación láser cambió mi vida. Trato exquisito y un equipo súper profesional. ¡Volveré seguro!"</p>
-      <div class="author">— Laura M.</div>
-    </div>
-    <div class="testi">
-      <div class="stars">★ ★ ★ ★ ★</div>
-      <p class="quote">"El mejor centro de estética de la ciudad. Detalle, cuidado y resultados a la altura del precio."</p>
-      <div class="author">— Ana R.</div>
+  <div class="ticker-mask">
+    <div class="ticker" id="ticker">
+      <div class="review"><div class="stars">★★★★★</div><p class="q">"El tratamiento antiedad es espectacular. En 3 sesiones mi piel está visiblemente más firme y luminosa."</p><div class="who">— María G.</div></div>
+      <div class="review"><div class="stars">★★★★★</div><p class="q">"La depilación láser me cambió la vida. Trato exquisito y equipo súper profesional."</p><div class="who">— Laura M.</div></div>
+      <div class="review"><div class="stars">★★★★★</div><p class="q">"El mejor centro de estética de la ciudad. Detalle, cuidado y resultados a la altura."</p><div class="who">— Ana R.</div></div>
     </div>
   </div>
 </section>
 
-<!-- ============ CÓMO RESERVAR ============ -->
-<section id="reservas" class="reservas">
-  <div class="sec-head">
-    <div class="kicker">Reserva tu cita</div>
-    <h2>Reservar es muy fácil</h2>
-    <p>En menos de 2 minutos tendrás tu sesión confirmada</p>
+<!-- CTA RESERVA -->
+<section class="cta">
+  <div class="wrap">
+    <h2 class="reveal">¿Lista para brillar?</h2>
+    <p class="reveal">Reserva tu sesión en menos de dos minutos con nuestra asistente. Sin llamadas, sin esperas.</p>
+    <button class="btn btn-p reveal" style="padding:16px 38px;font-size:13px" onclick="openChat()">✦ Reservar mi cita</button>
   </div>
-  <div class="pasos">
-    <div class="paso">
-      <div class="paso-num">01</div>
-      <h3>Elige tratamiento</h3>
-      <p>Selecciona los servicios que deseas reservar.</p>
-    </div>
-    <div class="paso">
-      <div class="paso-num">02</div>
-      <h3>Día y hora</h3>
-      <p>Escoge cuándo quieres venir según nuestra disponibilidad.</p>
-    </div>
-    <div class="paso">
-      <div class="paso-num">03</div>
-      <h3>Confírmalo</h3>
-      <p>Recibe la confirmación al instante por WhatsApp.</p>
-    </div>
-  </div>
-  <button class="wa-btn" onclick="openChat()">✦ Reservar por WhatsApp</button>
 </section>
 
-<!-- ============ FOOTER ============ -->
+<!-- FOOTER -->
 <footer id="contacto">
   <div class="foot-grid">
-    <div class="foot-col">
-      <div class="logo-foot">✦ Whitemoon Estetic</div>
-      <p>Centro de estética premium en Madrid.</p>
+    <div class="foot-brand">
+      <div class="bn">Lumière<em> Estética</em></div>
+      <p>Centro de estética premium en Madrid. Donde la ciencia y el lujo se unen para realzar tu belleza natural.</p>
+      <div class="foot-social">
+        <a href="https://instagram.com/lumiere.estetica" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://wa.me/34643199580" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21l1.9-5.1A8.5 8.5 0 1 1 12 20.5a8.4 8.4 0 0 1-4.1-1.1L3 21z"/><path d="M9 9c0 4 3 6 6 6"/></svg></a>
+      </div>
     </div>
     <div class="foot-col">
       <h4>Contacto</h4>
       <p>📍 Calle Mayor 12, Madrid</p>
-      <p>📞 +34 643 199 580</p>
-      <p>✉ hola@lumiere.es</p>
+      <a href="tel:+34643199580">📞 +34 643 199 580</a>
+      <a href="mailto:hola@lumiere.es">✉ hola@lumiere.es</a>
     </div>
     <div class="foot-col">
       <h4>Horario</h4>
-      <p>Lun-Vie · 9:00 - 20:00</p>
-      <p>Sáb · 9:00 - 14:00</p>
-      <p>Dom · cerrado</p>
+      <p>Lun – Vie · 9:00 – 20:00</p>
+      <p>Sábado · 9:00 – 14:00</p>
+      <p>Domingo · Cerrado</p>
     </div>
   </div>
   <div class="copyright">
-    Web creada por <b>WhiteMoon</b> · <a href="https://whitemoon.es" target="_blank" rel="noopener">whitemoon.es</a>
+    <span>© 2026 Lumière Estética · Madrid</span>
+    <span>Web creada por <a href="https://whitemoon.es" target="_blank" rel="noopener">WhiteMoon</a></span>
   </div>
 </footer>
 
-<!-- ============ CHATBOT (ANA) ============ -->
+<!-- CHATBOT -->
 <div class="chat-tip" id="chatTip">✦ ¿Reservas o consultas?</div>
-<button class="chat-fab" id="chatFab" onclick="openChat()" aria-label="Chat">💬</button>
+<button class="chat-fab" id="chatFab" onclick="openChat()" aria-label="Abrir chat">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.4 8.6 8.6 0 0 1-3.9-.9L3 20.5l1.6-4.6A8.4 8.4 0 1 1 21 11.5z"/></svg>
+</button>
 
 <div class="chat-mod" id="chatMod">
   <div class="chat-head">
     <div class="chat-head-info">
-      <div class="chat-avatar">🌸</div>
+      <div class="chat-avatar">L</div>
       <div>
-        <h4>Ana · Asistente</h4>
-        <div class="role">Centro de Estética Premium</div>
-        <div class="status"><span class="dot-on"></span> En línea ahora</div>
+        <h4>Lumière · Asistente</h4>
+        <div class="status"><span class="dot-on"></span> En línea</div>
       </div>
     </div>
     <button class="chat-x" id="chatX" onclick="closeChat()" aria-label="Cerrar">✕</button>
   </div>
   <div class="chat-body" id="chatBody"></div>
-  <div class="chat-foot">✦ POWERED BY WHITEMOON · <a href="https://whitemoon.es" target="_blank" rel="noopener">WHITEMOON.ES</a></div>
+  <div class="chat-foot">✦ POWERED BY WHITEMOON · WHITEMOON.ES</div>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
 <script>
-/* ============= NAV / TABS ============= */
-const navEl=document.getElementById('nav');
-window.addEventListener('scroll',()=>navEl.classList.toggle('scrolled',scrollY>40));
-document.querySelectorAll('.tab').forEach(t=>{
-  t.addEventListener('click',()=>{
-    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
-    document.querySelectorAll('.tab-panel').forEach(x=>x.classList.remove('active'));
-    t.classList.add('active');
-    document.querySelector(`.tab-panel[data-p="${t.dataset.t}"]`).classList.add('active');
+/* ============ MOTION PREFS ============ */
+var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var FINE = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+
+/* ============ NAV ============ */
+var navEl=document.getElementById('nav');
+window.addEventListener('scroll',function(){navEl.classList.toggle('scrolled',window.scrollY>40);},{passive:true});
+
+/* ============ CUSTOM CURSOR ============ */
+if(FINE && !REDUCED){
+  var cur=document.getElementById('cursor'),dot=document.getElementById('cursorDot');
+  var mx=0,my=0,cx=0,cy=0;
+  document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;dot.style.transform='translate('+mx+'px,'+my+'px) translate(-50%,-50%)';});
+  (function loop(){cx+=(mx-cx)*0.18;cy+=(my-cy)*0.18;cur.style.transform='translate('+cx+'px,'+cy+'px) translate(-50%,-50%)';requestAnimationFrame(loop);})();
+  document.querySelectorAll('a,button,.svc,.tab').forEach(function(el){
+    el.addEventListener('mouseenter',function(){cur.style.width='54px';cur.style.height='54px';cur.style.borderColor='var(--gold)';});
+    el.addEventListener('mouseleave',function(){cur.style.width='34px';cur.style.height='34px';cur.style.borderColor='var(--p2)';});
   });
-});
+}
 
-/* ============= CHATBOT ============= */
-const WA_NUM='34643199580';
-const body=document.getElementById('chatBody');
-const mod=document.getElementById('chatMod');
-const fab=document.getElementById('chatFab');
-const tip=document.getElementById('chatTip');
-const xBtn=document.getElementById('chatX');
+/* ============ ROTATING WORD (Anime.js) ============ */
+(function(){
+  var words=['faciales','depilación láser','masajes','uñas','pestañas','bonos'];
+  var el=document.getElementById('rotor');if(!el)return;
+  if(REDUCED || typeof anime==='undefined'){el.textContent=words[0];return;}
+  var i=0;el.textContent=words[0];
+  setInterval(function(){
+    anime({targets:el,opacity:[1,0],translateY:[0,-12],duration:340,easing:'easeInQuad',complete:function(){
+      i=(i+1)%words.length;el.textContent=words[i];
+      anime({targets:el,opacity:[0,1],translateY:[12,0],duration:420,easing:'easeOutQuad'});
+    }});
+  },2300);
+})();
 
-let chatStep=0;
-let opened=false;
-let booking={items:[],date:'',time:'',name:'',phone:''};
+/* ============ GSAP SCROLLTRIGGER ============ */
+if(typeof gsap!=='undefined' && !REDUCED){
+  gsap.registerPlugin(ScrollTrigger);
+  // Section reveals with stagger per group
+  gsap.utils.toArray('section').forEach(function(sec){
+    var items=sec.querySelectorAll('.reveal');
+    if(!items.length)return;
+    gsap.to(items,{opacity:1,y:0,duration:.9,ease:'power3.out',stagger:.09,
+      scrollTrigger:{trigger:sec,start:'top 78%',once:true}});
+  });
+  // Hero stats reveal (above the fold)
+  gsap.to('.hero .reveal',{opacity:1,y:0,duration:.9,ease:'power3.out',stagger:.12,delay:.5});
+  // Hero parallax: video drifts slower, ghost text drifts
+  gsap.to('#heroVideo',{yPercent:18,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+  gsap.to('.ghost',{yPercent:-22,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+  // Process big numbers fill on enter
+  gsap.utils.toArray('.paso').forEach(function(p){
+    ScrollTrigger.create({trigger:p,start:'top 70%',onEnter:function(){p.classList.add('active-n');},once:true});
+  });
+}else{
+  document.querySelectorAll('.reveal').forEach(function(el){el.style.opacity=1;el.style.transform='none';});
+}
 
-const norm=s=>s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+/* ============ VIDEO FALLBACK ============ */
+(function(){var v=document.getElementById('bgVid');if(!v)return;
+  v.addEventListener('error',function(){document.getElementById('heroVideo').style.background="#0e0c16 url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1600&q=80') center/cover";});
+})();
 
-const SERVICES={
-  '💆 FACIALES':[
-    ['Limpieza facial profunda',45],
-    ['Hidratación ácido hialurónico',65],
-    ['Antiedad radiofrecuencia',85],
-    ['Peeling químico',70],
-    ['Microdermoabrasión',60],
-    ['Mesoterapia facial',90],
-  ],
-  '✨ DEPILACIÓN LÁSER':[
-    ['Láser labio superior',15],
-    ['Láser axilas',25],
-    ['Láser ingles brasileñas',45],
-    ['Láser piernas completas',85],
-    ['Láser espalda',70],
-    ['Láser pack cuerpo completo',180],
-  ],
-  '💆 CORPORALES':[
-    ['Masaje relajante 60min',55],
-    ['Masaje piedras calientes',70],
-    ['Tratamiento reafirmante',75],
-    ['Drenaje linfático',65],
-  ],
-  '💅 MANOS & PIES':[
-    ['Manicura básica',18],
-    ['Manicura semipermanente',28],
-    ['Pedicura básica',22],
-    ['Pedicura semipermanente',32],
-    ['Uñas de gel manos',35],
-  ],
-  '👁️ PESTAÑAS & CEJAS':[
-    ['Lifting de pestañas',45],
-    ['Extensión pestañas',65],
-    ['Laminado de cejas',35],
-    ['Diseño y tinte cejas',20],
-  ],
-  '🎁 BONOS':[
-    ['Bono 5 láser zona pequeña',60],
-    ['Bono 5 faciales hidratación',280],
-    ['Bono 10 masajes',450],
-  ],
+/* ============================================================
+   CHATBOT — Lumière · Asistente
+   Lead → Supabase leads_web + aviso CallMeBot (patrón WhiteMoon)
+   ============================================================ */
+var SUPABASE_URL="https://mlaqtniujnvfxcvcourm.supabase.co";
+var SUPABASE_KEY="sb_publishable_6no6BuOgiA_2nonTJntAuQ_DTqEgrcV";
+var LEADS_TABLE="leads_web";
+var CALLMEBOT_PHONE="34643199580";
+var CALLMEBOT_APIKEY=""; // se rellena en el entorno del cliente; sin key el lead se guarda igual
+var WA_NUM="34643199580";
+
+var body=document.getElementById('chatBody');
+var mod=document.getElementById('chatMod');
+var fab=document.getElementById('chatFab');
+var tip=document.getElementById('chatTip');
+var xBtn=document.getElementById('chatX');
+var chatStep=0,opened=false;
+var booking={items:[],date:'',time:'',name:'',phone:''};
+
+var SERVICES={
+  '💆 FACIALES':[['Limpieza facial profunda',45],['Hidratación ácido hialurónico',65],['Antiedad radiofrecuencia',85],['Peeling químico',70],['Microdermoabrasión',60],['Mesoterapia facial',90]],
+  '✨ DEPILACIÓN LÁSER':[['Láser labio superior',15],['Láser axilas',25],['Láser ingles brasileñas',45],['Láser piernas completas',85],['Láser espalda',70],['Láser pack cuerpo completo',180]],
+  '💆 CORPORALES':[['Masaje relajante 60min',55],['Masaje piedras calientes',70],['Tratamiento reafirmante',75],['Drenaje linfático',65]],
+  '💅 MANOS & PIES':[['Manicura básica',18],['Manicura semipermanente',28],['Pedicura básica',22],['Pedicura semipermanente',32],['Uñas de gel manos',35]],
+  '👁️ PESTAÑAS & CEJAS':[['Lifting de pestañas',45],['Extensión pestañas',65],['Laminado de cejas',35],['Diseño y tinte cejas',20]],
+  '🎁 BONOS':[['Bono 5 láser zona pequeña',60],['Bono 5 faciales hidratación',280],['Bono 10 masajes',450]]
 };
 
-function openChat(){
-  mod.classList.add('open');
-  fab.classList.add('hidden');
-  tip.classList.add('hidden');
-  if(!opened){
-    opened=true;
-    setTimeout(welcome,400);
-  }
-}
-function closeChat(){
-  if(chatStep>=1 && chatStep<99) return;
-  mod.classList.remove('open');
-  fab.classList.remove('hidden');
-}
-function lockUI(){
-  xBtn.classList.add('hidden');
-  fab.classList.add('hidden');
-  tip.classList.add('hidden');
-}
-function unlockUI(){
-  xBtn.classList.remove('hidden');
-}
+function openChat(){mod.classList.add('open');fab.classList.add('hidden');tip.classList.add('hidden');if(!opened){opened=true;setTimeout(welcome,400);}}
+function openChatCat(cat){openChat();setTimeout(function(){if(chatStep===0){chatStep=1;lockUI();booking={items:[],date:'',time:'',name:'',phone:''};botMsg('¡Genial! Vamos con <b>'+cat.replace(/^[^ ]+ /,'')+'</b> 💜<br>Selecciona lo que quieras reservar:',function(){renderMenu(cat);});}},700);}
+function closeChat(){if(chatStep>=1&&chatStep<99)return;mod.classList.remove('open');fab.classList.remove('hidden');}
+function lockUI(){xBtn.classList.add('hidden');fab.classList.add('hidden');tip.classList.add('hidden');}
+function unlockUI(){xBtn.classList.remove('hidden');}
 
 function botMsg(html,cb){
-  const t=document.createElement('div');
-  t.className='typing';
-  t.innerHTML='<span></span><span></span><span></span>';
+  var t=document.createElement('div');t.className='typing';t.innerHTML='<span></span><span></span><span></span>';
   body.appendChild(t);body.scrollTop=body.scrollHeight;
-  setTimeout(()=>{
-    t.remove();
-    const m=document.createElement('div');
-    m.className='msg bot';
-    m.innerHTML=`<div class="msg-bub">${html}</div>`;
-    body.appendChild(m);body.scrollTop=body.scrollHeight;
-    if(cb)cb();
-  },900);
+  setTimeout(function(){t.remove();var m=document.createElement('div');m.className='msg bot';m.innerHTML='<div class="msg-bub">'+html+'</div>';body.appendChild(m);body.scrollTop=body.scrollHeight;if(cb)cb();},850);
 }
-function userMsg(txt){
-  const m=document.createElement('div');
-  m.className='msg user';
-  m.innerHTML=`<div class="msg-bub">${txt}</div>`;
-  body.appendChild(m);body.scrollTop=body.scrollHeight;
-}
-function quickWrap(){
-  const w=document.createElement('div');
-  w.className='quick';
-  body.appendChild(w);body.scrollTop=body.scrollHeight;
-  return w;
-}
+function userMsg(txt){var m=document.createElement('div');m.className='msg user';m.innerHTML='<div class="msg-bub">'+txt+'</div>';body.appendChild(m);body.scrollTop=body.scrollHeight;}
+function quickWrap(){var w=document.createElement('div');w.className='quick';body.appendChild(w);body.scrollTop=body.scrollHeight;return w;}
 
 function welcome(){
-  botMsg('¡Hola! ✨ Soy <b>Ana</b>, tu asistente de <b>Whitemoon Estetic</b>.<br>¿En qué puedo ayudarte hoy?',()=>{
-    const q=quickWrap();
-    [['📅 Reservar cita',()=>flowReserva()],
-     ['💆 Ver tratamientos',()=>scrollAndClose('tratamientos')],
-     ['🎁 Ver bonos',()=>{ document.querySelector('.tab[data-t="bonos"]').click(); scrollAndClose('tratamientos'); }],
-     ['⏰ Horarios',()=>showHorario()],
-    ].forEach(([txt,fn])=>{
-      const b=document.createElement('button');
-      b.textContent=txt;b.onclick=()=>{userMsg(txt);q.remove();fn();};
-      q.appendChild(b);
-    });
+  botMsg('¡Hola! ✦ Soy la asistente de <b>Lumière Estética</b>.<br>¿En qué puedo ayudarte?',function(){
+    var q=quickWrap();
+    [['📅 Reservar cita',function(){flowReserva();}],
+     ['💆 Ver tratamientos',function(){scrollAndClose('tratamientos');}],
+     ['🎁 Ver bonos',function(){openChatCat('🎁 BONOS');}],
+     ['⏰ Horarios',function(){showHorario();}]
+    ].forEach(function(a){var b=document.createElement('button');b.textContent=a[0];b.onclick=function(){userMsg(a[0]);q.remove();a[1]();};q.appendChild(b);});
   });
 }
-function scrollAndClose(id){
-  closeChat();
-  setTimeout(()=>document.getElementById(id).scrollIntoView({behavior:'smooth'}),200);
-}
-function showHorario(){
-  botMsg('🗓️ <b>Lunes a Viernes:</b> 9:00 - 20:00<br>💆 <b>Sábados:</b> 9:00 - 14:00<br>🚫 <b>Domingos cerrado</b><br><br>¿Reservamos?',()=>{
-    const q=quickWrap();
-    const b=document.createElement('button');b.textContent='📅 Reservar cita';b.onclick=()=>{userMsg('Reservar cita');q.remove();flowReserva();};
-    q.appendChild(b);
-  });
-}
+function scrollAndClose(id){closeChat();setTimeout(function(){document.getElementById(id).scrollIntoView({behavior:'smooth'});},200);}
+function showHorario(){botMsg('🗓️ <b>Lun–Vie:</b> 9:00–20:00<br>💆 <b>Sábados:</b> 9:00–14:00<br>🚫 <b>Domingos cerrado</b><br><br>¿Reservamos?',function(){var q=quickWrap();var b=document.createElement('button');b.textContent='📅 Reservar cita';b.onclick=function(){userMsg('Reservar cita');q.remove();flowReserva();};q.appendChild(b);});}
 
-/* === FLOW RESERVA === */
-function flowReserva(){
-  chatStep=1;lockUI();
-  booking={items:[],date:'',time:'',name:'',phone:''};
-  botMsg('¡Con mucho gusto! 💕<br>Selecciona el tratamiento o tratamientos:',()=>renderMenu());
-}
-function renderMenu(){
-  const q=quickWrap();
-  q.dataset.menu='1';
-  Object.entries(SERVICES).forEach(([cat,arr])=>{
-    const t=document.createElement('div');
-    t.className='cat-title';t.textContent=cat;
-    t.style.cssText='font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--dorado);padding:10px 4px 4px;font-weight:500';
-    q.appendChild(t);
-    arr.forEach(([nm,pr])=>{
-      const b=document.createElement('button');
-      b.className='item';
-      b.innerHTML=`<span>➕ ${nm}</span><span class="price">${pr}€</span>`;
-      b.onclick=()=>{
-        booking.items.push({name:nm,price:pr});
-        b.style.background='var(--verde)';b.style.color='var(--negro)';
-        b.querySelector('.price').style.color='var(--negro)';
-        b.disabled=true;
-      };
+function flowReserva(){chatStep=1;lockUI();booking={items:[],date:'',time:'',name:'',phone:''};botMsg('¡Con mucho gusto! 💜<br>Selecciona el tratamiento o tratamientos:',function(){renderMenu();});}
+function renderMenu(onlyCat){
+  var q=quickWrap();
+  Object.keys(SERVICES).forEach(function(cat){
+    if(onlyCat && cat!==onlyCat)return;
+    var t=document.createElement('div');t.className='cat-title';t.textContent=cat;q.appendChild(t);
+    SERVICES[cat].forEach(function(it){
+      var nm=it[0],pr=it[1];var b=document.createElement('button');b.className='item';
+      b.innerHTML='<span>➕ '+nm+'</span><span class="price">'+pr+'€</span>';
+      b.onclick=function(){booking.items.push({name:nm,price:pr});b.style.background='var(--p)';b.style.color='#fff';b.querySelector('.price').style.color='#fff';b.disabled=true;};
       q.appendChild(b);
     });
   });
-  const conf=document.createElement('button');
-  conf.className='confirm';
-  conf.textContent='✅ Ver mi reserva y confirmar';
-  conf.onclick=()=>{
-    if(!booking.items.length){
-      const w=quickWrap();
-      const m=document.createElement('button');m.textContent='⚠️ Selecciona al menos uno';m.disabled=true;
-      w.appendChild(m);setTimeout(()=>w.remove(),1800);
-      return;
-    }
-    q.remove();
-    showSummaryAndDate();
-  };
+  var conf=document.createElement('button');conf.className='confirm';conf.textContent='✅ Ver mi reserva y confirmar';
+  conf.onclick=function(){if(!booking.items.length){var w=quickWrap();var m=document.createElement('button');m.textContent='⚠️ Selecciona al menos uno';m.disabled=true;w.appendChild(m);setTimeout(function(){w.remove();},1700);return;}q.remove();showSummaryAndDate();};
   q.appendChild(conf);
 }
-function fmtItems(){
-  return booking.items.map(i=>`• ${i.name} — ${i.price}€`).join('<br>');
-}
-function totalPrice(){return booking.items.reduce((a,b)=>a+b.price,0)}
+function fmtItems(){return booking.items.map(function(i){return '• '+i.name+' — '+i.price+'€';}).join('<br>');}
+function totalPrice(){return booking.items.reduce(function(a,b){return a+b.price;},0);}
 
 function showSummaryAndDate(){
-  userMsg(`Selección: ${booking.items.length} tratamiento(s)`);
-  botMsg(`Tu selección ✨:<br>${fmtItems()}<br>────────────────<br><b>Total estimado: ${totalPrice()}€</b><br><br>¿Qué día prefieres? 📅`,()=>{
-    const q=quickWrap();
-    const days=['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
-    const months=['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
-    const today=new Date();
-    for(let i=1;i<=7;i++){
-      const d=new Date(today);d.setDate(today.getDate()+i);
-      const txt=`${days[d.getDay()]} ${d.getDate()} ${months[d.getMonth()]}`;
-      const b=document.createElement('button');b.textContent='📅 '+txt;
-      b.onclick=()=>{booking.date=txt;userMsg(txt);q.remove();askTime();};
-      q.appendChild(b);
-    }
+  userMsg('Selección: '+booking.items.length+' tratamiento(s)');
+  botMsg('Tu selección ✦:<br>'+fmtItems()+'<br>────────────<br><b>Total estimado: '+totalPrice()+'€</b><br><br>¿Qué día prefieres? 📅',function(){
+    var q=quickWrap();var days=['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];var months=['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];var today=new Date();
+    for(var i=1;i<=7;i++){var d=new Date(today);d.setDate(today.getDate()+i);var txt=days[d.getDay()]+' '+d.getDate()+' '+months[d.getMonth()];(function(txt){var b=document.createElement('button');b.textContent='📅 '+txt;b.onclick=function(){booking.date=txt;userMsg(txt);q.remove();askTime();};q.appendChild(b);})(txt);}
   });
 }
-function askTime(){
-  botMsg('¿A qué hora? ⏰',()=>{
-    const q=quickWrap();
-    ['9:00','10:00','11:00','12:00','16:00','17:00','18:00','19:00'].forEach(h=>{
-      const b=document.createElement('button');b.textContent='🕐 '+h;
-      b.onclick=()=>{booking.time=h;userMsg(h);q.remove();askName();};
-      q.appendChild(b);
-    });
-  });
-}
-function askName(){
-  chatStep=2;
-  botMsg('¿Me dices tu nombre? 💕',()=>showInput('Tu nombre',v=>{
-    if(v.length<2){return false}
-    booking.name=v;userMsg(v);askPhone();return true;
-  }));
-}
-function askPhone(){
-  botMsg(`Perfecto ${booking.name} 😊 ¿Tu teléfono? (9 dígitos)`,()=>showInput('Ej. 612345678',v=>{
-    const num=v.replace(/\D/g,'');
-    if(num.length!==9){
-      botMsg('⚠️ Necesito un número de 9 dígitos. Inténtalo de nuevo:',()=>showInput('Ej. 612345678',v2=>{
-        const n2=v2.replace(/\D/g,'');
-        if(n2.length!==9)return false;
-        booking.phone=n2;userMsg(v2);finalSummary();return true;
-      }));
-      return true;
-    }
-    booking.phone=num;userMsg(v);finalSummary();return true;
-  }));
-}
+function askTime(){botMsg('¿A qué hora? ⏰',function(){var q=quickWrap();['9:00','10:00','11:00','12:00','16:00','17:00','18:00','19:00'].forEach(function(h){var b=document.createElement('button');b.textContent='🕐 '+h;b.onclick=function(){booking.time=h;userMsg(h);q.remove();askName();};q.appendChild(b);});});}
+function askName(){chatStep=2;botMsg('¿Me dices tu nombre? 💜',function(){showInput('Tu nombre',function(v){if(v.length<2)return false;booking.name=v;userMsg(v);askPhone();return true;});});}
+function askPhone(){botMsg('Perfecto '+booking.name+' 😊 ¿Tu teléfono? (9 dígitos)',function(){showInput('Ej. 612345678',function(v){var num=v.replace(/\D/g,'');if(!/^[6789]\d{8}$/.test(num)){botMsg('⚠️ Necesito un móvil válido de 9 dígitos. Inténtalo de nuevo:',function(){showInput('Ej. 612345678',function(v2){var n2=v2.replace(/\D/g,'');if(!/^[6789]\d{8}$/.test(n2))return false;booking.phone=n2;userMsg(v2);finalSummary();return true;});});return true;}booking.phone=num;userMsg(v);finalSummary();return true;});});}
 function showInput(placeholder,onSubmit){
-  const q=quickWrap();
-  const wrap=document.createElement('div');
-  wrap.style.cssText='display:flex;gap:6px';
-  const inp=document.createElement('input');
-  inp.type='text';inp.placeholder=placeholder;
-  inp.style.cssText='flex:1;padding:10px 14px;border:1px solid var(--verde);background:var(--negro);color:var(--texto);border-radius:20px;font-family:Sora,sans-serif;font-size:13px;outline:none';
-  const send=document.createElement('button');
-  send.textContent='➤';
-  send.style.cssText='padding:10px 16px;border:none;background:var(--verde);color:var(--negro);border-radius:20px;cursor:pointer;font-weight:bold';
-  const submit=()=>{
-    const v=inp.value.trim();if(!v)return;
-    if(onSubmit(v))q.remove();
-  };
-  send.onclick=submit;
-  inp.addEventListener('keydown',e=>{if(e.key==='Enter')submit();});
-  wrap.appendChild(inp);wrap.appendChild(send);
-  q.appendChild(wrap);
-  setTimeout(()=>inp.focus(),100);
+  var q=quickWrap();var wrap=document.createElement('div');wrap.style.cssText='display:flex;gap:6px';
+  var inp=document.createElement('input');inp.type='text';inp.placeholder=placeholder;
+  inp.style.cssText='flex:1;padding:10px 14px;border:1px solid var(--p);background:var(--bg2);color:var(--text);border-radius:20px;font-family:Inter,sans-serif;font-size:13px;outline:none';
+  var send=document.createElement('button');send.textContent='➤';send.style.cssText='padding:10px 16px;border:none;background:var(--p);color:#fff;border-radius:20px;cursor:pointer;font-weight:bold';
+  var submit=function(){var v=inp.value.trim();if(!v)return;if(onSubmit(v))q.remove();};
+  send.onclick=submit;inp.addEventListener('keydown',function(e){if(e.key==='Enter')submit();});
+  wrap.appendChild(inp);wrap.appendChild(send);q.appendChild(wrap);setTimeout(function(){inp.focus();},100);
 }
 
 function finalSummary(){
   chatStep=99;unlockUI();fab.classList.remove('hidden');
-  const itemsTxt=booking.items.map(i=>`• ${i.name} — ${i.price}€`).join('\n');
-  const totalE=totalPrice();
-  botMsg(
-    `✅ <b>RESUMEN DE TU RESERVA</b><br><br>`+
-    `👤 <b>${booking.name}</b><br>`+
-    `📞 +34 ${booking.phone}<br><br>`+
-    `💆 <b>Tratamientos:</b><br>${fmtItems()}<br><br>`+
-    `💰 <b>Total estimado:</b> ${totalE}€<br>`+
-    `📅 <b>Día:</b> ${booking.date}<br>`+
-    `🕐 <b>Hora:</b> ${booking.time}<br><br>`+
-    `Confirma enviando el mensaje por WhatsApp 👇`,
-    ()=>{
-      const q=quickWrap();
-      const wa=document.createElement('button');
-      wa.className='confirm';wa.textContent='✦ Enviar por WhatsApp';
-      wa.onclick=()=>{
-        const txt=
-`✨ *RESERVA — Whitemoon Estetic*
-
-👤 *Nombre:* ${booking.name}
-📞 *Tel:* +34${booking.phone}
-💆 *Tratamientos:*
-${itemsTxt}
-💰 *Total estimado:* ${totalE}€
-📅 *Día:* ${booking.date}
-🕐 *Hora:* ${booking.time}
-
-_Vía chatbot WhiteMoon · whitemoon.es_`;
-        window.open(`https://wa.me/${WA_NUM}?text=${encodeURIComponent(txt)}`,'_blank');
-      };
-      q.appendChild(wa);
-      const again=document.createElement('button');
-      again.textContent='💬 Hacer otra consulta';
-      again.onclick=()=>{q.remove();chatStep=0;welcome();};
-      q.appendChild(again);
-    }
-  );
+  saveLead();notifyWhatsApp();
+  var itemsTxt=booking.items.map(function(i){return '• '+i.name+' — '+i.price+'€';}).join('\n');
+  var totalE=totalPrice();
+  botMsg('✅ <b>RESERVA RECIBIDA</b><br><br>👤 <b>'+booking.name+'</b><br>📞 +34 '+booking.phone+'<br><br>💆 <b>Tratamientos:</b><br>'+fmtItems()+'<br><br>💰 <b>Total estimado:</b> '+totalE+'€<br>📅 <b>Día:</b> '+booking.date+'<br>🕐 <b>Hora:</b> '+booking.time+'<br><br>Te contactamos para confirmar. ¿Quieres enviárnoslo también por WhatsApp?',function(){
+    var q=quickWrap();
+    var wa=document.createElement('button');wa.className='confirm';wa.textContent='✦ Enviar por WhatsApp';
+    wa.onclick=function(){var txt='✦ *RESERVA — Lumière Estética*\n\n👤 *Nombre:* '+booking.name+'\n📞 *Tel:* +34'+booking.phone+'\n💆 *Tratamientos:*\n'+itemsTxt+'\n💰 *Total estimado:* '+totalE+'€\n📅 *Día:* '+booking.date+'\n🕐 *Hora:* '+booking.time+'\n\n_Vía asistente WhiteMoon · whitemoon.es_';window.open('https://wa.me/'+WA_NUM+'?text='+encodeURIComponent(txt),'_blank');};
+    q.appendChild(wa);
+    var again=document.createElement('button');again.textContent='💬 Hacer otra consulta';again.onclick=function(){q.remove();chatStep=0;welcome();};q.appendChild(again);
+  });
 }
 
-/* === Direct add from card === */
-function addAndOpen(name,price){
-  if(chatStep===0){
-    booking={items:[{name,price}],date:'',time:'',name:'',phone:''};
-    openChat();
-    chatStep=1;lockUI();
-    setTimeout(()=>{
-      botMsg(`Has añadido <b>${name}</b> (${price}€) ✨<br><br>¿Quieres añadir más tratamientos o continuar?`,()=>{
-        const q=quickWrap();
-        const more=document.createElement('button');more.textContent='➕ Añadir más';
-        more.onclick=()=>{q.remove();renderMenu();};
-        const cont=document.createElement('button');cont.className='confirm';cont.textContent='✅ Continuar con la reserva';
-        cont.onclick=()=>{q.remove();showSummaryAndDate();};
-        q.appendChild(more);q.appendChild(cont);
-      });
-    },500);
-  }else{
-    booking.items.push({name,price});
-    openChat();
-  }
+/* ---------- Supabase (leads_web) — patrón WhiteMoon ---------- */
+function saveLead(){
+  var interes=booking.items.map(function(i){return i.name;}).join(', ');
+  var mensaje='Tratamientos: '+booking.items.map(function(i){return i.name+' ('+i.price+'€)';}).join(', ')+
+    ' · Total estimado: '+totalPrice()+'€ · Día: '+booking.date+' · Hora: '+booking.time;
+  var payload={nombre:booking.name,telefono:booking.phone,sector:'estetica',interes:interes,mensaje:mensaje,origen:'estetica-demo'};
+  try{
+    fetch(SUPABASE_URL+'/rest/v1/'+LEADS_TABLE,{method:'POST',headers:{'apikey':SUPABASE_KEY,'Authorization':'Bearer '+SUPABASE_KEY,'Content-Type':'application/json','Prefer':'return=minimal'},body:JSON.stringify(payload)})
+      .then(function(r){if(!r.ok)console.warn('[Lumière] No se pudo guardar el lead:',r.status);})
+      .catch(function(err){console.warn('[Lumière] Error de red al guardar el lead:',err);});
+  }catch(err){console.warn('[Lumière] Excepción al guardar el lead:',err);}
+}
+/* ---------- CallMeBot (aviso WhatsApp) — patrón WhiteMoon ---------- */
+function notifyWhatsApp(){
+  if(!CALLMEBOT_APIKEY){console.warn('[Lumière] CallMeBot sin apikey: se omite el aviso por WhatsApp.');return;}
+  var lines=['Nuevo lead Lumière Estética (demo)','Nombre: '+booking.name,'Telefono: '+booking.phone,
+    'Tratamientos: '+booking.items.map(function(i){return i.name;}).join(', '),
+    'Total estimado: '+totalPrice()+'€','Dia: '+booking.date,'Hora: '+booking.time];
+  var url='https://api.callmebot.com/whatsapp.php?phone='+CALLMEBOT_PHONE+'&text='+encodeURIComponent(lines.join('\n'))+'&apikey='+CALLMEBOT_APIKEY;
+  try{fetch(url,{method:'GET',mode:'no-cors'}).catch(function(err){console.warn('[Lumière] CallMeBot error de red:',err);});}
+  catch(err){console.warn('[Lumière] CallMeBot excepción:',err);}
 }
 
-/* === Tooltip auto === */
-setTimeout(()=>{if(!opened)tip.style.display='block';},2500);
-</script>
-
-<script>
-/* ============= HERO · PALABRAS ROTATORIAS ============= */
-(function(){
-  const words=['facial','láser','masajes','cejas','pestañas','manicura'];
-  let i=0;
-  const el=document.querySelector('.hero-word-rotate');
-  if(!el)return;
-  el.style.transition='opacity 0.3s, transform 0.3s';
-  el.textContent=words[0];
-  function rotate(){
-    el.style.opacity='0';el.style.transform='translateY(8px)';
-    setTimeout(()=>{
-      i=(i+1)%words.length;
-      el.textContent=words[i];
-      el.style.opacity='1';el.style.transform='translateY(0)';
-    },300);
-  }
-  setInterval(rotate,2200);
-})();
+/* tooltip auto */
+setTimeout(function(){if(!opened)tip.classList.remove('hidden');},2600);
 </script>
 </body>
 </html>
