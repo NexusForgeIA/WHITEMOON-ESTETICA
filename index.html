@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Lumière Estética · Centro de estética premium en Madrid</title>
-<meta name="description" content="Lumière Estética — centro de estética premium en Madrid. Faciales, depilación láser, masajes, uñas y pestañas. Reserva tu cita en segundos con nuestra asistente." />
+<title>WhiteMoon Estética · Centro de estética premium en Madrid</title>
+<meta name="description" content="WhiteMoon Estética — centro de estética premium en Madrid. Faciales, depilación láser, masajes, uñas y pestañas. Reserva tu cita en segundos con nuestra asistente." />
 <link rel="canonical" href="https://nexusforgeia.github.io/WHITEMOON-ESTETICA/" />
 <meta name="theme-color" content="#08080d" />
 <link rel="icon" href="LOGO%20LUNA.jpeg" />
 <!-- OG -->
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Lumière Estética · Centro de estética premium en Madrid" />
+<meta property="og:title" content="WhiteMoon Estética · Centro de estética premium en Madrid" />
 <meta property="og:description" content="Faciales, depilación láser, masajes, uñas y pestañas. Reserva tu cita en segundos." />
 <meta property="og:locale" content="es_ES" />
 <meta property="og:image" content="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1200&h=630&fit=crop&fm=jpg&q=80" />
@@ -25,11 +25,11 @@
 {
   "@context":"https://schema.org",
   "@type":"BeautySalon",
-  "name":"Lumière Estética",
+  "name":"WhiteMoon Estética",
   "description":"Centro de estética premium en Madrid: faciales, depilación láser, masajes, manicura, pestañas y bonos.",
   "image":"https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1200&h=630&fit=crop&fm=jpg&q=80",
   "telephone":"+34643199580",
-  "email":"hola@lumiere.es",
+  "email":"hola@whitemoon.es",
   "priceRange":"€€",
   "address":{"@type":"PostalAddress","streetAddress":"Calle Mayor 12","addressLocality":"Madrid","addressCountry":"ES"},
   "areaServed":"Madrid",
@@ -138,7 +138,12 @@ section{padding:120px 44px;position:relative}
 .kicker::before{content:'';width:32px;height:1px;background:var(--p2)}
 .sec-title{font-size:clamp(38px,5.5vw,76px);font-weight:500;margin-bottom:20px}
 .sec-title em{font-style:italic;color:var(--p2)}
-.reveal{opacity:0;transform:translateY(38px)}
+.reveal{opacity:0;transform:translateY(38px);filter:blur(9px)}
+/* H1 letra a letra */
+.hero h1 .char{display:inline-block;will-change:transform,opacity}
+/* líneas decorativas que se dibujan al scroll */
+.kicker.js-draw::before{width:0;transition:width .9s cubic-bezier(.4,0,.2,1)}
+.kicker.js-draw.drawn::before{width:32px}
 
 /* ---------- SERVICIOS (editorial asymmetric) ---------- */
 .serv-head{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap;margin-bottom:60px}
@@ -290,7 +295,8 @@ footer{background:#06060b;border-top:1px solid var(--border);padding:80px 44px 3
 }
 @media (prefers-reduced-motion:reduce){
   *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
-  .reveal{opacity:1!important;transform:none!important}
+  .reveal{opacity:1!important;transform:none!important;filter:none!important}
+  .hero h1 .char{opacity:1!important;transform:none!important}
   .ticker{animation:none}
 }
 </style>
@@ -303,8 +309,8 @@ footer{background:#06060b;border-top:1px solid var(--border);padding:80px 44px 3
 <!-- NAV -->
 <nav class="nav" id="nav">
   <a href="#top" class="brand">
-    <img src="LOGO%20LUNA.jpeg" alt="Lumière Estética" />
-    <span class="bn">Lumière<em>·</em></span>
+    <img src="LOGO%20LUNA.jpeg" alt="WhiteMoon Estética" />
+    <span class="bn">WhiteMoon<em>·</em></span>
   </a>
   <div class="nav-links" id="navlinks">
     <a class="lk" href="#tratamientos">Tratamientos</a>
@@ -312,7 +318,7 @@ footer{background:#06060b;border-top:1px solid var(--border);padding:80px 44px 3
     <a class="lk" href="#resenas">Reseñas</a>
     <a class="lk" href="#contacto">Contacto</a>
     <span class="social">
-      <a href="https://instagram.com/lumiere.estetica" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+      <a href="https://instagram.com/whitemoon.estetica" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
       <a href="https://wa.me/34643199580" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21l1.9-5.1A8.5 8.5 0 1 1 12 20.5a8.4 8.4 0 0 1-4.1-1.1L3 21z"/><path d="M9 9c0 4 3 6 6 6"/></svg></a>
     </span>
     <button class="btn btn-p" onclick="openChat()">Reservar cita</button>
@@ -324,24 +330,23 @@ footer{background:#06060b;border-top:1px solid var(--border);padding:80px 44px 3
 <header class="hero" id="top">
   <div class="hero-video" id="heroVideo">
     <video autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1600&q=80" id="bgVid">
-      <source src="https://assets.mixkit.co/videos/39572/39572-720.mp4" type="video/mp4">
-      <source src="https://assets.mixkit.co/videos/4111/4111-720.mp4" type="video/mp4">
+      <source src="https://assets.mixkit.co/videos/52153/52153-720.mp4" type="video/mp4">
     </video>
   </div>
   <div class="ghost" aria-hidden="true">estética</div>
   <div class="hero-inner">
     <div class="hero-c">
       <span class="badge"><span class="pip"></span> Centro de estética premium · Madrid</span>
-      <h1>Lumière<br><span class="thin">Estética</span></h1>
+      <h1>WhiteMoon<br><span class="thin">Estética</span></h1>
       <p class="hero-sub">Ciencia y lujo para realzar tu belleza natural. Especialistas en <span class="rotor" id="rotor">faciales</span>.</p>
       <div class="hero-btns">
         <button class="btn btn-p" onclick="openChat()">Reservar cita</button>
         <a href="#tratamientos" class="btn btn-ghost">Ver tratamientos</a>
       </div>
       <div class="stats">
-        <div class="stat reveal"><b>+2.000</b><span>Clientas</span></div>
-        <div class="stat reveal"><b>15</b><span>Tratamientos</span></div>
-        <div class="stat reveal"><b>4.9<span class="acc">★</span></b><span>Google</span></div>
+        <div class="stat reveal"><b><span class="num" data-count="2000" data-prefix="+" data-sep>+2.000</span></b><span>Clientas</span></div>
+        <div class="stat reveal"><b><span class="num" data-count="15">15</span></b><span>Tratamientos</span></div>
+        <div class="stat reveal"><b><span class="num" data-count="4.9" data-dec="1">4.9</span><span class="acc">★</span></b><span>Google</span></div>
       </div>
     </div>
   </div>
@@ -479,10 +484,10 @@ footer{background:#06060b;border-top:1px solid var(--border);padding:80px 44px 3
 <footer id="contacto">
   <div class="foot-grid">
     <div class="foot-brand">
-      <div class="bn">Lumière<em> Estética</em></div>
+      <div class="bn">WhiteMoon<em> Estética</em></div>
       <p>Centro de estética premium en Madrid. Donde la ciencia y el lujo se unen para realzar tu belleza natural.</p>
       <div class="foot-social">
-        <a href="https://instagram.com/lumiere.estetica" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="https://instagram.com/whitemoon.estetica" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
         <a href="https://wa.me/34643199580" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21l1.9-5.1A8.5 8.5 0 1 1 12 20.5a8.4 8.4 0 0 1-4.1-1.1L3 21z"/><path d="M9 9c0 4 3 6 6 6"/></svg></a>
       </div>
     </div>
@@ -490,7 +495,7 @@ footer{background:#06060b;border-top:1px solid var(--border);padding:80px 44px 3
       <h4>Contacto</h4>
       <p>📍 Calle Mayor 12, Madrid</p>
       <a href="tel:+34643199580">📞 +34 643 199 580</a>
-      <a href="mailto:hola@lumiere.es">✉ hola@lumiere.es</a>
+      <a href="mailto:hola@whitemoon.es">✉ hola@whitemoon.es</a>
     </div>
     <div class="foot-col">
       <h4>Horario</h4>
@@ -500,7 +505,7 @@ footer{background:#06060b;border-top:1px solid var(--border);padding:80px 44px 3
     </div>
   </div>
   <div class="copyright">
-    <span>© 2026 Lumière Estética · Madrid</span>
+    <span>© 2026 WhiteMoon Estética · Madrid</span>
     <span>Web creada por <a href="https://whitemoon.es" target="_blank" rel="noopener">WhiteMoon</a></span>
   </div>
 </footer>
@@ -514,9 +519,9 @@ footer{background:#06060b;border-top:1px solid var(--border);padding:80px 44px 3
 <div class="chat-mod" id="chatMod">
   <div class="chat-head">
     <div class="chat-head-info">
-      <div class="chat-avatar">L</div>
+      <div class="chat-avatar">W</div>
       <div>
-        <h4>Lumière · Asistente</h4>
+        <h4>WhiteMoon · Asistente</h4>
         <div class="status"><span class="dot-on"></span> En línea</div>
       </div>
     </div>
@@ -571,11 +576,11 @@ if(typeof gsap!=='undefined' && !REDUCED){
   gsap.utils.toArray('section').forEach(function(sec){
     var items=sec.querySelectorAll('.reveal');
     if(!items.length)return;
-    gsap.to(items,{opacity:1,y:0,duration:.9,ease:'power3.out',stagger:.09,
+    gsap.to(items,{opacity:1,y:0,filter:'blur(0px)',duration:.9,ease:'power3.out',stagger:.09,
       scrollTrigger:{trigger:sec,start:'top 78%',once:true}});
   });
   // Hero stats reveal (above the fold)
-  gsap.to('.hero .reveal',{opacity:1,y:0,duration:.9,ease:'power3.out',stagger:.12,delay:.5});
+  gsap.to('.hero .reveal',{opacity:1,y:0,filter:'blur(0px)',duration:.9,ease:'power3.out',stagger:.12,delay:.5});
   // Hero parallax: video drifts slower, ghost text drifts
   gsap.to('#heroVideo',{yPercent:18,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
   gsap.to('.ghost',{yPercent:-22,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
@@ -584,8 +589,69 @@ if(typeof gsap!=='undefined' && !REDUCED){
     ScrollTrigger.create({trigger:p,start:'top 70%',onEnter:function(){p.classList.add('active-n');},once:true});
   });
 }else{
-  document.querySelectorAll('.reveal').forEach(function(el){el.style.opacity=1;el.style.transform='none';});
+  document.querySelectorAll('.reveal').forEach(function(el){el.style.opacity=1;el.style.transform='none';el.style.filter='none';});
 }
+
+/* ============ TEXTO ANIMADO (skills: modern-web-design + motion-framer) ============
+   - H1 letra por letra · stats que cuentan desde 0 · líneas que se dibujan al scroll
+   Implementado con GSAP/Anime.js (ya cargados) respetando prefers-reduced-motion. */
+(function(){
+  if(REDUCED) return;
+
+  /* --- 1. H1: revelado letra por letra (fade + slide + leve giro) --- */
+  function splitChars(root){
+    var chars=[];
+    (function walk(node){
+      Array.prototype.slice.call(node.childNodes).forEach(function(n){
+        if(n.nodeType===3){ // texto
+          var frag=document.createDocumentFragment();
+          n.textContent.split('').forEach(function(ch){
+            if(ch===' '){frag.appendChild(document.createTextNode(' '));return;}
+            var s=document.createElement('span');s.className='char';s.textContent=ch;
+            frag.appendChild(s);chars.push(s);
+          });
+          n.parentNode.replaceChild(frag,n);
+        }else if(n.nodeType===1 && n.tagName!=='BR'){ walk(n); } // conserva <br> y .thin
+      });
+    })(root);
+    return chars;
+  }
+  var h1=document.querySelector('.hero h1');
+  if(h1 && typeof anime!=='undefined'){
+    var chars=splitChars(h1);
+    anime.set(chars,{opacity:0,translateY:'0.45em',rotateZ:7});
+    anime({targets:chars,opacity:[0,1],translateY:['0.45em',0],rotateZ:[7,0],
+      easing:'easeOutExpo',duration:850,delay:anime.stagger(42,{start:250})});
+  }
+
+  /* --- 2. Stats: contador desde 0 --- */
+  function countUp(el){
+    var target=parseFloat(el.getAttribute('data-count'))||0;
+    var dec=parseInt(el.getAttribute('data-dec')||'0',10);
+    var prefix=el.getAttribute('data-prefix')||'';
+    var sep=el.hasAttribute('data-sep');
+    if(typeof anime==='undefined') return;
+    var obj={v:0};
+    anime({targets:obj,v:target,duration:1900,easing:'easeOutExpo',update:function(){
+      var val;
+      if(dec>0){ val=obj.v.toFixed(dec); }
+      else{ val=Math.round(obj.v).toString(); if(sep) val=val.replace(/\B(?=(\d{3})+(?!\d))/g,'.'); }
+      el.textContent=prefix+val;
+    }});
+  }
+  if(typeof anime!=='undefined'){
+    document.querySelectorAll('.stat .num').forEach(function(el){ el.textContent=(el.getAttribute('data-prefix')||'')+'0'; });
+    setTimeout(function(){ document.querySelectorAll('.stat .num').forEach(countUp); },650); // arranca con el reveal del hero
+  }
+
+  /* --- 3. Líneas decorativas que se dibujan al entrar en pantalla --- */
+  if(typeof ScrollTrigger!=='undefined'){
+    document.querySelectorAll('.kicker').forEach(function(k){
+      k.classList.add('js-draw');
+      ScrollTrigger.create({trigger:k,start:'top 88%',once:true,onEnter:function(){k.classList.add('drawn');}});
+    });
+  }
+})();
 
 /* ============ VIDEO FALLBACK ============ */
 (function(){var v=document.getElementById('bgVid');if(!v)return;
@@ -593,7 +659,7 @@ if(typeof gsap!=='undefined' && !REDUCED){
 })();
 
 /* ============================================================
-   CHATBOT — Lumière · Asistente
+   CHATBOT — WhiteMoon · Asistente
    Lead → Supabase leads_web + aviso CallMeBot (patrón WhiteMoon)
    ============================================================ */
 var SUPABASE_URL="https://mlaqtniujnvfxcvcourm.supabase.co";
@@ -635,7 +701,7 @@ function userMsg(txt){var m=document.createElement('div');m.className='msg user'
 function quickWrap(){var w=document.createElement('div');w.className='quick';body.appendChild(w);body.scrollTop=body.scrollHeight;return w;}
 
 function welcome(){
-  botMsg('¡Hola! ✦ Soy la asistente de <b>Lumière Estética</b>.<br>¿En qué puedo ayudarte?',function(){
+  botMsg('¡Hola! ✦ Soy la asistente de <b>WhiteMoon Estética</b>.<br>¿En qué puedo ayudarte?',function(){
     var q=quickWrap();
     [['📅 Reservar cita',function(){flowReserva();}],
      ['💆 Ver tratamientos',function(){scrollAndClose('tratamientos');}],
@@ -695,7 +761,7 @@ function finalSummary(){
   botMsg('✅ <b>RESERVA RECIBIDA</b><br><br>👤 <b>'+booking.name+'</b><br>📞 +34 '+booking.phone+'<br><br>💆 <b>Tratamientos:</b><br>'+fmtItems()+'<br><br>💰 <b>Total estimado:</b> '+totalE+'€<br>📅 <b>Día:</b> '+booking.date+'<br>🕐 <b>Hora:</b> '+booking.time+'<br><br>Te contactamos para confirmar. ¿Quieres enviárnoslo también por WhatsApp?',function(){
     var q=quickWrap();
     var wa=document.createElement('button');wa.className='confirm';wa.textContent='✦ Enviar por WhatsApp';
-    wa.onclick=function(){var txt='✦ *RESERVA — Lumière Estética*\n\n👤 *Nombre:* '+booking.name+'\n📞 *Tel:* +34'+booking.phone+'\n💆 *Tratamientos:*\n'+itemsTxt+'\n💰 *Total estimado:* '+totalE+'€\n📅 *Día:* '+booking.date+'\n🕐 *Hora:* '+booking.time+'\n\n_Vía asistente WhiteMoon · whitemoon.es_';window.open('https://wa.me/'+WA_NUM+'?text='+encodeURIComponent(txt),'_blank');};
+    wa.onclick=function(){var txt='✦ *RESERVA — WhiteMoon Estética*\n\n👤 *Nombre:* '+booking.name+'\n📞 *Tel:* +34'+booking.phone+'\n💆 *Tratamientos:*\n'+itemsTxt+'\n💰 *Total estimado:* '+totalE+'€\n📅 *Día:* '+booking.date+'\n🕐 *Hora:* '+booking.time+'\n\n_Vía asistente WhiteMoon · whitemoon.es_';window.open('https://wa.me/'+WA_NUM+'?text='+encodeURIComponent(txt),'_blank');};
     q.appendChild(wa);
     var again=document.createElement('button');again.textContent='💬 Hacer otra consulta';again.onclick=function(){q.remove();chatStep=0;welcome();};q.appendChild(again);
   });
@@ -709,19 +775,19 @@ function saveLead(){
   var payload={nombre:booking.name,telefono:booking.phone,sector:'estetica',interes:interes,mensaje:mensaje,origen:'estetica-demo'};
   try{
     fetch(SUPABASE_URL+'/rest/v1/'+LEADS_TABLE,{method:'POST',headers:{'apikey':SUPABASE_KEY,'Authorization':'Bearer '+SUPABASE_KEY,'Content-Type':'application/json','Prefer':'return=minimal'},body:JSON.stringify(payload)})
-      .then(function(r){if(!r.ok)console.warn('[Lumière] No se pudo guardar el lead:',r.status);})
-      .catch(function(err){console.warn('[Lumière] Error de red al guardar el lead:',err);});
-  }catch(err){console.warn('[Lumière] Excepción al guardar el lead:',err);}
+      .then(function(r){if(!r.ok)console.warn('[WhiteMoon] No se pudo guardar el lead:',r.status);})
+      .catch(function(err){console.warn('[WhiteMoon] Error de red al guardar el lead:',err);});
+  }catch(err){console.warn('[WhiteMoon] Excepción al guardar el lead:',err);}
 }
 /* ---------- CallMeBot (aviso WhatsApp) — patrón WhiteMoon ---------- */
 function notifyWhatsApp(){
-  if(!CALLMEBOT_APIKEY){console.warn('[Lumière] CallMeBot sin apikey: se omite el aviso por WhatsApp.');return;}
-  var lines=['Nuevo lead Lumière Estética (demo)','Nombre: '+booking.name,'Telefono: '+booking.phone,
+  if(!CALLMEBOT_APIKEY){console.warn('[WhiteMoon] CallMeBot sin apikey: se omite el aviso por WhatsApp.');return;}
+  var lines=['Nuevo lead WhiteMoon Estética (demo)','Nombre: '+booking.name,'Telefono: '+booking.phone,
     'Tratamientos: '+booking.items.map(function(i){return i.name;}).join(', '),
     'Total estimado: '+totalPrice()+'€','Dia: '+booking.date,'Hora: '+booking.time];
   var url='https://api.callmebot.com/whatsapp.php?phone='+CALLMEBOT_PHONE+'&text='+encodeURIComponent(lines.join('\n'))+'&apikey='+CALLMEBOT_APIKEY;
-  try{fetch(url,{method:'GET',mode:'no-cors'}).catch(function(err){console.warn('[Lumière] CallMeBot error de red:',err);});}
-  catch(err){console.warn('[Lumière] CallMeBot excepción:',err);}
+  try{fetch(url,{method:'GET',mode:'no-cors'}).catch(function(err){console.warn('[WhiteMoon] CallMeBot error de red:',err);});}
+  catch(err){console.warn('[WhiteMoon] CallMeBot excepción:',err);}
 }
 
 /* tooltip auto */
