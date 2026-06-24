@@ -141,6 +141,7 @@ section{padding:120px 44px;position:relative}
 .sec-title em{font-style:italic;color:var(--p2)}
 .reveal{opacity:0;transform:translateY(38px);filter:blur(9px)}
 /* H1 letra a letra */
+.hero h1 .word{display:inline-block;white-space:nowrap}
 .hero h1 .char{display:inline-block;will-change:transform,opacity}
 /* líneas decorativas que se dibujan al scroll */
 .kicker.js-draw::before{width:0;transition:width .9s cubic-bezier(.4,0,.2,1)}
@@ -281,7 +282,7 @@ footer{background:#050505;border-top:1px solid var(--border);padding:80px 44px 3
   .menu-tog{display:block}
   section{padding:84px 20px}
   .hero{padding:120px 20px 80px}
-  .hero h1{font-size:clamp(2.5rem,5vw,5rem)}
+  .hero h1{font-size:clamp(2.5rem,5vw,5rem);white-space:normal}
   .svc-grid{grid-template-columns:repeat(2,1fr)}
   .svc.big,.svc.mid,.svc.sm{grid-column:span 2}
   .pasos{grid-template-columns:1fr;gap:8px}
@@ -608,10 +609,17 @@ if(typeof gsap!=='undefined' && !REDUCED){
       Array.prototype.slice.call(node.childNodes).forEach(function(n){
         if(n.nodeType===3){ // texto
           var frag=document.createDocumentFragment();
-          n.textContent.split('').forEach(function(ch){
-            if(ch===' '){frag.appendChild(document.createTextNode(' '));return;}
-            var s=document.createElement('span');s.className='char';s.textContent=ch;
-            frag.appendChild(s);chars.push(s);
+          // Agrupar por palabras: cada palabra es un .word (inline-block, nowrap)
+          // para que las letras NUNCA se partan a media palabra al hacer wrap.
+          n.textContent.split(/(\s+)/).forEach(function(token){
+            if(token==='')return;
+            if(/^\s+$/.test(token)){frag.appendChild(document.createTextNode(token));return;}
+            var word=document.createElement('span');word.className='word';
+            token.split('').forEach(function(ch){
+              var s=document.createElement('span');s.className='char';s.textContent=ch;
+              word.appendChild(s);chars.push(s);
+            });
+            frag.appendChild(word);
           });
           n.parentNode.replaceChild(frag,n);
         }else if(n.nodeType===1 && n.tagName!=='BR'){ walk(n); } // conserva <br> y .thin
