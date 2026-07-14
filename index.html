@@ -102,7 +102,7 @@
   --shadow:0 18px 50px -24px rgba(43,38,32,.28);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
 body{
   font-family:'DM Sans',system-ui,sans-serif;font-weight:400;font-size:16px;
   background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased;
@@ -115,43 +115,31 @@ img{max-width:100%;display:block}
 .serif{font-family:'DM Serif Display',Georgia,serif;font-weight:400}
 
 /* ---------- LAYOUT SHELL ---------- */
-.shell{display:flex;min-height:100vh}
-.main{margin-left:var(--side);flex:1;min-width:0}
+.shell{display:block;min-height:100vh}
+.main{min-width:0}
 
-/* ---------- SIDEBAR (Zenkei-style, fija izq.) ---------- */
-.side{position:fixed;top:0;left:0;bottom:0;width:var(--side);background:var(--card);
-  border-right:1px solid var(--line);display:flex;flex-direction:column;padding:30px 26px;z-index:1000}
-.side .brand{display:flex;align-items:center;gap:12px;margin-bottom:6px}
-.side .brand img{width:44px;height:44px;border-radius:50%;object-fit:cover;border:1px solid var(--line)}
-.side .brand .bn{line-height:1.05}
-.side .brand .bn b{font-family:'DM Serif Display',serif;font-weight:400;font-size:22px;display:block;letter-spacing:.01em}
-.side .brand .bn span{font-size:10px;letter-spacing:2.4px;text-transform:uppercase;color:var(--muted)}
-.side-nav{display:flex;flex-direction:column;gap:2px;margin-top:38px}
-.side-nav a{font-size:14px;letter-spacing:.02em;color:var(--ink2);padding:9px 12px;border-radius:9px;
-  display:flex;align-items:center;gap:11px;transition:background .25s,color .25s}
-.side-nav a .idx{font-family:'DM Serif Display',serif;font-size:12px;color:var(--muted);width:16px;transition:color .25s}
-.side-nav a:hover,.side-nav a.active{background:var(--bg2);color:var(--ink)}
-.side-nav a:hover .idx,.side-nav a.active .idx{color:var(--earth)}
-.side-foot{margin-top:auto;display:flex;flex-direction:column;gap:16px;padding-top:22px}
-.side-cta{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--sage);color:#fff;
-  border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:13.5px;font-weight:500;letter-spacing:.02em;
-  padding:13px 18px;border-radius:40px;transition:background .25s,transform .25s}
-.side-cta:hover{background:var(--sage-d);transform:translateY(-2px)}
-.side-meta{font-size:12px;color:var(--muted);line-height:1.7}
-.side-meta a:hover{color:var(--sage-d)}
-.side-social{display:flex;gap:14px}
-.side-social a{color:var(--muted);transition:color .25s,transform .25s}
-.side-social a:hover{color:var(--sage-d);transform:translateY(-2px)}
-.side-social svg{width:18px;height:18px}
-
-/* ---------- MOBILE TOPBAR ---------- */
-.topbar{display:none;position:fixed;top:0;left:0;right:0;z-index:1001;align-items:center;justify-content:space-between;
-  padding:12px 18px;background:rgba(250,248,244,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.topbar .brand{display:flex;align-items:center;gap:10px}
-.topbar .brand img{width:36px;height:36px;border-radius:50%;object-fit:cover;border:1px solid var(--line)}
-.topbar .brand b{font-family:'DM Serif Display',serif;font-weight:400;font-size:19px}
-.burger{background:none;border:1px solid var(--line);border-radius:8px;width:42px;height:38px;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;color:var(--ink)}
+/* ---------- TOPBAR (horizontal, sticky) ---------- */
+.topbar{position:sticky;top:0;z-index:1001;display:flex;align-items:center;gap:24px;
+  padding:14px 40px;background:rgba(250,248,244,.9);backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.tb-brand{display:flex;align-items:center;gap:11px;flex-shrink:0}
+.tb-brand img{width:40px;height:40px;border-radius:50%;object-fit:cover;border:1px solid var(--line)}
+.tb-brand .bn{line-height:1.05}
+.tb-brand .bn b{font-family:'DM Serif Display',serif;font-weight:400;font-size:21px;display:block;letter-spacing:.01em;color:var(--ink)}
+.tb-brand .bn>span{font-size:9.5px;letter-spacing:2.4px;text-transform:uppercase;color:var(--muted)}
+.tb-menu{margin-left:auto;display:flex;align-items:center;gap:26px}
+.tb-nav{display:flex;align-items:center;gap:24px}
+.tb-nav a{font-size:14px;letter-spacing:.02em;color:var(--ink2);position:relative;padding:6px 1px;transition:color .25s}
+.tb-nav a::after{content:'';position:absolute;left:0;right:0;bottom:-3px;height:2px;background:var(--sage);
+  transform:scaleX(0);transform-origin:left;transition:transform .25s}
+.tb-nav a:hover,.tb-nav a.active{color:var(--ink)}
+.tb-nav a:hover::after,.tb-nav a.active::after{transform:scaleX(1)}
+.tb-cta{display:inline-flex;align-items:center;gap:8px;background:var(--sage);color:#fff;border:none;cursor:pointer;
+  font-family:'DM Sans',sans-serif;font-size:13.5px;font-weight:500;letter-spacing:.02em;
+  padding:11px 20px;border-radius:40px;transition:background .25s,transform .25s;white-space:nowrap}
+.tb-cta:hover{background:var(--sage-d);transform:translateY(-2px)}
+.burger{display:none;background:none;border:1px solid var(--line);border-radius:8px;width:42px;height:38px;cursor:pointer;
+  align-items:center;justify-content:center;color:var(--ink);margin-left:auto;flex-shrink:0}
 .burger svg{width:20px;height:20px}
 .scrim{display:none;position:fixed;inset:0;background:rgba(43,38,32,.35);z-index:1000;opacity:0;transition:opacity .3s}
 .scrim.on{display:block;opacity:1}
@@ -393,10 +381,18 @@ footer{background:var(--bg);border-top:1px solid var(--line);padding:76px 64px 4
 
 /* ---------- RESPONSIVE ---------- */
 @media(max-width:900px){
-  .side{display:none}
-  .topbar{display:flex}
-  .main{margin-left:0}
-  .side.drawer-open{display:flex;left:0;top:0;width:280px;max-width:82vw;box-shadow:0 30px 80px -20px rgba(43,38,32,.5);z-index:1002}
+  .topbar{padding:12px 20px;gap:14px}
+  .burger{display:flex}
+  .tb-menu{position:fixed;top:0;right:0;height:100dvh;width:290px;max-width:84vw;margin-left:0;
+    flex-direction:column;align-items:stretch;justify-content:flex-start;gap:6px;
+    padding:84px 26px 28px;background:var(--card);box-shadow:0 30px 80px -20px rgba(43,38,32,.5);
+    transform:translateX(100%);transition:transform .3s ease;z-index:1002;overflow-y:auto}
+  .tb-menu.open{transform:translateX(0)}
+  .tb-nav{flex-direction:column;align-items:stretch;gap:0;width:100%}
+  .tb-nav a{font-size:16px;padding:12px 4px;border-bottom:1px solid var(--line2)}
+  .tb-nav a::after{display:none}
+  .tb-nav a.active{color:var(--sage-d)}
+  .tb-cta{width:100%;justify-content:center;margin-top:18px}
   section{padding:72px 24px}
   .hero{padding:104px 24px 72px}
   .hero-grid{grid-template-columns:1fr;gap:44px}
@@ -430,47 +426,33 @@ footer{background:var(--bg);border-top:1px solid var(--line);padding:76px 64px 4
 </head>
 <body>
 
-<!-- MOBILE TOPBAR -->
-<div class="topbar">
-  <a href="#top" class="brand"><img src="LOGO%20LUNA.jpeg" alt="Selene Estética" width="36" height="36" /><b>Selene</b></a>
+<!-- TOPBAR -->
+<header class="topbar" id="topbar">
+  <a href="#top" class="tb-brand" onclick="toggleNav(false)">
+    <img src="LOGO%20LUNA.jpeg" alt="Selene · Estética & Bienestar" width="40" height="40" />
+    <span class="bn"><b>Selene</b><span>Estética · Madrid</span></span>
+  </a>
   <button class="burger" onclick="toggleNav(true)" aria-label="Abrir menú">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
   </button>
-</div>
+  <div class="tb-menu" id="tbMenu">
+    <nav class="tb-nav" id="topNav">
+      <a href="#centro">El Centro</a>
+      <a href="#tratamientos">Tratamientos</a>
+      <a href="#bonos">Bonos</a>
+      <a href="#zonas">Zonas láser</a>
+      <a href="#galeria">Galería</a>
+      <a href="#faq">Preguntas</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <button class="tb-cta" onclick="openChat()">Reservar con Ana
+      <svg class="arrow" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </button>
+  </div>
+</header>
 <div class="scrim" id="scrim" onclick="toggleNav(false)"></div>
 
 <div class="shell">
-
-  <!-- SIDEBAR -->
-  <aside class="side" id="side">
-    <a href="#top" class="brand" onclick="toggleNav(false)">
-      <img src="LOGO%20LUNA.jpeg" alt="Selene · Estética & Bienestar" width="44" height="44" />
-      <span class="bn"><b>Selene</b><span>Estética · Madrid</span></span>
-    </a>
-    <nav class="side-nav" id="sideNav">
-      <a href="#centro" class="lk"><span class="idx">01</span> El Centro</a>
-      <a href="#tratamientos" class="lk"><span class="idx">02</span> Tratamientos</a>
-      <a href="#bonos" class="lk"><span class="idx">03</span> Bonos</a>
-      <a href="#zonas" class="lk"><span class="idx">04</span> Zonas láser</a>
-      <a href="#galeria" class="lk"><span class="idx">05</span> Galería</a>
-      <a href="#faq" class="lk"><span class="idx">06</span> Preguntas</a>
-      <a href="#contacto" class="lk"><span class="idx">07</span> Contacto</a>
-    </nav>
-    <div class="side-foot">
-      <button class="side-cta" onclick="openChat()">Reservar con Ana
-        <svg class="arrow" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </button>
-      <div class="side-meta">
-        Calle de Serrano 45, Madrid<br>
-        <a href="tel:+34643199580">+34 643 199 580</a><br>
-        Lun–Vie 9–20h · Sáb 9–14h
-      </div>
-      <div class="side-social">
-        <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
-        <a href="https://wa.me/34643199580" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21l1.9-5.1A8.5 8.5 0 1 1 12 20.5a8.4 8.4 0 0 1-4.1-1.1L3 21z"/><path d="M9 9c0 4 3 6 6 6"/></svg></a>
-      </div>
-    </div>
-  </aside>
 
   <!-- MAIN -->
   <main class="main" id="top">
@@ -829,15 +811,15 @@ var REDUCED=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* ============ NAV MÓVIL ============ */
 function toggleNav(open){
-  var side=document.getElementById('side'),scrim=document.getElementById('scrim');
-  if(open){side.classList.add('drawer-open');scrim.classList.add('on');}
-  else{side.classList.remove('drawer-open');scrim.classList.remove('on');}
+  var menu=document.getElementById('tbMenu'),scrim=document.getElementById('scrim');
+  if(open){menu.classList.add('open');scrim.classList.add('on');}
+  else{menu.classList.remove('open');scrim.classList.remove('on');}
 }
-document.querySelectorAll('#sideNav a').forEach(function(a){a.addEventListener('click',function(){toggleNav(false);});});
+document.querySelectorAll('#topNav a').forEach(function(a){a.addEventListener('click',function(){toggleNav(false);});});
 
 /* ============ SCROLLSPY ============ */
 (function(){
-  var links=Array.prototype.slice.call(document.querySelectorAll('.side-nav a'));
+  var links=Array.prototype.slice.call(document.querySelectorAll('.tb-nav a'));
   var map={};links.forEach(function(l){var id=l.getAttribute('href').slice(1);var s=document.getElementById(id);if(s)map[id]=l;});
   var obs=new IntersectionObserver(function(es){
     es.forEach(function(e){if(e.isIntersecting){links.forEach(function(l){l.classList.remove('active');});var l=map[e.target.id];if(l)l.classList.add('active');}});
