@@ -1,0 +1,31 @@
+# Selene · Estética & Bienestar
+
+> Centro de estética avanzada en Madrid. Faciales, corporales, depilación láser diodo, presoterapia, maderoterapia, manicura y pestañas. Reservas a través de Ana, un Agente IA disponible las 24 horas. Sin permanencia y con primera valoración gratuita.
+
+Selene es una demo de sitio web creada por WhiteMoon (agencia de IA, Majadahonda, Madrid) para el sector estética. La reserva de cita se realiza íntegramente a través del chatbot (Ana); no hay carrito ni pago online.
+
+## Datos del negocio (ficticio, demostrativo)
+- Nombre: Selene · Estética & Bienestar
+- Ubicación: Calle de Serrano 45, 28001 Madrid, España
+- Teléfono / WhatsApp: +34 643 199 580
+- Email: hola@selene-estetica.es
+- Horario: Lunes a viernes 9:00–20:00; sábados 9:00–14:00; domingos cerrado
+- Sin permanencia · Primera valoración gratuita
+
+## Servicios
+- Faciales: limpieza profunda (45€), hidratación con ácido hialurónico (65€), antiedad radiofrecuencia (85€), mesoterapia facial (90€).
+- Corporales: maderoterapia (55€), presoterapia (45€), drenaje linfático (65€), masaje relajante 60min (55€).
+- Depilación láser diodo por zonas: labio superior (15€), axilas (25€), ingles (45€), piernas completas (85€), cuerpo completo (180€).
+- Manos y pies: manicura semipermanente (28€), pedicura semipermanente (32€), uñas de gel (35€).
+- Pestañas y cejas: lifting de pestañas (45€), extensión pelo a pelo (65€), laminado de cejas (35€).
+
+## Bonos
+- Bono Glow: 5 faciales de hidratación por 280€ (validez 6 meses).
+- Bono Láser: 6 sesiones de zona grande por 350€ (validez 12 meses).
+- Bono Silueta: 10 sesiones corporales combinadas por 450€ (validez 6 meses).
+
+## Cómo reservar
+Habla con Ana (Agente IA) en el chat de la web: eliges servicio, subservicio y zona, y dejas nombre y teléfono. El equipo de Selene confirma después día y hora.
+
+## Agencia
+Web y agente IA por WhiteMoon — https://whitemoon.es

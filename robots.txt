@@ -1,0 +1,30 @@
+# Selene · Estética & Bienestar — demo WhiteMoon
+User-agent: *
+Allow: /
+
+# Motores e IAs generativas / respuesta (GEO/AEO)
+User-agent: Googlebot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+Sitemap: https://nexusforgeia.github.io/WHITEMOON-ESTETICA/sitemap.xml
