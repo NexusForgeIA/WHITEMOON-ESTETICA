@@ -825,7 +825,6 @@ var SUPABASE_URL="https://mlaqtniujnvfxcvcourm.supabase.co";
 var SUPABASE_KEY="sb_publishable_6no6BuOgiA_2nonTJntAuQ_DTqEgrcV"; /* clave pública (no secreta) */
 var NOTIFY_FN=SUPABASE_URL+"/functions/v1/estetica-notify";
 var LEADS_TABLE="leads_web";
-var WA_NUM="34643199580";
 var REDUCED=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* ============ NAV MÓVIL ============ */
@@ -995,18 +994,10 @@ function showInput(ph,onSubmit){
 function closeLead(){
   leadSent=true;
   saveLead();notifyLead();
-  var det=lead.subservicio+' · '+lead.zona;
-  botMsg('¡Listo, '+lead.nombre+'! He dejado tu cita solicitada para <b>'+lead.subservicio+'</b> ('+lead.zona+').',function(){
-    botMsg('Una compañera de Selene te llamará al '+lead.telefono+' para confirmar el día y la hora. ¿Quieres enviarnos también un recordatorio por WhatsApp?',function(){
-      var q=quickWrap();
-      var wa=document.createElement('button');wa.className='confirm';wa.innerHTML='<span>Enviar por WhatsApp</span>';
-      wa.onclick=function(){
-        var txt='Hola Selene, soy '+lead.nombre+'. Me gustaría reservar: '+lead.servicio+' — '+lead.subservicio+' ('+lead.zona+'). Mi teléfono: '+lead.telefono+'.';
-        window.open('https://wa.me/'+WA_NUM+'?text='+encodeURIComponent(txt),'_blank');
-      };q.appendChild(wa);
-      var again=document.createElement('button');again.innerHTML='<span>Tengo otra consulta</span>';
-      again.onclick=function(){q.remove();greet();};q.appendChild(again);
-    });
+  botMsg('¡Gracias, '+lead.nombre+'! Hemos anotado tu solicitud de <b>'+lead.servicio+' · '+lead.subservicio+'</b> en '+lead.zona+'. Una compañera de Selene te llamará al '+lead.telefono+' para confirmar el día y la hora.',function(){
+    var q=quickWrap();
+    var again=document.createElement('button');again.innerHTML='<span>Tengo otra consulta</span>';
+    again.onclick=function(){q.remove();greet();};q.appendChild(again);
   });
 }
 
