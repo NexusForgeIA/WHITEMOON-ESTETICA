@@ -378,6 +378,26 @@ footer{background:var(--bg);border-top:1px solid var(--line);padding:76px 64px 4
 .chat-inrow button{padding:12px 16px;border:none;background:var(--sage);color:#fff;border-radius:12px;cursor:pointer}
 .chat-foot{padding:9px 16px;background:var(--bg2);border-top:1px solid var(--line);text-align:center;
   font-size:10px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+/* mini-calendario de agenda (dentro del chat) */
+.cal{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;margin:6px 0 14px;max-width:304px}
+.cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.cal-head b{font-size:13.5px;font-weight:500;color:var(--ink);text-transform:capitalize;letter-spacing:.01em}
+.cal-nav{background:none;border:1px solid var(--line);border-radius:8px;width:28px;height:28px;cursor:pointer;
+  color:var(--ink2);display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
+.cal-nav:hover:not(:disabled){border-color:var(--sage);color:var(--sage-d)}
+.cal-nav:disabled{opacity:.3;cursor:not-allowed}
+.cal-nav svg{width:15px;height:15px}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
+.cal-dow{font-size:9.5px;letter-spacing:.4px;text-transform:uppercase;color:var(--muted);text-align:center;padding:3px 0 5px}
+.cal-day{aspect-ratio:1;border:none;background:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:12.5px;
+  color:var(--ink);cursor:pointer;transition:background .15s,color .15s;padding:0}
+.cal-day:hover:not(:disabled):not(.sel){background:var(--bg2)}
+.cal-day.sel{background:var(--sage);color:#fff}
+.cal-day:disabled:not(.sel){color:var(--line);cursor:default}
+.tslots{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:6px 0 14px}
+.tslots button{background:var(--card);border:1px solid var(--line);color:var(--ink);padding:11px 6px;border-radius:12px;
+  cursor:pointer;font-size:13.5px;text-align:center;transition:all .2s;font-family:'DM Sans',sans-serif}
+.tslots button:hover{border-color:var(--sage);background:var(--bg2)}
 
 /* ---------- RESPONSIVE ---------- */
 @media(max-width:900px){
@@ -858,14 +878,14 @@ function toggleFaq(btn){
 }
 
 /* ============================================================
-   CHATBOT ANA — flujo servicio → subservicio → zona → nombre → teléfono → cierre
+   CHATBOT ANA — flujo servicio → subservicio → zona → fecha → hora → nombre → teléfono → cierre
    Lead → Supabase leads_web + aviso vía Edge Function estetica-notify (server-side)
    ============================================================ */
 var body=document.getElementById('chatBody');
 var mod=document.getElementById('chatMod');
 var fab=document.getElementById('chatFab');
 var opened=false, leadSent=false;
-var lead={servicio:'',subservicio:'',precio:0,zona:'',nombre:'',telefono:''};
+var lead={servicio:'',subservicio:'',precio:0,zona:'',fecha:'',hora:'',fechaLabel:'',nombre:'',telefono:''};
 
 var CATALOG={
   'Faciales':{subs:[['Limpieza facial profunda',45],['Hidratación ácido hialurónico',65],['Antiedad radiofrecuencia',85],['Mesoterapia facial',90]],
@@ -879,6 +899,11 @@ var CATALOG={
   'Pestañas & cejas':{subs:[['Lifting de pestañas',45],['Extensión pelo a pelo',65],['Laminado de cejas',35]],
     zonas:['Pestañas','Cejas','Pestañas y cejas']}
 };
+
+var MESES=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+var DIAS=['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
+var DOW=['L','M','X','J','V','S','D'];
+var HORAS=['10:00','11:30','13:00','16:00','17:30','19:00'];
 
 function openChat(){mod.classList.add('open');fab.classList.add('hidden');if(!opened){opened=true;setTimeout(greet,350);}}
 function closeChat(){mod.classList.remove('open');fab.classList.remove('hidden');}
@@ -895,7 +920,7 @@ function quickWrap(){var w=document.createElement('div');w.className='quick';bod
 
 /* --- 1. Saludo: detecta el interés/dolor antes de vender --- */
 function greet(){
-  lead={servicio:'',subservicio:'',precio:0,zona:'',nombre:'',telefono:''};leadSent=false;
+  lead={servicio:'',subservicio:'',precio:0,zona:'',fecha:'',hora:'',fechaLabel:'',nombre:'',telefono:''};leadSent=false;
   botMsg('Hola, soy Ana, del equipo de Selene. Me encanta que estés aquí.',function(){
     botMsg('Cuéntame, ¿qué te gustaría cuidar o mejorar hoy?',function(){
       var q=quickWrap();
@@ -936,14 +961,71 @@ function pickZona(){
     var q=quickWrap();
     CATALOG[lead.servicio].zonas.forEach(function(z){
       var b=document.createElement('button');b.innerHTML='<span>'+z+'</span>';
-      b.onclick=function(){lead.zona=z;userMsg(z);q.remove();askName();};q.appendChild(b);
+      b.onclick=function(){lead.zona=z;userMsg(z);q.remove();pickDate();};q.appendChild(b);
     });
+  });
+}
+
+/* --- 3b. Fecha (mini-calendario) --- */
+function fmtISO(dt){var mm=dt.getMonth()+1,dd=dt.getDate();return dt.getFullYear()+'-'+(mm<10?'0'+mm:mm)+'-'+(dd<10?'0'+dd:dd);}
+function pickDate(){
+  botMsg('¿Qué día te viene mejor? Elígelo en el calendario (los domingos cerramos).',function(){
+    var today=new Date();today.setHours(0,0,0,0);
+    var view=new Date(today.getFullYear(),today.getMonth(),1);
+    var cal=document.createElement('div');cal.className='cal';body.appendChild(cal);
+    function render(){
+      cal.innerHTML='';
+      var y=view.getFullYear(),m=view.getMonth();
+      var head=document.createElement('div');head.className='cal-head';
+      var prev=document.createElement('button');prev.type='button';prev.className='cal-nav';prev.setAttribute('aria-label','Mes anterior');
+      prev.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>';
+      prev.disabled=(y===today.getFullYear()&&m===today.getMonth());
+      prev.onclick=function(){if(prev.disabled)return;view=new Date(y,m-1,1);render();};
+      var title=document.createElement('b');title.textContent=MESES[m]+' '+y;
+      var next=document.createElement('button');next.type='button';next.className='cal-nav';next.setAttribute('aria-label','Mes siguiente');
+      next.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>';
+      next.onclick=function(){view=new Date(y,m+1,1);render();};
+      head.appendChild(prev);head.appendChild(title);head.appendChild(next);cal.appendChild(head);
+      var grid=document.createElement('div');grid.className='cal-grid';
+      DOW.forEach(function(d){var c=document.createElement('div');c.className='cal-dow';c.textContent=d;grid.appendChild(c);});
+      var offset=(new Date(y,m,1).getDay()+6)%7;
+      for(var i=0;i<offset;i++)grid.appendChild(document.createElement('div'));
+      var dim=new Date(y,m+1,0).getDate();
+      for(var d=1;d<=dim;d++){
+        var date=new Date(y,m,d);date.setHours(0,0,0,0);
+        var btn=document.createElement('button');btn.type='button';btn.className='cal-day';btn.textContent=d;
+        if(date.getDay()===0||date<today){btn.disabled=true;}
+        else{(function(dObj,cell){cell.onclick=function(){
+          lead.fecha=fmtISO(dObj);
+          lead.fechaLabel=DIAS[dObj.getDay()]+' '+dObj.getDate()+' de '+MESES[dObj.getMonth()];
+          var all=cal.querySelectorAll('.cal-day, .cal-nav');
+          for(var k=0;k<all.length;k++)all[k].disabled=true;
+          cell.classList.add('sel');
+          pickTime();
+        };})(date,btn);}
+        grid.appendChild(btn);
+      }
+      cal.appendChild(grid);body.scrollTop=body.scrollHeight;
+    }
+    render();
+  });
+}
+
+/* --- 3c. Hora --- */
+function pickTime(){
+  botMsg('Perfecto. ¿A qué hora te viene mejor?',function(){
+    var q=document.createElement('div');q.className='tslots';body.appendChild(q);
+    HORAS.forEach(function(h){
+      var b=document.createElement('button');b.type='button';b.textContent=h;
+      b.onclick=function(){lead.hora=h;userMsg(h);q.remove();askName();};q.appendChild(b);
+    });
+    body.scrollTop=body.scrollHeight;
   });
 }
 
 /* --- 4. Nombre --- */
 function askName(){
-  botMsg('Genial. ¿Cómo te llamas?',function(){
+  botMsg('Genial, '+lead.fechaLabel+' a las '+lead.hora+'. ¿A nombre de quién?',function(){
     showInput('Tu nombre',function(v){
       if(v.trim().length<2)return false;
       lead.nombre=v.trim();userMsg(v.trim());askPhone();return true;
@@ -976,7 +1058,7 @@ function showInput(ph,onSubmit){
 function closeLead(){
   leadSent=true;
   saveLead();notifyLead();
-  botMsg('¡Gracias, '+lead.nombre+'! Hemos anotado tu solicitud de <b>'+lead.servicio+' · '+lead.subservicio+'</b> en '+lead.zona+'. Una compañera de Selene te llamará al '+lead.telefono+' para confirmar el día y la hora.',function(){
+  botMsg('¡Gracias, '+lead.nombre+'! Hemos anotado tu solicitud de <b>'+lead.servicio+' · '+lead.subservicio+'</b> en '+lead.zona+' para el '+lead.fechaLabel+' a las '+lead.hora+'. Una compañera de Selene te llamará al '+lead.telefono+' para confirmar la cita.',function(){
     var q=quickWrap();
     var again=document.createElement('button');again.innerHTML='<span>Tengo otra consulta</span>';
     again.onclick=function(){q.remove();greet();};q.appendChild(again);
@@ -985,9 +1067,10 @@ function closeLead(){
 
 /* ---------- Supabase leads_web (insert desde cliente) ---------- */
 function saveLead(){
-  var mensaje='Servicio: '+lead.servicio+' · '+lead.subservicio+(lead.precio>0?' ('+lead.precio+'€)':'')+' · Zona: '+lead.zona;
+  var mensaje='Servicio: '+lead.servicio+' · '+lead.subservicio+(lead.precio>0?' ('+lead.precio+'€)':'')+' · Zona: '+lead.zona+' · Cita: '+lead.fechaLabel+' a las '+lead.hora;
   var payload={nombre:lead.nombre,telefono:lead.telefono,sector:'estetica',
-    interes:lead.servicio+' — '+lead.subservicio,mensaje:mensaje,origen:'demo-estetica'};
+    interes:lead.servicio+' — '+lead.subservicio,mensaje:mensaje,origen:'demo-estetica',
+    cita_dia:lead.fecha,cita_hora:lead.hora};
   try{
     fetch(SUPABASE_URL+'/rest/v1/'+LEADS_TABLE,{method:'POST',
       headers:{'apikey':SUPABASE_KEY,'Authorization':'Bearer '+SUPABASE_KEY,'Content-Type':'application/json','Prefer':'return=minimal'},
@@ -999,7 +1082,7 @@ function saveLead(){
 /* ---------- Aviso WhatsApp vía Edge Function (apikey CallMeBot server-side) ---------- */
 function notifyLead(){
   var payload={nombre:lead.nombre,telefono:lead.telefono,servicio:lead.servicio,
-    subservicio:lead.subservicio,zona:lead.zona,
+    subservicio:lead.subservicio,zona:lead.zona,cita_dia:lead.fechaLabel,cita_hora:lead.hora,
     mensaje:'Origen: demo-estetica'+(lead.precio>0?' · Ref. '+lead.precio+'€':'')};
   try{
     fetch(NOTIFY_FN,{method:'POST',
