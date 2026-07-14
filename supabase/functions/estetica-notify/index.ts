@@ -11,7 +11,7 @@ import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 //
 // verify_jwt: false (se llama desde el navegador sin sesion; no expone secretos).
 //
-// Recibe (POST JSON): { nombre, telefono, servicio, subservicio, zona, mensaje }
+// Recibe (POST JSON): { nombre, telefono, servicio, subservicio, zona, cita_dia, cita_hora, mensaje }
 
 const DEFAULT_WA = "34643199580";
 
@@ -46,13 +46,19 @@ Deno.serve(async (req: Request) => {
   const servicio = String(data.servicio ?? "").trim() || "-";
   const subservicio = String(data.subservicio ?? "").trim() || "-";
   const zona = String(data.zona ?? "").trim() || "-";
+  const citaDia = String(data.cita_dia ?? "").trim();
+  const citaHora = String(data.cita_hora ?? "").trim();
   const extra = String(data.mensaje ?? "").trim();
+
+  const cita = (citaDia || citaHora)
+    ? `\nCita: ${citaDia || "-"}${citaHora ? " a las " + citaHora : ""}`
+    : "";
 
   const message =
     `Nuevo lead Selene Estetica (demo)\n` +
     `Nombre: ${nombre} | Tel: ${telefono}\n` +
     `Servicio: ${servicio} | ${subservicio}\n` +
-    `Zona: ${zona}` +
+    `Zona: ${zona}` + cita +
     (extra ? `\n${extra}` : "");
 
   const notifyPhone = (Deno.env.get("WA_NUMBER") ?? DEFAULT_WA).trim();
