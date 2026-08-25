@@ -8,7 +8,7 @@ Selene es una demo de sitio web creada por WhiteMoon (agencia de IA, Majadahonda
 - Nombre: Selene · Estética & Bienestar
 - Ubicación: Calle de Serrano 45, 28001 Madrid, España
 - Teléfono / WhatsApp: +34 643 199 580
-- Email: hola@selene-estetica.es
+- Email: comercial@whitemoon.es
 - Horario: Lunes a viernes 9:00–20:00; sábados 9:00–14:00; domingos cerrado
 - Sin permanencia · Primera valoración gratuita
 
@@ -25,7 +25,7 @@ Selene es una demo de sitio web creada por WhiteMoon (agencia de IA, Majadahonda
 - Bono Silueta: 10 sesiones corporales combinadas por 450€ (validez 6 meses).
 
 ## Cómo reservar
-Habla con Ana (Agente IA) en el chat de la web: eliges servicio, subservicio y zona, y dejas nombre y teléfono. El equipo de Selene confirma después día y hora.
+Habla con Ana (Agente IA) en el chat de la web: eliges servicio, subservicio y zona, escoges día y hora en el calendario y dejas nombre y teléfono. El equipo de Selene te llama para confirmar la cita.
 
 ## Agencia
 Web y agente IA por WhiteMoon — https://whitemoon.es
