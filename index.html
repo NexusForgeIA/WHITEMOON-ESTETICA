@@ -126,7 +126,7 @@ p{margin:0}
 .hero-card{
   position:relative;width:100%;max-width:1536px;
   min-height:calc(100vh - 24px);min-height:calc(100svh - 24px);
-  border-radius:1.5rem;overflow:hidden;background:var(--blush);
+  border-radius:1.5rem;overflow:hidden;background:var(--bg);
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   box-shadow:var(--shadow-l);
 }
@@ -135,24 +135,32 @@ p{margin:0}
 }
 
 .hero-bg,.hero-bg img{position:absolute;inset:0;width:100%;height:100%;z-index:0}
-.hero-bg img{object-fit:cover;object-position:center 52%}
+.hero-bg{overflow:hidden}
+.hero-bg img{object-fit:cover}
 
-/* Velo OSCURO: un radial detras del titular + un vertical que cierra en blush.
-   Verificado en scripts/verifica-contraste.py: el pixel mas CLARO bajo el
-   titular deja --gold, --rose-text y --text por encima de 4.5:1. */
-.hero-card::after{
-  content:"";position:absolute;inset:0;z-index:5;pointer-events:none;
-  background:
-    radial-gradient(76% 60% at 50% 34%, rgba(11,10,11,.92) 0%, rgba(11,10,11,.74) 58%, rgba(11,10,11,.32) 92%),
-    linear-gradient(180deg, rgba(11,10,11,.86) 0%, rgba(11,10,11,.52) 32%, rgba(18,16,18,.52) 58%, rgba(18,16,18,.88) 86%, rgba(18,16,18,.98) 100%);
+/* HERO PARTIDA: el texto y la foto NO se solapan, asi la foto va nitida y
+   sin velo. >=901px: foto en la mitad derecha, fundida solo por su borde
+   izquierdo. <=900px: foto arriba (--ph de alto) y el texto debajo, sobre
+   --bg. Verificado en scripts/verifica-contraste.py. */
+.hero-card::after{content:"";position:absolute;z-index:5;pointer-events:none}
+@media(min-width:901px){
+  .hero-bg{left:46%;width:auto}
+  .hero-bg img{object-position:60% 55%}
+  .hero-card::after{inset:0;background:linear-gradient(90deg,var(--bg) 46%,rgba(11,10,11,0) 58%)}
 }
 @media(max-width:900px){
-  .hero-card::after{
-    background:
-      radial-gradient(104% 50% at 50% 38%, rgba(11,10,11,.92) 0%, rgba(11,10,11,.74) 62%, rgba(11,10,11,.38) 94%),
-      linear-gradient(180deg, rgba(11,10,11,.86) 0%, rgba(11,10,11,.54) 28%, rgba(18,16,18,.56) 54%, rgba(18,16,18,.90) 84%, rgba(18,16,18,.99) 100%);
-  }
+  .hero-card{--ph:max(280px,44vh)}
+  @supports(height:1svh){.hero-card{--ph:max(280px,44svh)}}
+  .hero-bg{bottom:auto;height:var(--ph)}
+  .hero-bg img{object-position:center 68%}
+  .hero-card::after{top:0;left:0;right:0;height:calc(var(--ph) + 1px);background:linear-gradient(180deg,rgba(11,10,11,0) 82%,var(--bg) 100%)}
+  .hero-layer{padding-top:var(--ph)}
 }
+/* Zoom muy lento de la foto (el contenedor recorta) */
+@media(prefers-reduced-motion:no-preference){
+  .hero-bg img{animation:heroZoom 20s ease-out infinite alternate}
+}
+@keyframes heroZoom{from{transform:scale(1)}to{transform:scale(1.06)}}
 
 .hero-layer{position:relative;z-index:10;display:flex;flex-direction:column;width:100%;flex:1 1 auto}
 
@@ -168,9 +176,20 @@ p{margin:0}
 @media(min-width:768px){.nav-logo b{font-size:22px}}
 
 .nav-links{display:none;align-items:center;gap:28px}
-@media(min-width:940px){.nav-links{display:flex}}
+@media(min-width:1120px){.nav-links{display:flex}}
 .nav-links a{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--text);transition:color .25s ease}
 .nav-links a:hover{color:var(--rose-text)}
+/* Sobre la foto nunca hay texto suelto: pill oscuro, como la stat-card */
+.nav-links,.hero-nav{-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.nav-links{gap:22px;padding:10px 20px;white-space:nowrap;border-radius:999px;background:rgba(23,20,26,.88);border:1px solid var(--line)}
+@media(min-width:901px){.hero-nav{-webkit-backdrop-filter:none;backdrop-filter:none}}
+@media(max-width:900px){
+  .hero-nav{
+    position:absolute;top:12px;left:12px;right:12px;z-index:3;
+    padding:8px 9px 8px 16px;border-radius:999px;
+    background:rgba(23,20,26,.88);border:1px solid var(--line);
+  }
+}
 
 .btn-rose{
   display:inline-flex;align-items:center;gap:8px;
@@ -185,11 +204,11 @@ p{margin:0}
 .btn-rose .ic svg{width:14px;height:14px}
 .nav-cta .lbl-short{display:none}
 
-/* Hamburguesa (<940px) */
+/* Hamburguesa (<1120px) */
 .nav-toggle{display:grid;place-items:center;width:42px;height:42px;border-radius:999px;flex:none;
   border:1px solid var(--line);background:rgba(23,20,26,.82);color:var(--text);
   -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
-@media(min-width:940px){.nav-toggle{display:none}}
+@media(min-width:1120px){.nav-toggle{display:none}}
 .nav-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round}
 .nav-toggle .ico-close{display:none}
 .nav-toggle[aria-expanded="true"] .ico-open{display:none}
@@ -220,6 +239,9 @@ p{margin:0}
 /* --- Texto central --- */
 .hero-text{padding:clamp(48px,10vh,120px) 22px 0;max-width:60rem;margin:0 auto;text-align:center;width:100%}
 @media(max-width:767px){.hero-text{padding-top:clamp(34px,6vh,64px)}}
+@media(max-width:900px){.hero-text{padding-top:clamp(22px,4vh,40px)}}
+/* Columna izquierda: nunca pasa del 44% de la card (la foto empieza en el 46%) */
+@media(min-width:901px){.hero-text{margin:0;max-width:44%;padding-left:40px;padding-right:0;text-align:left}}
 
 .hero-badge{
   display:inline-flex;align-items:center;gap:9px;max-width:100%;
@@ -243,6 +265,10 @@ p{margin:0}
   margin:20px auto 0;max-width:38rem;font-size:clamp(14.5px,1.5vw,17.5px);line-height:1.6;
   color:var(--text);
   animation:fadeUp .9s .3s ease both;
+}
+@media(min-width:901px){
+  .hero-h1{font-size:clamp(36px,min(4.7vw,11.5vh),72px)}
+  .hero-sub{margin-left:0}
 }
 
 /* --- Zona inferior: tarjeta glass abajo a la izquierda --- */
@@ -1204,7 +1230,7 @@ p{margin:0}
   var LEAD_URL = 'https://mlaqtniujnvfxcvcourm.supabase.co/functions/v1/estetica-lead';
 
   /* ====================================================
-     NAVEGACIÓN MÓVIL (<940px)
+     NAVEGACIÓN MÓVIL (<1120px)
   ==================================================== */
   var toggle = document.getElementById('navToggle');
   var panelNav = document.getElementById('navMobile');
