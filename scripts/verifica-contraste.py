@@ -5,12 +5,14 @@ Verifica el contraste AA de la demo Selene (negro + dorado + rosa) midiendo
 el PEOR PIXEL REAL bajo cada texto, no un color plano teorico.
 
 Que hace:
-  1. Recompone en Python los mismos gradientes OSCUROS que pinta el CSS
-     (.hero-card::after y .tr-card::after) sobre las fotos reales del repo.
+  1. Recompone en Python la HERO PARTIDA tal y como la pinta el CSS (foto
+     nitida a la derecha en >=901px, arriba en <=900px, con su fundido) y
+     el velo de .tr-card::after, sobre las fotos reales del repo.
   2. Recorre la banda donde cae cada texto y se queda con el pixel mas CLARO
      (el texto es claro: el peor fondo es el mas luminoso).
   3. Calcula el ratio WCAG contra --text, --rose-text, --gold y --muted.
-  4. Comprueba ademas los pares de color planos de la paleta.
+  4. Comprueba que la columna de texto de la hero no pisa la foto.
+  5. Comprueba ademas los pares de color planos de la paleta.
 
 Uso:  python scripts/verifica-contraste.py
 Sale con codigo 1 si algo baja de 4.5:1.
@@ -95,6 +97,11 @@ def linear180(stops):
     return lambda fx, fy: _stop(stops, fy)
 
 
+def linear90(stops):
+    """linear-gradient(90deg, ...) — t = x."""
+    return lambda fx, fy: _stop(stops, fx)
+
+
 def radial(rx, ry, cx, cy, stops):
     """radial-gradient(rx% ry% at cx% cy%, ...) en fracciones de caja."""
     def f(fx, fy):
@@ -157,16 +164,83 @@ def report(nombre, rgb, colores):
         print(f"    {etiqueta:<24} {hx}  {r:6.2f}:1  {'OK' if ok else 'FALLA'}")
 
 
-# ---- 1. HERO ---------------------------------------------------------------
-HERO_DESKTOP = [
-    radial(0.76, 0.60, 0.50, 0.34, [(0.0, k(.92)), (0.58, k(.74)), (0.92, k(.32))]),
-    linear180([(0.0, k(.86)), (0.32, k(.52)), (0.58, bl(.52)), (0.86, bl(.88)), (1.0, bl(.98))]),
-]
-HERO_MOBILE = [
-    radial(1.04, 0.50, 0.50, 0.38, [(0.0, k(.92)), (0.62, k(.74)), (0.94, k(.38))]),
-    linear180([(0.0, k(.86)), (0.28, k(.54)), (0.54, bl(.56)), (0.84, bl(.90)), (1.0, bl(.99))]),
-]
+# ---- 1. HERO PARTIDA ------------------------------------------------------
+# Espejo de las constantes del CSS de la hero en index.html.
+PHOTO_LEFT = 0.46            # .hero-bg{left:46%}
+TEXT_MAX = 0.44              # .hero-text{max-width:44%}
+OBJ_DESKTOP = (0.60, 0.55)   # object-position en >=901px
+OBJ_MOBILE = (0.50, 0.68)    # object-position en <=900px
+NAV_BP = 1120                # desde aqui se ven los enlaces (pill); antes, hamburguesa
+FADE_DESKTOP = linear90([(PHOTO_LEFT, k(1.0)), (0.58, k(0.0))])   # .hero-card::after
+FADE_MOBILE = linear180([(0.82, k(0.0)), (1.0, k(1.0))])
+PILL = flat(sf(.88))         # .nav-links / .hero-nav en <=900px / .stat-card
+TOGGLE = flat(sf(.82))       # .nav-toggle
 
+HERO_TXT = [('titular --gold', GOLD), ('em/badge --rose-text', ROSE_TEXT),
+            ('subtitulo --text', TEXT), ('etiqueta --muted', MUTED)]
+PILL_TXT = [('enlaces --text', TEXT)]
+NAV_TXT = [('logo --gold', GOLD), ('logo small --muted', MUTED), ('icono --text', TEXT)]
+
+
+def cover(im, bw, bh, pos):
+    """object-fit:cover con object-position (px, py) en una caja bw x bh."""
+    W, H = im.size
+    sc = max(bw / W, bh / H)
+    sw, sh = max(bw, round(W * sc)), max(bh, round(H * sc))
+    im = im.resize((sw, sh), Image.BILINEAR)
+    x, y = round((sw - bw) * pos[0]), round((sh - bh) * pos[1])
+    return im.crop((x, y, x + bw, y + bh))
+
+
+def hero_desktop(im, vw, vh):
+    """La .hero-card en >=901px: --bg solido + foto desde el 46%."""
+    w, h = min(1536, vw - 40), vh - 40
+    card = Image.new('RGB', (w, h), hex_rgb(BG))
+    x0 = round(w * PHOTO_LEFT)
+    card.paste(cover(im, w - x0, h, OBJ_DESKTOP), (x0, 0))
+    return card
+
+
+print("\n=== 1 · HERO PARTIDA · el texto va sobre --bg, la foto sin velo ===")
+im = Image.open(os.path.join(IMG, 'hero-spa.jpg')).convert('RGB')
+for vw, vh in ((901, 700), (1024, 768), (1280, 800), (1440, 900), (1920, 1080)):
+    card = hero_desktop(im, vw, vh)
+    w = card.size[0]
+    print(f"\n[{vw}px · escritorio] columna de texto 0-{TEXT_MAX:.0%} (logo, badge, h1, sub, stat-card)")
+    pisa = TEXT_MAX * w > PHOTO_LEFT * w
+    print(f"    texto hasta x={TEXT_MAX * w:.0f}px · foto desde x={PHOTO_LEFT * w:.0f}px  "
+          f"{'PISA LA FOTO' if pisa else 'no pisa'}")
+    if pisa:
+        fallos.append(f'hero {vw}: el texto pisa la foto')
+    report(f'hero {vw}', peor_en(card, [FADE_DESKTOP], (0.0, 0.0, TEXT_MAX, 1.0)), HERO_TXT)
+    if vw >= NAV_BP:
+        print(f"[{vw}px] pill de enlaces (.88) sobre la foto + fundido")
+        report(f'nav pill {vw}', peor_en(card, [PILL, FADE_DESKTOP], (0.18, 0.0, 0.82, 0.16)), PILL_TXT)
+    else:
+        print(f"[{vw}px] boton hamburguesa (.82) sobre la foto")
+        report(f'nav toggle {vw}', peor_en(card, [TOGGLE, FADE_DESKTOP], (0.80, 0.0, 1.0, 0.16)), PILL_TXT)
+
+im = Image.open(os.path.join(IMG, 'hero-spa-900.jpg')).convert('RGB')
+for vw, vh in ((390, 844), (768, 1024)):
+    w = vw - (24 if vw < 768 else 40)
+    ph = round(max(280, 0.44 * vh))
+    foto = cover(im, w, ph, OBJ_MOBILE)
+    print(f"\n[{vw}px · movil] foto arriba ({w}x{ph}) · pill de la nav (.88) sobre la foto")
+    report(f'nav pill {vw}', peor_en(foto, [PILL, FADE_MOBILE], (0.0, 0.0, 1.0, 84 / ph)), NAV_TXT)
+    print(f"[{vw}px · movil] ultima fila del fundido (donde empieza el texto, ya sobre --bg)")
+    report(f'fundido {vw}', peor_en(foto, [FADE_MOBILE], (0.0, (ph - 1) / ph, 1.0, 1.0), step=1), HERO_TXT)
+
+print("\n[peor caso absoluto] pills sobre una foto blanca (cubre tambien el zoom lento)")
+blanca = Image.new('RGB', (200, 200), (255, 255, 255))
+report('pill .88 sobre blanco', peor_en(blanca, [PILL], (0, 0, 1, 1)), NAV_TXT)
+report('toggle .82 sobre blanco', peor_en(blanca, [TOGGLE], (0, 0, 1, 1)), PILL_TXT)
+
+print("\n[stat-card] --surface .88 sobre --bg")
+negro = Image.new('RGB', (50, 50), hex_rgb(BG))
+report('stat-card', peor_en(negro, [PILL], (0, 0, 1, 1)), [('numero --gold', GOLD), ('etiqueta --muted', MUTED)])
+
+# ---- 2. GALERIA ------------------------------------------------------------
+print("\n=== 2 · GALERIA · rotulo en chip oscuro sobre la foto ===")
 # .tr-card::after (velo suave) + chip --surface .94 de .tr-cap.
 # El chip cubre toda la banda del rotulo, asi que el peor caso es
 # independiente de la foto: se comprueba tambien contra blanco puro.
@@ -174,39 +248,6 @@ TR_SCRIM = [
     flat(sf(.94)),                                      # chip .tr-cap
     linear180([(0.52, k(0.0)), (1.0, k(.35))]),         # .tr-card::after
 ]
-
-HERO_TXT = [('titular --gold', GOLD), ('em/badge --rose-text', ROSE_TEXT), ('subtitulo --text', TEXT)]
-NAV_TXT = [('logo --gold', GOLD), ('enlaces --text', TEXT), ('logo small --muted', MUTED)]
-STAT_TXT = [('numero --gold', GOLD), ('etiqueta --muted', MUTED)]
-
-print("\n=== 1 · HERO · texto sobre foto con velo oscuro ===")
-print("\n[hero-spa.jpg · escritorio] banda del navbar")
-im = Image.open(os.path.join(IMG, 'hero-spa.jpg')).convert('RGB')
-report('nav escritorio', peor_en(im, HERO_DESKTOP, (0.0, 0.0, 1.0, 0.14)), NAV_TXT)
-
-print("\n[hero-spa.jpg · escritorio] banda del badge + h1 + subtitulo")
-report('hero escritorio', peor_en(im, HERO_DESKTOP, (0.15, 0.14, 0.85, 0.62)), HERO_TXT)
-
-print("\n[hero-spa.jpg · escritorio] zona de la stat-card (--surface .88 sobre el velo)")
-report('stat-card', peor_en(im, [flat(sf(.88))] + HERO_DESKTOP, (0.0, 0.66, 0.40, 1.0)), STAT_TXT)
-
-print("\n[hero-spa-900.jpg · movil] banda del navbar")
-im = Image.open(os.path.join(IMG, 'hero-spa-900.jpg')).convert('RGB')
-report('nav movil', peor_en(im, HERO_MOBILE, (0.0, 0.0, 1.0, 0.12)), NAV_TXT)
-
-print("\n[hero-spa-900.jpg · movil] banda del badge + h1 + subtitulo")
-report('hero movil', peor_en(im, HERO_MOBILE, (0.03, 0.10, 0.97, 0.66)), HERO_TXT)
-
-print("\n[hero-spa-900.jpg · movil] zona de la stat-card (--surface .88 sobre el velo)")
-report('stat-card movil', peor_en(im, [flat(sf(.88))] + HERO_MOBILE, (0.0, 0.60, 1.0, 1.0)), STAT_TXT)
-
-print("\n[peor caso absoluto] hero completo sobre una foto blanca")
-blanca = Image.new('RGB', (200, 200), (255, 255, 255))
-report('hero sobre blanco · escritorio', peor_en(blanca, HERO_DESKTOP, (0.15, 0.14, 0.85, 0.62), step=1), HERO_TXT)
-report('hero sobre blanco · movil', peor_en(blanca, HERO_MOBILE, (0.03, 0.10, 0.97, 0.66), step=1), HERO_TXT)
-
-# ---- 2. GALERIA ------------------------------------------------------------
-print("\n=== 2 · GALERIA · rotulo en chip oscuro sobre la foto ===")
 GALERIA = ['tr-limpieza', 'tr-antiedad', 'tr-presoterapia', 'tr-masaje', 'tr-manicura', 'tr-pestanas']
 TR_TXT = [('titulo --text', TEXT), ('precio --rose-text', ROSE_TEXT)]
 for nombre in GALERIA:
