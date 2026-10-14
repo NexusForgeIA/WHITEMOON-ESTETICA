@@ -684,6 +684,14 @@ p{margin:0}
 }
 </style>
 <script>document.documentElement.className+=' wm-js';</script>
+<script>if(/[?&]cita=1(&|$)/.test(location.search))document.documentElement.className+=" embed"</script>
+<style>
+/* Modo embed (?cita=1): solo el chat de Ana a pantalla completa, para incrustarlo en whitemoon.es/agente-ia-citas/ */
+html.embed,html.embed body{height:100%;overflow:hidden;background:var(--blush,#0b0b0d)}
+html.embed body>*:not(#anaPanel):not(script):not(style){display:none!important}
+html.embed .wm-chat{display:flex;position:fixed;inset:0;right:0;bottom:0;width:100%;max-width:none;max-height:none;border:0;border-radius:0;box-shadow:none}
+html.embed .wm-close{display:none}
+</style>
 </head>
 <body>
 
@@ -1597,6 +1605,11 @@ p{margin:0}
 
   function closeLead(){
     leadSent = true;
+    if (document.documentElement.classList.contains('embed')){
+      botPlain('¡Listo, ' + lead.nombre.split(' ')[0] + '! Así quedaría tu reserva: ' + lead.subservicio + (lead.zona ? ' (' + lead.zona + ')' : '') + ' para el ' + lead.fechaLabel + ' a las ' + lead.hora + ' ✓ Esto es una demo: no se ha guardado ninguna cita ni ningún dato.', 'ok');
+      otraConsulta();
+      return;
+    }
     var payload = buildPayload();
     var t = document.createElement('div');
     t.className = 'typing';
@@ -1653,6 +1666,7 @@ p{margin:0}
       else openChat(cat && CATALOG[cat] ? cat : undefined);
     });
   });
+  if (document.documentElement.classList.contains('embed')) openChat();
   document.getElementById('anaClose').addEventListener('click', closeChat);
   document.addEventListener('keydown', function(e){
     if (e.key === 'Escape' && mod.classList.contains('open')) closeChat();
