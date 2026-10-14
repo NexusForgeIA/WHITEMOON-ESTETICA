@@ -1266,7 +1266,7 @@ p{margin:0}
   var fab   = document.getElementById('anaFab');
   var opened = false, leadSent = false, inputSeq = 0;
 
-  var lead = {servicio:'',subservicio:'',precio:0,zona:'',fecha:'',hora:'',fechaLabel:'',esSabado:false,nombre:'',telefono:''};
+  var lead = {servicio:'',subservicio:'',precio:0,zona:'',fecha:'',hora:'',fechaLabel:'',esSabado:false,nombre:'',telefono:'',citaPrimero:false};
 
   var CATALOG = {
     'Faciales':{subs:[['Limpieza facial profunda',45],['Hidratación ácido hialurónico',65],['Antiedad radiofrecuencia',85],['Mesoterapia facial',90]],
@@ -1335,12 +1335,18 @@ p{margin:0}
 
   /* --- 1. Saludo --- */
   function greet(cat){
-    lead = {servicio:'',subservicio:'',precio:0,zona:'',fecha:'',hora:'',fechaLabel:'',esSabado:false,nombre:'',telefono:''};
+    lead = {servicio:'',subservicio:'',precio:0,zona:'',fecha:'',hora:'',fechaLabel:'',esSabado:false,nombre:'',telefono:'',citaPrimero:false};
     leadSent = false;
     botMsg('Hola, soy Ana, del equipo de Selene. Me encanta que estés aquí.', function(){
       if (cat && CATALOG[cat]){ userMsg('Me interesa: ' + cat); presentarServicio(cat); return; }
-      botMsg('Cuéntame, ¿qué te gustaría cuidar o mejorar hoy?', function(){
+      botMsg('Puedo cogerte cita ahora mismo, eligiendo día y hora en el calendario, o contarte antes qué tratamiento te conviene. ¿Qué prefieres?', function(){
         var q = quickWrap();
+        var cita = document.createElement('button');
+        cita.type = 'button'; cita.className = 'quick';
+        cita.innerHTML = '<span></span>';
+        cita.firstChild.textContent = 'Coger cita';
+        cita.onclick = function(){ userMsg('Quiero coger cita'); q.remove(); lead.citaPrimero = true; pickDate(); };
+        q.appendChild(cita);
         Object.keys(CATALOG).forEach(function(c){
           var b = document.createElement('button');
           b.type = 'button'; b.className = 'quick';
@@ -1388,7 +1394,7 @@ p{margin:0}
         var b = document.createElement('button');
         b.type = 'button'; b.className = 'quick';
         var n = document.createElement('span'); n.textContent = z; b.appendChild(n);
-        b.onclick = function(){ lead.zona = z; userMsg(z); q.remove(); pickDate(); };
+        b.onclick = function(){ lead.zona = z; userMsg(z); q.remove(); if (lead.citaPrimero) askName(); else pickDate(); };
         q.appendChild(b);
       });
     });
@@ -1400,7 +1406,7 @@ p{margin:0}
     return dt.getFullYear() + '-' + (mm < 10 ? '0' + mm : mm) + '-' + (dd < 10 ? '0' + dd : dd);
   }
   function pickDate(){
-    botMsg('¿Qué día te viene mejor? Elígelo en el calendario (los domingos cerramos).', function(){
+    botMsg(lead.citaPrimero ? 'Perfecto, vamos con tu cita. ¿Qué día te viene mejor? Elígelo en el calendario (los domingos cerramos).' : '¿Qué día te viene mejor? Elígelo en el calendario (los domingos cerramos).', function(){
       var today = new Date(); today.setHours(0,0,0,0);
       var view = new Date(today.getFullYear(), today.getMonth(), 1);
       var cal = document.createElement('div'); cal.className = 'cal'; body.appendChild(cal);
@@ -1469,11 +1475,48 @@ p{margin:0}
           q.classList.add('locked');
           q.querySelectorAll('.slot').forEach(function(x){ x.disabled = true; });
           b.classList.add('sel');
-          userMsg(h); askName();
+          userMsg(h);
+          if (lead.servicio) askName(); else pickTratamiento();
         };
         q.appendChild(b);
       });
       scroll();
+    });
+  }
+
+  /* --- 5b. Cita primero: ya hay día y hora, falta el tratamiento --- */
+  function pickTratamiento(){
+    botMsg('Apuntado: ' + lead.fechaLabel + ' a las ' + lead.hora + '. ¿Para qué tratamiento es la cita?', function(){
+      var q = quickWrap();
+      Object.keys(CATALOG).forEach(function(c){
+        var b = document.createElement('button');
+        b.type = 'button'; b.className = 'quick';
+        var n = document.createElement('span'); n.textContent = c; b.appendChild(n);
+        b.onclick = function(){ lead.servicio = c; userMsg(c); q.remove(); pickSubCita(c); };
+        q.appendChild(b);
+      });
+      var nl = document.createElement('button');
+      nl.type = 'button'; nl.className = 'quick';
+      var ns = document.createElement('span'); ns.textContent = 'Aún no lo sé: valoración gratuita'; nl.appendChild(ns);
+      nl.onclick = function(){
+        lead.servicio = 'Valoración gratuita'; lead.subservicio = 'Primera valoración'; lead.precio = 0; lead.zona = '';
+        userMsg('Aún no lo sé: valoración gratuita'); q.remove();
+        botMsg('Muy buena idea: en la valoración miramos tu piel o la zona a tratar y te decimos qué tiene sentido, sin coste ni compromiso.', askName);
+      };
+      q.appendChild(nl);
+    });
+  }
+  function pickSubCita(cat){
+    botMsg('¿Qué te apetece dentro de ' + cat.toLowerCase() + '?', function(){
+      var q = quickWrap();
+      CATALOG[cat].subs.forEach(function(s){
+        var b = document.createElement('button');
+        b.type = 'button'; b.className = 'quick';
+        var n = document.createElement('span'); n.textContent = s[0]; b.appendChild(n);
+        if (s[1] > 0){ var p = document.createElement('span'); p.className = 'qpr'; p.textContent = s[1] + ' €'; b.appendChild(p); }
+        b.onclick = function(){ lead.subservicio = s[0]; lead.precio = s[1]; userMsg(s[0]); q.remove(); pickZona(); };
+        q.appendChild(b);
+      });
     });
   }
 
@@ -1569,7 +1612,7 @@ p{margin:0}
       .then(function(res){
         t.remove();
         if (!res.ok || !res.j.ok) throw new Error((res.j && res.j.error) || 'error');
-        botPlain('¡Gracias, ' + lead.nombre.split(' ')[0] + '! Te hemos apuntado ' + lead.subservicio + ' (' + lead.zona + ') para el ' + lead.fechaLabel + ' a las ' + lead.hora + '. Una compañera de Selene te llama al ' + lead.telefono + ' para confirmarla ✓', 'ok');
+        botPlain('¡Gracias, ' + lead.nombre.split(' ')[0] + '! Te hemos apuntado ' + lead.subservicio + (lead.zona ? ' (' + lead.zona + ')' : '') + ' para el ' + lead.fechaLabel + ' a las ' + lead.hora + '. Una compañera de Selene te llama al ' + lead.telefono + ' para confirmarla ✓', 'ok');
         otraConsulta();
       })
       .catch(function(){
